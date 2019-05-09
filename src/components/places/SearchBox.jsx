@@ -69,11 +69,6 @@ export class SearchBox extends React.PureComponent {
       `Did you include "libraries=places" in the URL?`
     )
     this.containerElement = document.createElement(`div`)
-    this.handleRenderChildToContainerElement()
-    if (React.version.match(/^16/)) {
-      return
-    }
-    this.handleInitializeSearchBox()
   }
 
   componentDidMount() {
@@ -131,17 +126,6 @@ export class SearchBox extends React.PureComponent {
       [SEARCH_BOX]: searchBox,
     })
     return searchBox
-  }
-
-  handleRenderChildToContainerElement() {
-    if (React.version.match(/^16/)) {
-      return
-    }
-    ReactDOM.unstable_renderSubtreeIntoContainer(
-      this,
-      React.Children.only(this.props.children),
-      this.containerElement
-    )
   }
 
   handleMountAtControlPosition() {

@@ -344,13 +344,9 @@ export class MarkerWithLabel extends React.PureComponent {
 
   componentDidMount() {
     componentDidMount(this, this.state[MARKER_WITH_LABEL], eventMap)
-    const container = document.createElement(`div`)
-    ReactDOM.unstable_renderSubtreeIntoContainer(
-      this,
-      React.Children.only(this.props.children),
-      container
-    )
-    this.state[MARKER_WITH_LABEL].set(`labelContent`, container)
+    this.container = document.createElement(`div`)
+    this.state[MARKER_WITH_LABEL].set(`labelContent`, this.container)
+    this.forceUpdate()
   }
 
   componentDidUpdate(prevProps) {
@@ -361,13 +357,6 @@ export class MarkerWithLabel extends React.PureComponent {
       updaterMap,
       prevProps
     )
-    if (this.props.children !== prevProps.children) {
-      ReactDOM.unstable_renderSubtreeIntoContainer(
-        this,
-        React.Children.only(this.props.children),
-        this.state[MARKER_WITH_LABEL].get("labelContent")
-      )
-    }
   }
 
   componentWillUnmount() {
@@ -386,7 +375,13 @@ export class MarkerWithLabel extends React.PureComponent {
   }
 
   render() {
-    return false
+    return (
+      this.state[MARKER_WITH_LABEL].get("labelContent") &&
+      ReactDOM.createPortal(
+        React.Children.only(this.props.children),
+        this.state[MARKER_WITH_LABEL].get("labelContent")
+      )
+    )
   }
 
   /**

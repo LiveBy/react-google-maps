@@ -105,10 +105,10 @@ export class InfoBox extends React.PureComponent {
     const {
       InfoBox: GoogleMapsInfobox,
     } = require(/* "google-maps-infobox" uses "google" as a global variable. Since we don't
-       * have "google" on the server, we can not use it in server-side rendering.
-       * As a result, we import "google-maps-infobox" here to prevent an error on
-       * a isomorphic server.
-       */ `google-maps-infobox`)
+     * have "google" on the server, we can not use it in server-side rendering.
+     * As a result, we import "google-maps-infobox" here to prevent an error on
+     * a isomorphic server.
+     */ `google-maps-infobox`)
     const infoBox = new GoogleMapsInfobox()
     construct(InfoBox.propTypes, updaterMap, this.props, infoBox)
     infoBox.setMap(this.context[MAP])
@@ -119,13 +119,9 @@ export class InfoBox extends React.PureComponent {
 
   componentDidMount() {
     componentDidMount(this, this.state[INFO_BOX], eventMap)
-    const content = document.createElement(`div`)
-    ReactDOM.unstable_renderSubtreeIntoContainer(
-      this,
-      React.Children.only(this.props.children),
-      content
-    )
-    this.state[INFO_BOX].setContent(content)
+    this.content = document.createElement(`div`)
+    this.forceUpdate()
+    this.state[INFO_BOX].setContent(this.content)
     open(this.state[INFO_BOX], this.context[ANCHOR])
   }
 
@@ -137,28 +133,24 @@ export class InfoBox extends React.PureComponent {
       updaterMap,
       prevProps
     )
-    if (this.props.children !== prevProps.children) {
-      ReactDOM.unstable_renderSubtreeIntoContainer(
-        this,
-        React.Children.only(this.props.children),
-        this.state[INFO_BOX].getContent()
-      )
-    }
   }
 
   componentWillUnmount() {
     componentWillUnmount(this)
     const infoBox = this.state[INFO_BOX]
     if (infoBox) {
-      if (infoBox.getContent()) {
-        ReactDOM.unmountComponentAtNode(infoBox.getContent())
-      }
       infoBox.setMap(null)
     }
   }
 
   render() {
-    return false
+    return (
+      !!this.content &&
+      ReactDOM.ceatePortal(
+        React.Children.only(this.props.children),
+        this.content
+      )
+    )
   }
 
   /**

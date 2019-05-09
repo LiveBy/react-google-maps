@@ -1,7 +1,7 @@
 /* global google */
 import React from "react"
 import PropTypes from "prop-types"
-import makeMarkerWithLabel from "markerwithlabel"
+import makeMarkerWithLabel from "@google/markerwithlabel"
 import ReactDOM from "react-dom"
 
 import {
@@ -100,17 +100,12 @@ export class MarkerWithLabel extends React.PureComponent {
     this.state = {
       [MARKER_WITH_LABEL]: markerWithLabel,
     }
+    this.containerElement = document.createElement(`div`)
   }
 
   componentDidMount() {
     componentDidMount(this, this.state[MARKER_WITH_LABEL], eventMap)
-    const container = document.createElement(`div`)
-    ReactDOM.unstable_renderSubtreeIntoContainer(
-      this,
-      React.Children.only(this.props.children),
-      container
-    )
-    this.state[MARKER_WITH_LABEL].set(`labelContent`, container)
+    this.state[MARKER_WITH_LABEL].set(`labelContent`, this.containerElement)
   }
 
   componentDidUpdate(prevProps) {
@@ -121,13 +116,6 @@ export class MarkerWithLabel extends React.PureComponent {
       updaterMap,
       prevProps
     )
-    if (this.props.children !== prevProps.children) {
-      ReactDOM.unstable_renderSubtreeIntoContainer(
-        this,
-        React.Children.only(this.props.children),
-        this.state[MARKER_WITH_LABEL].get("labelContent")
-      )
-    }
   }
 
   componentWillUnmount() {
@@ -138,15 +126,15 @@ export class MarkerWithLabel extends React.PureComponent {
       if (markerClusterer) {
         markerClusterer.removeMarker(markerWithLabel, !!this.props.noRedraw)
       }
-      if (markerWithLabel.get("labelContent")) {
-        ReactDOM.unmountComponentAtNode(markerWithLabel.get("labelContent"))
-      }
       markerWithLabel.setMap(null)
     }
   }
 
   render() {
-    return false
+    return ReactDOM.createPortal(
+      React.Children.only(this.props.children),
+      this.containerElement
+    )
   }
 }
 
