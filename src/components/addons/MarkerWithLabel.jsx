@@ -340,11 +340,11 @@ export class MarkerWithLabel extends React.PureComponent {
     this.state = {
       [MARKER_WITH_LABEL]: markerWithLabel,
     }
+    this.containerElement = document.createElement(`div`)
   }
 
   componentDidMount() {
     componentDidMount(this, this.state[MARKER_WITH_LABEL], eventMap)
-    this.container = document.createElement(`div`)
     this.state[MARKER_WITH_LABEL].set(`labelContent`, this.container)
     this.forceUpdate()
   }
@@ -375,12 +375,9 @@ export class MarkerWithLabel extends React.PureComponent {
   }
 
   render() {
-    return (
-      this.state[MARKER_WITH_LABEL].get("labelContent") &&
-      ReactDOM.createPortal(
-        React.Children.only(this.props.children),
-        this.state[MARKER_WITH_LABEL].get("labelContent")
-      )
+    return ReactDOM.createPortal(
+      React.Children.only(this.props.children),
+      this.containerElement
     )
   }
 
