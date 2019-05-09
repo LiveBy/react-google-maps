@@ -131,9 +131,12 @@ export class MarkerWithLabel extends React.PureComponent {
   }
 
   render() {
-    return ReactDOM.createPortal(
-      React.Children.only(this.props.children),
-      this.containerElement
+    return (
+      this.containerElement &&
+      ReactDOM.createPortal(
+        React.Children.only(this.props.children),
+        this.containerElement
+      )
     )
   }
 }

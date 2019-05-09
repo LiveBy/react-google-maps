@@ -345,7 +345,7 @@ export class MarkerWithLabel extends React.PureComponent {
 
   componentDidMount() {
     componentDidMount(this, this.state[MARKER_WITH_LABEL], eventMap)
-    this.state[MARKER_WITH_LABEL].set(`labelContent`, this.container)
+    this.state[MARKER_WITH_LABEL].set(`labelContent`, this.containerElement)
     this.forceUpdate()
   }
 
@@ -366,9 +366,6 @@ export class MarkerWithLabel extends React.PureComponent {
       const markerClusterer = this.context[MARKER_CLUSTERER]
       if (markerClusterer) {
         markerClusterer.removeMarker(markerWithLabel, !!this.props.noRedraw)
-      }
-      if (markerWithLabel.get("labelContent")) {
-        ReactDOM.unmountComponentAtNode(markerWithLabel.get("labelContent"))
       }
       markerWithLabel.setMap(null)
     }
