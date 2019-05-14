@@ -82,10 +82,10 @@ export class OverlayView extends React.PureComponent {
     this.state = {
       [OVERLAY_VIEW]: overlayView,
     }
-    this.containerElement = document.createElement(`div`)
   }
 
   onAdd() {
+    this.containerElement = document.createElement(`div`)
     this.containerElement.style.position = `absolute`
   }
 
@@ -138,7 +138,6 @@ export class OverlayView extends React.PureComponent {
       updaterMap,
       prevProps
     )
-    _.delay(this.state[OVERLAY_VIEW].draw)
   }
 
   componentWillUnmount() {
@@ -154,9 +153,12 @@ export class OverlayView extends React.PureComponent {
   }
 
   render() {
-    return ReactDOM.createPortal(
-      React.Children.only(this.props.children),
-      this.containerElement
+    return (
+      !!this.containerElement &&
+      ReactDOM.createPortal(
+        React.Children.only(this.props.children),
+        this.containerElement
+      )
     )
   }
 
