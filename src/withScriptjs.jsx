@@ -29,6 +29,8 @@ export function withScriptjs(BaseComponent) {
     handleLoaded = _.bind(this.handleLoaded, this)
 
     handleLoaded() {
+      window.liveby.maps = window.liveby.maps
+      window.liveby.maps = this.backupMaps || window.liveby.maps
       if (this.isUnmounted) {
         return
       }
@@ -57,6 +59,10 @@ export function withScriptjs(BaseComponent) {
       // eslint-disable-next-line global-require
       const scriptjs = require(`scriptjs`)
       const { googleMapURL } = this.props
+      if (google.map) {
+        this.backupMaps = liveby.maps
+        delete window.liveby.maps
+      }
       scriptjs(googleMapURL, this.handleLoaded)
     }
 
