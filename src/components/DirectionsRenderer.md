@@ -20,14 +20,14 @@ const MapWithADirectionsRenderer = compose(
   withGoogleMap,
   lifecycle({
     componentDidMount() {
-      const DirectionsService = new google.maps.DirectionsService();
+      const DirectionsService = new liveby.maps.DirectionsService();
 
       DirectionsService.route({
-        origin: new google.maps.LatLng(41.8507300, -87.6512600),
-        destination: new google.maps.LatLng(41.8525800, -87.6514100),
-        travelMode: google.maps.TravelMode.DRIVING,
+        origin: new liveby.maps.LatLng(41.8507300, -87.6512600),
+        destination: new liveby.maps.LatLng(41.8525800, -87.6514100),
+        travelMode: liveby.maps.TravelMode.DRIVING,
       }, (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
+        if (status === liveby.maps.DirectionsStatus.OK) {
           this.setState({
             directions: result,
           });
@@ -40,7 +40,7 @@ const MapWithADirectionsRenderer = compose(
 )(props =>
   <GoogleMap
     defaultZoom={7}
-    defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
+    defaultCenter={new liveby.maps.LatLng(41.8507300, -87.6512600)}
   >
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>

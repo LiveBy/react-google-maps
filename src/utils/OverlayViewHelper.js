@@ -23,8 +23,8 @@ function createLatLng(inst, Type) {
 
 function createLatLngBounds(inst, Type) {
   return new Type(
-    new google.maps.LatLng(inst.ne.lat, inst.ne.lng),
-    new google.maps.LatLng(inst.sw.lat, inst.sw.lng)
+    new liveby.maps.LatLng(inst.ne.lat, inst.ne.lng),
+    new liveby.maps.LatLng(inst.sw.lat, inst.sw.lng)
   )
 }
 
@@ -72,14 +72,14 @@ export function getLayoutStyles(mapCanvasProjection, offset, props) {
   if (props.bounds) {
     const bounds = ensureOfType(
       props.bounds,
-      google.maps.LatLngBounds,
+      liveby.maps.LatLngBounds,
       createLatLngBounds
     )
     return getLayoutStylesByBounds(mapCanvasProjection, offset, bounds)
   } else {
     const position = ensureOfType(
       props.position,
-      google.maps.LatLng,
+      liveby.maps.LatLng,
       createLatLng
     )
     return getLayoutStylesByPosition(mapCanvasProjection, offset, position)

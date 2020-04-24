@@ -19,7 +19,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.KmlLayer`
+ * A wrapper around `liveby.maps.KmlLayer`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#KmlLayer
  */
@@ -37,7 +37,7 @@ export class KmlLayer extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const kmlLayer = new google.maps.KmlLayer()
+    const kmlLayer = new liveby.maps.KmlLayer()
     construct(KmlLayer.propTypes, updaterMap, this.props, kmlLayer)
     kmlLayer.setMap(this.context[MAP])
     this.state = {

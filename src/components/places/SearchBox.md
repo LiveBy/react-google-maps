@@ -42,7 +42,7 @@ const MapWithASearchBox = compose(
         },
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces();
-          const bounds = new google.maps.LatLngBounds();
+          const bounds = new liveby.maps.LatLngBounds();
 
           places.forEach(place => {
             if (place.geometry.viewport) {
@@ -77,7 +77,7 @@ const MapWithASearchBox = compose(
     <SearchBox
       ref={props.onSearchBoxMounted}
       bounds={props.bounds}
-      controlPosition={google.maps.ControlPosition.TOP_LEFT}
+      controlPosition={liveby.maps.ControlPosition.TOP_LEFT}
       onPlacesChanged={props.onPlacesChanged}
     >
       <input

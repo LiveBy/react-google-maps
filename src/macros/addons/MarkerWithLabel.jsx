@@ -83,7 +83,7 @@ export class MarkerWithLabel extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const NativeMarkerWithLabel = makeMarkerWithLabel(google.maps)
+    const NativeMarkerWithLabel = makeMarkerWithLabel(liveby.maps)
     const markerWithLabel = new NativeMarkerWithLabel()
     construct(
       MarkerWithLabel.propTypes,

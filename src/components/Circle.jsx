@@ -18,7 +18,7 @@ import {
 import { MAP, CIRCLE } from "../constants"
 
 /**
- * A wrapper around `google.maps.Circle`
+ * A wrapper around `liveby.maps.Circle`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Circle
  */
@@ -159,7 +159,7 @@ export class Circle extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const circle = new google.maps.Circle()
+    const circle = new liveby.maps.Circle()
     construct(Circle.propTypes, updaterMap, this.props, circle)
     circle.setMap(this.context[MAP])
     this.state = {

@@ -22,7 +22,7 @@ import {
 import { MAP, SEARCH_BOX } from "../../constants"
 
 /**
- * A wrapper around `google.maps.places.SearchBox` on the map
+ * A wrapper around `liveby.maps.places.SearchBox` on the map
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#SearchBox
  */
@@ -31,7 +31,7 @@ export class SearchBox extends React.PureComponent {
     /**
      * Where to put `<SearchBox>` inside a `<GoogleMap>`
      *
-     * @example google.maps.ControlPosition.TOP_LEFT
+     * @example liveby.maps.ControlPosition.TOP_LEFT
      * @type number
      */
     controlPosition: PropTypes.number,
@@ -65,7 +65,7 @@ export class SearchBox extends React.PureComponent {
       return
     }
     invariant(
-      google.maps.places,
+      liveby.maps.places,
       `Did you include "libraries=places" in the URL?`
     )
     this.containerElement = document.createElement(`div`)
@@ -118,7 +118,7 @@ export class SearchBox extends React.PureComponent {
     /*
      * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#SearchBox
      */
-    const searchBox = new google.maps.places.SearchBox(
+    const searchBox = new liveby.maps.places.SearchBox(
       this.containerElement.querySelector("input")
     )
     construct(SearchBox.propTypes, updaterMap, this.props, searchBox)

@@ -18,7 +18,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.DirectionsRenderer`
+ * A wrapper around `liveby.maps.DirectionsRenderer`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#DirectionsRenderer
  */
@@ -36,7 +36,7 @@ export class DirectionsRenderer extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const directionsRenderer = new google.maps.DirectionsRenderer()
+    const directionsRenderer = new liveby.maps.DirectionsRenderer()
     construct(
       DirectionsRenderer.propTypes,
       updaterMap,

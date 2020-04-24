@@ -19,7 +19,7 @@ import {
 import { MAP, HEATMAP_LAYER } from "../../constants"
 
 /**
- * A wrapper around `google.maps.visualization.HeatmapLayer`
+ * A wrapper around `liveby.maps.visualization.HeatmapLayer`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#HeatmapLayer
  */
@@ -56,10 +56,10 @@ export class HeatmapLayer extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
     invariant(
-      google.maps.visualization,
+      liveby.maps.visualization,
       `Did you include "libraries=visualization" in the URL?`
     )
-    const heatmapLayer = new google.maps.visualization.HeatmapLayer()
+    const heatmapLayer = new liveby.maps.visualization.HeatmapLayer()
     construct(HeatmapLayer.propTypes, updaterMap, this.props, heatmapLayer)
     heatmapLayer.setMap(this.context[MAP])
     this.state = {

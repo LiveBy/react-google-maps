@@ -18,7 +18,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.BicyclingLayer`
+ * A wrapper around `liveby.maps.BicyclingLayer`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#BicyclingLayer
  */
@@ -36,7 +36,7 @@ export class BicyclingLayer extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const bicyclingLayer = new google.maps.BicyclingLayer()
+    const bicyclingLayer = new liveby.maps.BicyclingLayer()
     construct(BicyclingLayer.propTypes, updaterMap, this.props, bicyclingLayer)
     bicyclingLayer.setMap(this.context[MAP])
     this.state = {

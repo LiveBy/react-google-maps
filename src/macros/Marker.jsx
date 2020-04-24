@@ -26,7 +26,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.Marker`
+ * A wrapper around `liveby.maps.Marker`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
  */
@@ -54,7 +54,7 @@ export class Marker extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const marker = new google.maps.Marker()
+    const marker = new liveby.maps.Marker()
     construct(Marker.propTypes, updaterMap, this.props, marker)
     const markerClusterer = this.context[MARKER_CLUSTERER]
     if (markerClusterer) {

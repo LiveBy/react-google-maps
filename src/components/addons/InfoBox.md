@@ -34,7 +34,7 @@ const StyledMapWithAnInfoBox = compose(
     defaultOptions={{ styles: demoFancyMapStyles }}
   >
     <InfoBox
-      defaultPosition={new google.maps.LatLng(props.center.lat, props.center.lng)}
+      defaultPosition={new liveby.maps.LatLng(props.center.lat, props.center.lng)}
       options={{ closeBoxURL: ``, enableEventPropagation: true }}
     >
       <div style={{ backgroundColor: `yellow`, opacity: 0.75, padding: `12px` }}>

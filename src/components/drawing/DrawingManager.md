@@ -21,19 +21,19 @@ const MapWithADrawingManager = compose(
 )(props =>
   <GoogleMap
     defaultZoom={8}
-    defaultCenter={new google.maps.LatLng(-34.397, 150.644)}
+    defaultCenter={new liveby.maps.LatLng(-34.397, 150.644)}
   >
     <DrawingManager
-      defaultDrawingMode={google.maps.drawing.OverlayType.CIRCLE}
+      defaultDrawingMode={liveby.maps.drawing.OverlayType.CIRCLE}
       defaultOptions={{
         drawingControl: true,
         drawingControlOptions: {
-          position: google.maps.ControlPosition.TOP_CENTER,
+          position: liveby.maps.ControlPosition.TOP_CENTER,
           drawingModes: [
-            google.maps.drawing.OverlayType.CIRCLE,
-            google.maps.drawing.OverlayType.POLYGON,
-            google.maps.drawing.OverlayType.POLYLINE,
-            google.maps.drawing.OverlayType.RECTANGLE,
+            liveby.maps.drawing.OverlayType.CIRCLE,
+            liveby.maps.drawing.OverlayType.POLYGON,
+            liveby.maps.drawing.OverlayType.POLYLINE,
+            liveby.maps.drawing.OverlayType.RECTANGLE,
           ],
         },
         circleOptions: {

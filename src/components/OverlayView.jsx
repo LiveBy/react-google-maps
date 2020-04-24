@@ -22,7 +22,7 @@ import { getOffsetOverride, getLayoutStyles } from "../utils/OverlayViewHelper"
 import { MAP, ANCHOR, OVERLAY_VIEW } from "../constants"
 
 /**
- * A wrapper around `google.maps.OverlayView`
+ * A wrapper around `liveby.maps.OverlayView`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
  */
@@ -70,7 +70,7 @@ export class OverlayView extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const overlayView = new google.maps.OverlayView()
+    const overlayView = new liveby.maps.OverlayView()
     // You must implement three methods: onAdd(), draw(), and onRemove().
     overlayView.onAdd = _.bind(this.onAdd, this)
     overlayView.draw = _.bind(this.draw, this)

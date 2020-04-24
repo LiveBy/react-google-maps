@@ -67,7 +67,7 @@ function registerEvents(component, instance, eventMap) {
     (acc, googleEventName, onEventName) => {
       if (_.isFunction(component.props[onEventName])) {
         acc.push(
-          google.maps.event.addListener(
+          liveby.maps.event.addListener(
             instance,
             googleEventName,
             component.props[onEventName]
@@ -88,5 +88,5 @@ function registerEvents(component, instance, eventMap) {
 }
 
 function unregisterEvent(registered) {
-  google.maps.event.removeListener(registered)
+  liveby.maps.event.removeListener(registered)
 }

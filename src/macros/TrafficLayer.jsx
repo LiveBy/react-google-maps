@@ -18,7 +18,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.TrafficLayer`
+ * A wrapper around `liveby.maps.TrafficLayer`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#TrafficLayer
  */
@@ -36,7 +36,7 @@ export class TrafficLayer extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const trafficLayer = new google.maps.TrafficLayer()
+    const trafficLayer = new liveby.maps.TrafficLayer()
     construct(TrafficLayer.propTypes, updaterMap, this.props, trafficLayer)
     trafficLayer.setMap(this.context[MAP])
     this.state = {

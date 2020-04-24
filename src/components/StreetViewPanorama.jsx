@@ -18,7 +18,7 @@ import {
 import { MAP } from "../constants"
 
 /**
- * A wrapper around `google.maps.StreetViewPanorama`
+ * A wrapper around `liveby.maps.StreetViewPanorama`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanorama
  */

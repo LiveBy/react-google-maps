@@ -39,7 +39,7 @@ export function withGoogleMap(BaseComponent) {
       invariant(
         !!containerElement && !!mapElement,
         `Required props containerElement or mapElement is missing. You need to provide both of them.
- The \`google.maps.Map\` instance will be initialized on mapElement and it's wrapped by\
+ The \`liveby.maps.Map\` instance will be initialized on mapElement and it's wrapped by\
  containerElement.\nYou need to provide both of them since Google Map requires the DOM to\
  have height when initialized.`
       )
@@ -56,7 +56,7 @@ export function withGoogleMap(BaseComponent) {
  See https://github.com/tomchentw/react-google-maps/pull/168`
       )
       // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
-      const map = new google.maps.Map(node)
+      const map = new liveby.maps.Map(node)
       this.setState({ map })
     }
 

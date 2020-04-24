@@ -27,7 +27,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.Polygon`
+ * A wrapper around `liveby.maps.Polygon`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polygon
  */
@@ -45,7 +45,7 @@ export class Polygon extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const polygon = new google.maps.Polygon()
+    const polygon = new liveby.maps.Polygon()
     construct(Polygon.propTypes, updaterMap, this.props, polygon)
     polygon.setMap(this.context[MAP])
     this.state = {

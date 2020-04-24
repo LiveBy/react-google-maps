@@ -26,7 +26,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.InfoWindow`
+ * A wrapper around `liveby.maps.InfoWindow`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#InfoWindow
  */
@@ -45,7 +45,7 @@ export class InfoWindow extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const infoWindow = new google.maps.InfoWindow()
+    const infoWindow = new liveby.maps.InfoWindow()
     construct(InfoWindow.propTypes, updaterMap, this.props, infoWindow)
     infoWindow.setMap(this.context[MAP])
     this.state = {

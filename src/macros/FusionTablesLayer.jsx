@@ -18,7 +18,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.FusionTablesLayer`
+ * A wrapper around `liveby.maps.FusionTablesLayer`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#FusionTablesLayer
  */
@@ -36,7 +36,7 @@ export class FusionTablesLayer extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const fusionTablesLayer = new google.maps.FusionTablesLayer()
+    const fusionTablesLayer = new liveby.maps.FusionTablesLayer()
     construct(
       FusionTablesLayer.propTypes,
       updaterMap,

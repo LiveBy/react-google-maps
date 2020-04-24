@@ -27,7 +27,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.Rectangle`
+ * A wrapper around `liveby.maps.Rectangle`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Rectangle
  */
@@ -45,7 +45,7 @@ export class Rectangle extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const rectangle = new google.maps.Rectangle()
+    const rectangle = new liveby.maps.Rectangle()
     construct(Rectangle.propTypes, updaterMap, this.props, rectangle)
     rectangle.setMap(this.context[MAP])
     this.state = {

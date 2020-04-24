@@ -18,7 +18,7 @@ import {
 import { MAP, POLYLINE } from "../constants"
 
 /**
- * A wrapper around `google.maps.Polyline`
+ * A wrapper around `liveby.maps.Polyline`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polyline
  */
@@ -139,7 +139,7 @@ export class Polyline extends React.PureComponent {
    */
   constructor(props, context) {
     super(props, context)
-    const polyline = new google.maps.Polyline()
+    const polyline = new liveby.maps.Polyline()
     construct(Polyline.propTypes, updaterMap, this.props, polyline)
     polyline.setMap(this.context[MAP])
     this.state = {

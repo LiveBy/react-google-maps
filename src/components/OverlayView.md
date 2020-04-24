@@ -34,7 +34,7 @@ const MapWithAnOverlayView = compose(
       position={{ lat: -34.397, lng: 150.644 }}
       /*
        * An alternative to specifying position is specifying bounds.
-       * bounds can either be an instance of google.maps.LatLngBounds
+       * bounds can either be an instance of liveby.maps.LatLngBounds
        * or an object in the following format:
        * bounds={{
        *    ne: { lat: 62.400471, lng: -150.005608 },

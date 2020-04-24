@@ -19,7 +19,7 @@ import {
 import { MAP, DRAWING_MANAGER } from "../../constants"
 
 /**
- * A wrapper around `google.maps.drawing.DrawingManager`
+ * A wrapper around `liveby.maps.drawing.DrawingManager`
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#DrawingManager
  */
@@ -86,10 +86,10 @@ export class DrawingManager extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
     invariant(
-      google.maps.drawing,
+      liveby.maps.drawing,
       `Did you include "libraries=drawing" in the URL?`
     )
-    const drawingManager = new google.maps.drawing.DrawingManager()
+    const drawingManager = new liveby.maps.drawing.DrawingManager()
     construct(DrawingManager.propTypes, updaterMap, this.props, drawingManager)
     drawingManager.setMap(this.context[MAP])
     this.state = {

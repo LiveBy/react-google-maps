@@ -19,9 +19,9 @@ const MapWithGroundOverlay = compose(
   >
     <GroundOverlay
       defaultUrl="https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg"
-      defaultBounds={new google.maps.LatLngBounds(
-        new google.maps.LatLng(40.712216, -74.22655),
-        new google.maps.LatLng(40.773941, -74.12544)
+      defaultBounds={new liveby.maps.LatLngBounds(
+        new liveby.maps.LatLng(40.712216, -74.22655),
+        new liveby.maps.LatLng(40.773941, -74.12544)
       )}
       defaultOpacity={.5}
     />

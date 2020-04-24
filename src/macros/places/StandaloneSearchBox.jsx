@@ -20,7 +20,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.places.SearchBox` without the map
+ * A wrapper around `liveby.maps.places.SearchBox` without the map
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#SearchBox
  */
@@ -37,15 +37,15 @@ class SearchBox extends React.PureComponent {
 
   componentDidMount() {
     invariant(
-      google.maps.places,
+      liveby.maps.places,
       `Did you include "libraries=places" in the URL?`
     )
     const element = ReactDOM.findDOMNode(this)
     /*
      * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#SearchBox
      */
-    const searchBox = new google.maps.places.SearchBox(
-      element.querySelector('input') || element
+    const searchBox = new liveby.maps.places.SearchBox(
+      element.querySelector("input") || element
     )
     construct(SearchBox.propTypes, updaterMap, this.props, searchBox)
 

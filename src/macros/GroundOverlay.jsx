@@ -20,7 +20,7 @@ export const __jscodeshiftPlaceholder__ = `{
 }`
 
 /**
- * A wrapper around `google.maps.GroundOverlay`
+ * A wrapper around `liveby.maps.GroundOverlay`
  *
  * @see https://developers.google.com/maps/documentation/javascript/reference#GroundOverlay
  */
@@ -74,7 +74,7 @@ For GroundOveray, url and bounds are passed in to constructor and are immutable
  See https://github.com/tomchentw/react-google-maps/issues/655
 `
     )
-    const groundOverlay = new google.maps.GroundOverlay(
+    const groundOverlay = new liveby.maps.GroundOverlay(
       props.defaultUrl || props.url,
       props.defaultBounds || props.bounds
     )
