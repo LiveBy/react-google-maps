@@ -1,0 +1,6 @@
+"use strict";var u=Object.defineProperty;var d=(s,e,t)=>e in s?u(s,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):s[e]=t;var a=(s,e,t)=>(d(s,typeof e!="symbol"?e+"":e,t),t);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const h=require("react"),_=require("../index-5d68b4f3.cjs"),c=require("../utils/MapChildHelper.js"),o=require("../constants-c61a5d3d.cjs"),M=`{
+  "eventMapOverrides": {
+    "onDefaultViewportChanged": "defaultviewport_changed"
+  },
+  "getInstanceFromComponent": "this.state[KML_LAYER]"
+}`,n=class n extends h.PureComponent{constructor(e,t){super(e,t);const i=new google.maps.KmlLayer;c.construct(n.propTypes,l,this.props,i),i.setMap(this.context[o.MAP]),this.state={[o.KML_LAYER]:i}}componentDidMount(){c.componentDidMount(this,this.state[o.KML_LAYER],p)}componentDidUpdate(e){c.componentDidUpdate(this,this.state[o.KML_LAYER],p,l,e)}componentWillUnmount(){c.componentWillUnmount(this);const e=this.state[o.KML_LAYER];e&&e.setMap(null)}render(){return!1}};a(n,"propTypes",{__jscodeshiftPlaceholder__:null}),a(n,"contextTypes",{[o.MAP]:_.PropTypes.object});let r=n;const p={},l={};exports.KmlLayer=r;exports.__jscodeshiftPlaceholder__=M;exports.default=r;

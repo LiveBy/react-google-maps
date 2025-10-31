@@ -1,0 +1,1 @@
+"use strict";describe("addons/InfoBox module",()=>{const{__esModule:e,default:t,InfoBox:o}=require("../InfoBox");it("should be an ES module",()=>{expect(e).toBe(!0)}),it("should be default exported",()=>{expect(t).toBeDefined()}),it("should be named exported",()=>{expect(o).toBeDefined()})});

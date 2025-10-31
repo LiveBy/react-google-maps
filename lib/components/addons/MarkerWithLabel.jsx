@@ -5,9 +5,9 @@
  * -----------------------------------------------------------------------------
  */
 /* global google */
-import React from "react"
+import makeMarkerWithLabel from "@google/markerwithlabel"
 import PropTypes from "prop-types"
-import makeMarkerWithLabel from "markerwithlabel"
+import React from "react"
 import ReactDOM from "react-dom"
 
 import {

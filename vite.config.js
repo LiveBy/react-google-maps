@@ -12,26 +12,16 @@ export default defineConfig({
   build: {
     copyPublicDir: false,
     lib: {
-      entry: {
-        main: resolve(__dirname, "lib/main.ts"),
-        "components/addons/index": resolve(
-          __dirname,
-          "lib/components/addons/index.ts"
-        ),
-        withGoogleMap: resolve(__dirname, "lib/withGoogleMap.jsx"),
-        withScriptjs: resolve(__dirname, "lib/withScriptjs.jsx"),
-        constants: resolve(__dirname, "lib/constants.js"),
-      },
-      fileName: (format, entryName) => `${entryName}.${format}.js`, // Customize output file names
-      formats: ["es"],
+      entry: resolve(__dirname, "lib/main.ts"),
+      formats: ["cjs"],
     },
     rollupOptions: {
       external: ["react", "react/jsx-runtime"],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
         glob
-          .sync("lib/**/*.{ts,tsx}", {
-            ignore: ["lib/**/*.d.ts"],
+          .sync("lib/**/*.{ts,tsx,jsx,js}", {
+            ignore: ["lib/**/*.d.ts", "lib/tx/**"],
           })
           .map((file) => [
             // 1. The name of the entry point

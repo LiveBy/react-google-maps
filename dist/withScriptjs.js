@@ -1,0 +1,1 @@
+"use strict";const t=require("react/jsx-runtime"),a=require("react"),u="BEGIN",s="LOADED",S=withScript=e=>({loadingElement:r=null,googleMapURL:n,...c})=>{const[i,o]=a.useState(u);return t.jsxs(t.Fragment,{children:[t.jsx("script",{async:!0,src:n,onLoad:()=>o(s)}),i===s?t.jsx(e,{...c}):r]})};module.exports=S;

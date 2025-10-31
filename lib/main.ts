@@ -16,3 +16,9 @@ export { default as TrafficLayer } from "./components/TrafficLayer"
 export * as constants from "./constants"
 export { default as withGoogleMap } from "./withGoogleMap"
 export { default as withScriptjs } from "./withScriptjs"
+
+export const addons = {
+  InfoBox: () => import("./components/addons/InfoBox"),
+  MarkerClusterer: () => import("./components/addons/MarkerClusterer"),
+  MarkerWithLabel: () => import("./components/addons/MarkerWithLabel"),
+}
