@@ -1,5 +1,109 @@
-"use strict";var m=Object.defineProperty;var u=(a,e,t)=>e in a?m(a,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):a[e]=t;var s=(a,e,t)=>(u(a,typeof e!="symbol"?e+"":e,t),t);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const c=require("../lodash-6bb8d3a5.cjs"),E=require("../browser-99223509.cjs"),p=require("react"),P=require("../index-d7652fce.cjs"),r=require("../index-5d68b4f3.cjs"),l=require("../utils/MapChildHelper.js"),d=require("../utils/OverlayViewHelper.js"),n=require("../constants-c61a5d3d.cjs"),_=`{
+var d = Object.defineProperty;
+var h = (a, t, e) => t in a ? d(a, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : a[t] = e;
+var o = (a, t, e) => (h(a, typeof t != "symbol" ? t + "" : t, e), e);
+import { _ as m } from "../lodash-9da1000b.js";
+import { i as E } from "../browser-fe3e0b83.js";
+import p from "react";
+import { R as u } from "../index-87ad0b90.js";
+import { P as s } from "../index-e8d4cd90.js";
+import { componentDidMount as P, componentDidUpdate as f, componentWillUnmount as A } from "../utils/MapChildHelper.js";
+import { getOffsetOverride as R, getLayoutStyles as _ } from "../utils/OverlayViewHelper.js";
+import { M as c, A as M, O as r } from "../constants-4d431d90.js";
+const x = `{
   "eventMapOverrides": { 
   },
   "getInstanceFromComponent": "this.state[OVERLAY_VIEW]"
-}`;class o extends p.PureComponent{constructor(e,t){super(e,t);const i=new google.maps.OverlayView;i.onAdd=c._.bind(this.onAdd,this),i.draw=c._.bind(this.draw,this),i.onRemove=c._.bind(this.onRemove,this),this.onPositionElement=c._.bind(this.onPositionElement,this),i.setMap(this.context[n.MAP]),this.state={[n.OVERLAY_VIEW]:i}}onAdd(){this.containerElement=document.createElement("div"),this.containerElement.style.position="absolute"}draw(){const{mapPaneName:e}=this.props;E.invariant(!!e,"OverlayView requires either props.mapPaneName or props.defaultMapPaneName but got %s",e),this.state[n.OVERLAY_VIEW].getPanes()[e].appendChild(this.containerElement),this.forceUpdate(this.onPositionElement)}onPositionElement(){const e=this.state[n.OVERLAY_VIEW].getProjection(),t={x:0,y:0,...d.getOffsetOverride(this.containerElement,this.props)},i=d.getLayoutStyles(e,t,this.props);c._.assign(this.containerElement.style,i)}onRemove(){this.containerElement.parentNode.removeChild(this.containerElement),this.containerElement=null}componentDidMount(){l.componentDidMount(this,this.state[n.OVERLAY_VIEW],h)}componentDidUpdate(e){l.componentDidUpdate(this,this.state[n.OVERLAY_VIEW],h,A,e)}componentWillUnmount(){l.componentWillUnmount(this);const e=this.state[n.OVERLAY_VIEW];e&&(e.setMap(null),e.onAdd=null,e.draw=null,e.onRemove=null)}render(){return!!this.containerElement&&P.ReactDOM.createPortal(p.Children.only(this.props.children),this.containerElement)}}s(o,"FLOAT_PANE","floatPane"),s(o,"MAP_PANE","mapPane"),s(o,"MARKER_LAYER","markerLayer"),s(o,"OVERLAY_LAYER","overlayLayer"),s(o,"OVERLAY_MOUSE_TARGET","overlayMouseTarget"),s(o,"propTypes",{__jscodeshiftPlaceholder__:null,mapPaneName:r.PropTypes.string,position:r.PropTypes.object,bounds:r.PropTypes.object,children:r.PropTypes.node.isRequired,getPixelPositionOffset:r.PropTypes.func}),s(o,"contextTypes",{[n.MAP]:r.PropTypes.object,[n.ANCHOR]:r.PropTypes.object});const h={},A={};exports.OverlayView=o;exports.__jscodeshiftPlaceholder__=_;exports.default=o;
+}`;
+class i extends p.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
+   */
+  constructor(t, e) {
+    super(t, e);
+    const n = new google.maps.OverlayView();
+    n.onAdd = m.bind(this.onAdd, this), n.draw = m.bind(this.draw, this), n.onRemove = m.bind(this.onRemove, this), this.onPositionElement = m.bind(this.onPositionElement, this), n.setMap(this.context[c]), this.state = {
+      [r]: n
+    };
+  }
+  onAdd() {
+    this.containerElement = document.createElement("div"), this.containerElement.style.position = "absolute";
+  }
+  draw() {
+    const { mapPaneName: t } = this.props;
+    E(
+      !!t,
+      "OverlayView requires either props.mapPaneName or props.defaultMapPaneName but got %s",
+      t
+    ), this.state[r].getPanes()[t].appendChild(this.containerElement), this.forceUpdate(this.onPositionElement);
+  }
+  onPositionElement() {
+    const t = this.state[r].getProjection(), e = {
+      x: 0,
+      y: 0,
+      ...R(this.containerElement, this.props)
+    }, n = _(
+      t,
+      e,
+      this.props
+    );
+    m.assign(this.containerElement.style, n);
+  }
+  onRemove() {
+    this.containerElement.parentNode.removeChild(this.containerElement), this.containerElement = null;
+  }
+  componentDidMount() {
+    P(this, this.state[r], l);
+  }
+  componentDidUpdate(t) {
+    f(
+      this,
+      this.state[r],
+      l,
+      y,
+      t
+    );
+  }
+  componentWillUnmount() {
+    A(this);
+    const t = this.state[r];
+    t && (t.setMap(null), t.onAdd = null, t.draw = null, t.onRemove = null);
+  }
+  render() {
+    return !!this.containerElement && u.createPortal(
+      p.Children.only(this.props.children),
+      this.containerElement
+    );
+  }
+}
+o(i, "FLOAT_PANE", "floatPane"), o(i, "MAP_PANE", "mapPane"), o(i, "MARKER_LAYER", "markerLayer"), o(i, "OVERLAY_LAYER", "overlayLayer"), o(i, "OVERLAY_MOUSE_TARGET", "overlayMouseTarget"), o(i, "propTypes", {
+  __jscodeshiftPlaceholder__: null,
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
+   */
+  mapPaneName: s.string,
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
+   */
+  position: s.object,
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
+   */
+  bounds: s.object,
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
+   */
+  children: s.node.isRequired,
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
+   */
+  getPixelPositionOffset: s.func
+}), o(i, "contextTypes", {
+  [c]: s.object,
+  [M]: s.object
+});
+const l = {}, y = {};
+export {
+  i as OverlayView,
+  x as __jscodeshiftPlaceholder__,
+  i as default
+};

@@ -1,4 +1,12 @@
-"use strict";var d=Object.defineProperty;var m=(n,e,t)=>e in n?d(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t;var c=(n,e,t)=>(m(n,typeof e!="symbol"?e+"":e,t),t);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("../../browser-99223509.cjs"),M=require("react"),h=require("../../index-5d68b4f3.cjs"),r=require("../../utils/MapChildHelper.js"),o=require("../../constants-c61a5d3d.cjs"),A=`{
+var m = Object.defineProperty;
+var d = (o, e, t) => e in o ? m(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[e] = t;
+var r = (o, e, t) => (d(o, typeof e != "symbol" ? e + "" : e, t), t);
+import { i as h } from "../../browser-fe3e0b83.js";
+import u from "react";
+import { P as g } from "../../index-e8d4cd90.js";
+import { construct as M, componentDidMount as y, componentDidUpdate as f, componentWillUnmount as C } from "../../utils/MapChildHelper.js";
+import { M as l, e as p } from "../../constants-4d431d90.js";
+const U = `{
   "eventMapOverrides": {
     "onCircleComplete": "circlecomplete",
     "onMarkerComplete": "markercomplete",
@@ -8,4 +16,50 @@
     "onRectangleComplete": "rectanglecomplete"
   },
   "getInstanceFromComponent": "this.state[DRAWING_MANAGER]"
-}`,s=class s extends M.PureComponent{constructor(e,t){super(e,t),u.invariant(google.maps.drawing,'Did you include "libraries=drawing" in the URL?');const i=new google.maps.drawing.DrawingManager;r.construct(s.propTypes,a,this.props,i),i.setMap(this.context[o.MAP]),this.state={[o.DRAWING_MANAGER]:i}}componentDidMount(){r.componentDidMount(this,this.state[o.DRAWING_MANAGER],p)}componentDidUpdate(e){r.componentDidUpdate(this,this.state[o.DRAWING_MANAGER],p,a,e)}componentWillUnmount(){r.componentWillUnmount(this);const e=this.state[o.DRAWING_MANAGER];e&&e.setMap(null)}render(){return!1}};c(s,"propTypes",{__jscodeshiftPlaceholder__:null}),c(s,"contextTypes",{[o.MAP]:h.PropTypes.object});let l=s;const p={},a={};exports.DrawingManager=l;exports.__jscodeshiftPlaceholder__=A;exports.default=l;
+}`, n = class n extends u.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#DrawingManager
+   */
+  constructor(e, t) {
+    super(e, t), h(
+      google.maps.drawing,
+      'Did you include "libraries=drawing" in the URL?'
+    );
+    const s = new google.maps.drawing.DrawingManager();
+    M(n.propTypes, c, this.props, s), s.setMap(this.context[l]), this.state = {
+      [p]: s
+    };
+  }
+  componentDidMount() {
+    y(this, this.state[p], a);
+  }
+  componentDidUpdate(e) {
+    f(
+      this,
+      this.state[p],
+      a,
+      c,
+      e
+    );
+  }
+  componentWillUnmount() {
+    C(this);
+    const e = this.state[p];
+    e && e.setMap(null);
+  }
+  render() {
+    return !1;
+  }
+};
+r(n, "propTypes", {
+  __jscodeshiftPlaceholder__: null
+}), r(n, "contextTypes", {
+  [l]: g.object
+});
+let i = n;
+const a = {}, c = {};
+export {
+  i as DrawingManager,
+  U as __jscodeshiftPlaceholder__,
+  i as default
+};

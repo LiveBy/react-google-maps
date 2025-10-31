@@ -1,4 +1,14 @@
-"use strict";var h=Object.defineProperty;var m=(t,e,o)=>e in t?h(t,e,{enumerable:!0,configurable:!0,writable:!0,value:o}):t[e]=o;var a=(t,e,o)=>(m(t,typeof e!="symbol"?e+"":e,o),o);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const O=require("../browser-99223509.cjs"),_=require("../index-c9c79dc5.cjs"),p=require("react"),M=require("../index-d7652fce.cjs"),l=require("../index-5d68b4f3.cjs"),i=require("../utils/MapChildHelper.js"),n=require("../constants-c61a5d3d.cjs"),N=`{
+var u = Object.defineProperty;
+var M = (e, t, o) => t in e ? u(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : e[t] = o;
+var r = (e, t, o) => (M(e, typeof t != "symbol" ? t + "" : t, o), o);
+import { i as f } from "../browser-fe3e0b83.js";
+import { c as y } from "../index-22f0280c.js";
+import a from "react";
+import { R as D } from "../index-87ad0b90.js";
+import { P as p } from "../index-e8d4cd90.js";
+import { construct as P, componentDidMount as O, componentDidUpdate as C, componentWillUnmount as _ } from "../utils/MapChildHelper.js";
+import { M as c, A as m, I as n } from "../constants-4d431d90.js";
+const T = `{
   "prohibitedPropNames": [
     "content"
   ],
@@ -7,4 +17,59 @@
     "onDomReady": "domready"
   },
   "getInstanceFromComponent": "this.state[INFO_WINDOW]"
-}`,s=class s extends p.PureComponent{constructor(e,o){super(e,o);const c=new google.maps.InfoWindow;i.construct(s.propTypes,u,this.props,c),c.setMap(this.context[n.MAP]),this.state={[n.INFO_WINDOW]:c}}componentWillMount(){!_.canUseDOM||this.containerElement||(this.containerElement=document.createElement("div"))}componentDidMount(){i.componentDidMount(this,this.state[n.INFO_WINDOW],d),this.state[n.INFO_WINDOW].setContent(this.containerElement),I(this.state[n.INFO_WINDOW],this.context[n.ANCHOR])}componentDidUpdate(e){i.componentDidUpdate(this,this.state[n.INFO_WINDOW],d,u,e)}componentWillUnmount(){i.componentWillUnmount(this);const e=this.state[n.INFO_WINDOW];e&&e.setMap(null)}render(){return M.ReactDOM.createPortal(p.Children.only(this.props.children),this.containerElement)}};a(s,"propTypes",{__jscodeshiftPlaceholder__:null}),a(s,"contextTypes",{[n.MAP]:l.PropTypes.object,[n.ANCHOR]:l.PropTypes.object});let r=s;const I=(t,e)=>{e?t.open(t.getMap(),e):t.getPosition()?t.open(t.getMap()):O.invariant(!1,"You must provide either an anchor (typically render it inside a <Marker>) or a position props for <InfoWindow>.")},d={},u={};exports.InfoWindow=r;exports.__jscodeshiftPlaceholder__=N;exports.default=r;
+}`, s = class s extends a.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#InfoWindow
+   */
+  constructor(t, o) {
+    super(t, o);
+    const i = new google.maps.InfoWindow();
+    P(s.propTypes, d, this.props, i), i.setMap(this.context[c]), this.state = {
+      [n]: i
+    };
+  }
+  componentWillMount() {
+    !y || this.containerElement || (this.containerElement = document.createElement("div"));
+  }
+  componentDidMount() {
+    O(this, this.state[n], h), this.state[n].setContent(this.containerElement), g(this.state[n], this.context[m]);
+  }
+  componentDidUpdate(t) {
+    C(
+      this,
+      this.state[n],
+      h,
+      d,
+      t
+    );
+  }
+  componentWillUnmount() {
+    _(this);
+    const t = this.state[n];
+    t && t.setMap(null);
+  }
+  render() {
+    return D.createPortal(
+      a.Children.only(this.props.children),
+      this.containerElement
+    );
+  }
+};
+r(s, "propTypes", {
+  __jscodeshiftPlaceholder__: null
+}), r(s, "contextTypes", {
+  [c]: p.object,
+  [m]: p.object
+});
+let l = s;
+const g = (e, t) => {
+  t ? e.open(e.getMap(), t) : e.getPosition() ? e.open(e.getMap()) : f(
+    !1,
+    "You must provide either an anchor (typically render it inside a <Marker>) or a position props for <InfoWindow>."
+  );
+}, h = {}, d = {};
+export {
+  l as InfoWindow,
+  T as __jscodeshiftPlaceholder__,
+  l as default
+};

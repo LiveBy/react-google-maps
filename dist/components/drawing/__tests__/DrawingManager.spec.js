@@ -1,1 +1,14 @@
-"use strict";describe("drawing/DrawingManager module",()=>{const{__esModule:e,default:t,DrawingManager:d}=require("../DrawingManager");it("should be an ES module",()=>{expect(e).toBe(!0)}),it("should be default exported",()=>{expect(t).toBeDefined()}),it("should be named exported",()=>{expect(d).toBeDefined()})});
+describe("drawing/DrawingManager module", () => {
+  const {
+    __esModule: e,
+    default: t,
+    DrawingManager: d
+  } = require("../DrawingManager");
+  it("should be an ES module", () => {
+    expect(e).toBe(!0);
+  }), it("should be default exported", () => {
+    expect(t).toBeDefined();
+  }), it("should be named exported", () => {
+    expect(d).toBeDefined();
+  });
+});

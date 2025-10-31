@@ -1,4 +1,13 @@
-"use strict";var u=Object.defineProperty;var l=(n,e,t)=>e in n?u(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t;var r=(n,e,t)=>(l(n,typeof e!="symbol"?e+"":e,t),t);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const h=require("react/jsx-runtime"),M=require("../browser-99223509.cjs"),m=require("react"),a=require("../index-5d68b4f3.cjs"),i=require("../utils/MapChildHelper.js"),o=require("../constants-c61a5d3d.cjs"),y=`{
+var c = Object.defineProperty;
+var d = (n, t, o) => t in n ? c(n, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : n[t] = o;
+var s = (n, t, o) => (d(n, typeof t != "symbol" ? t + "" : t, o), o);
+import { jsx as m } from "react/jsx-runtime";
+import { i as u } from "../browser-fe3e0b83.js";
+import l from "react";
+import { P as r } from "../index-e8d4cd90.js";
+import { construct as h, componentDidMount as M, componentDidUpdate as y, componentWillUnmount as f } from "../utils/MapChildHelper.js";
+import { M as e } from "../constants-4d431d90.js";
+const C = `{
   "eventMapOverrides": {
     "onDblClick": "dblclick",
     "onDragEnd": "dragend",
@@ -11,4 +20,77 @@
     "onTilesLoaded": "tilesloaded"
   },
   "getInstanceFromComponent": "this.context[MAP]"
-}`;class s extends m.PureComponent{fitBounds(...e){return this.context[o.MAP].fitBounds(...e)}panBy(...e){return this.context[o.MAP].panBy(...e)}panTo(...e){return this.context[o.MAP].panTo(...e)}panToBounds(...e){return this.context[o.MAP].panToBounds(...e)}constructor(e,t){super(e,t),M.invariant(!!this.context[o.MAP],"Did you wrap <GoogleMap> component with withGoogleMap() HOC?"),i.construct(d.propTypes,c,this.props,this.context[o.MAP])}componentDidMount(){i.componentDidMount(this,this.context[o.MAP],p)}componentDidUpdate(e){i.componentDidUpdate(this,this.context[o.MAP],p,c,e)}componentWillUnmount(){i.componentWillUnmount(this)}render(){const{children:e}=this.props;return h.jsx("div",{children:e})}}r(s,"displayName","GoogleMap"),r(s,"propTypes",{__jscodeshiftPlaceholder__:null,defaultExtraMapTypes:a.PropTypes.arrayOf(a.PropTypes.arrayOf(a.PropTypes.any))}),r(s,"contextTypes",{[o.MAP]:a.PropTypes.object});const d=s,p={},c={extraMapTypes(n,e){e.forEach(t=>n.mapTypes.set(...t))}};exports.GoogleMap=d;exports.Map=s;exports.__jscodeshiftPlaceholder__=y;exports.default=s;
+}`;
+class a extends l.PureComponent {
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   * @public 
+   */
+  fitBounds(...t) {
+    return this.context[e].fitBounds(...t);
+  }
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   * @public 
+   */
+  panBy(...t) {
+    return this.context[e].panBy(...t);
+  }
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   * @public 
+   */
+  panTo(...t) {
+    return this.context[e].panTo(...t);
+  }
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   * @public 
+   */
+  panToBounds(...t) {
+    return this.context[e].panToBounds(...t);
+  }
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   */
+  constructor(t, o) {
+    super(t, o), u(
+      !!this.context[e],
+      "Did you wrap <GoogleMap> component with withGoogleMap() HOC?"
+    ), h(x.propTypes, i, this.props, this.context[e]);
+  }
+  componentDidMount() {
+    M(this, this.context[e], p);
+  }
+  componentDidUpdate(t) {
+    y(this, this.context[e], p, i, t);
+  }
+  componentWillUnmount() {
+    f(this);
+  }
+  render() {
+    const { children: t } = this.props;
+    return /* @__PURE__ */ m("div", { children: t });
+  }
+}
+s(a, "displayName", "GoogleMap"), s(a, "propTypes", {
+  __jscodeshiftPlaceholder__: null,
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapTypeRegistry
+   * @type Array<[id:string, mapType:MapType|*]>
+   */
+  defaultExtraMapTypes: r.arrayOf(r.arrayOf(r.any))
+}), s(a, "contextTypes", {
+  [e]: r.object
+});
+const x = a, p = {}, i = {
+  extraMapTypes(n, t) {
+    t.forEach((o) => n.mapTypes.set(...o));
+  }
+};
+export {
+  x as GoogleMap,
+  a as Map,
+  C as __jscodeshiftPlaceholder__,
+  a as default
+};

@@ -1,1 +1,86 @@
-"use strict";var m=Object.defineProperty;var g=(n,e,t)=>e in n?m(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t;var a=(n,e,t)=>(g(n,typeof e!="symbol"?e+"":e,t),t);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const S=require("../../browser-99223509.cjs"),l=require("react"),y=require("../../index-d7652fce.cjs"),c=require("../../index-5d68b4f3.cjs"),r=require("../../utils/MapChildHelper.js"),s=require("../../constants-c61a5d3d.cjs"),o=class o extends l.PureComponent{constructor(){super(...arguments);a(this,"state",{[s.SEARCH_BOX]:null})}componentDidMount(){S.invariant(google.maps.places,'Did you include "libraries=places" in the URL?');const t=y.ReactDOM.findDOMNode(this),i=new google.maps.places.SearchBox(t.querySelector("input")||t);r.construct(o.propTypes,d,this.props,i),r.componentDidMount(this,i,u),this.setState({[s.SEARCH_BOX]:i})}componentDidUpdate(t){r.componentDidUpdate(this,this.state[s.SEARCH_BOX],u,d,t)}componentWillUnmount(){r.componentWillUnmount(this)}render(){return l.Children.only(this.props.children)}getBounds(){return this.state[s.SEARCH_BOX].getBounds()}getPlaces(){return this.state[s.SEARCH_BOX].getPlaces()}};a(o,"displayName","StandaloneSearchBox"),a(o,"propTypes",{defaultBounds:c.PropTypes.any,bounds:c.PropTypes.any,onPlacesChanged:c.PropTypes.func});let p=o;const h=p,u={onPlacesChanged:"places_changed"},d={bounds(n,e){n.setBounds(e)}};exports.StandaloneSearchBox=h;exports.default=h;
+var m = Object.defineProperty;
+var u = (n, t, e) => t in n ? m(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
+var a = (n, t, e) => (u(n, typeof t != "symbol" ? t + "" : t, e), e);
+import { i as h } from "../../browser-fe3e0b83.js";
+import c from "react";
+import { R as g } from "../../index-87ad0b90.js";
+import { P as i } from "../../index-e8d4cd90.js";
+import { construct as f, componentDidMount as y, componentDidUpdate as D, componentWillUnmount as P } from "../../utils/MapChildHelper.js";
+import { S as o } from "../../constants-4d431d90.js";
+const s = class s extends c.PureComponent {
+  constructor() {
+    super(...arguments);
+    a(this, "state", {
+      [o]: null
+    });
+  }
+  componentDidMount() {
+    h(
+      google.maps.places,
+      'Did you include "libraries=places" in the URL?'
+    );
+    const e = g.findDOMNode(this), p = new google.maps.places.SearchBox(
+      e.querySelector("input") || e
+    );
+    f(s.propTypes, l, this.props, p), y(this, p, d), this.setState({
+      [o]: p
+    });
+  }
+  componentDidUpdate(e) {
+    D(
+      this,
+      this.state[o],
+      d,
+      l,
+      e
+    );
+  }
+  componentWillUnmount() {
+    P(this);
+  }
+  render() {
+    return c.Children.only(this.props.children);
+  }
+  /**
+   * Returns the bounds to which query predictions are biased.
+   * @type LatLngBounds
+   * @public
+   */
+  getBounds() {
+    return this.state[o].getBounds();
+  }
+  /**
+   * Returns the query selected by the user, or `null` if no places have been found yet, to be used with `places_changed` event.
+   * @type Array<PlaceResult>nullplaces_changed
+   * @public
+   */
+  getPlaces() {
+    return this.state[o].getPlaces();
+  }
+};
+a(s, "displayName", "StandaloneSearchBox"), a(s, "propTypes", {
+  /**
+   * @type LatLngBounds|LatLngBoundsLiteral
+   */
+  defaultBounds: i.any,
+  /**
+   * @type LatLngBounds|LatLngBoundsLiteral
+   */
+  bounds: i.any,
+  /**
+   * function
+   */
+  onPlacesChanged: i.func
+});
+let r = s;
+const x = r, d = {
+  onPlacesChanged: "places_changed"
+}, l = {
+  bounds(n, t) {
+    n.setBounds(t);
+  }
+};
+export {
+  x as StandaloneSearchBox,
+  x as default
+};

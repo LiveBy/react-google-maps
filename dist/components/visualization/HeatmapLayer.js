@@ -1,1 +1,84 @@
-"use strict";var d=Object.defineProperty;var A=(e,t,s)=>t in e?d(e,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):e[t]=s;var u=(e,t,s)=>(A(e,typeof t!="symbol"?t+"":t,s),s);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const M=require("../../browser-99223509.cjs"),y=require("react"),n=require("../../index-5d68b4f3.cjs"),i=require("../../utils/MapChildHelper.js"),o=require("../../constants-c61a5d3d.cjs"),a=class a extends y.PureComponent{constructor(t,s){super(t,s),M.invariant(google.maps.visualization,'Did you include "libraries=visualization" in the URL?');const r=new google.maps.visualization.HeatmapLayer;i.construct(a.propTypes,l,this.props,r),r.setMap(this.context[o.MAP]),this.state={[o.HEATMAP_LAYER]:r}}componentDidMount(){i.componentDidMount(this,this.state[o.HEATMAP_LAYER],c)}componentDidUpdate(t){i.componentDidUpdate(this,this.state[o.HEATMAP_LAYER],c,l,t)}componentWillUnmount(){i.componentWillUnmount(this);const t=this.state[o.HEATMAP_LAYER];t&&t.setMap(null)}render(){return!1}getData(){return this.state[o.HEATMAP_LAYER].getData()}};u(a,"propTypes",{defaultData:n.PropTypes.any,defaultOptions:n.PropTypes.any,data:n.PropTypes.any,options:n.PropTypes.any}),u(a,"contextTypes",{[o.MAP]:n.PropTypes.object});let p=a;const c={},l={data(e,t){e.setData(t)},options(e,t){e.setOptions(t)}};exports.HeatmapLayer=p;exports.default=p;
+var l = Object.defineProperty;
+var d = (o, t, a) => t in o ? l(o, t, { enumerable: !0, configurable: !0, writable: !0, value: a }) : o[t] = a;
+var p = (o, t, a) => (d(o, typeof t != "symbol" ? t + "" : t, a), a);
+import { i as h } from "../../browser-fe3e0b83.js";
+import f from "react";
+import { P as s } from "../../index-e8d4cd90.js";
+import { construct as y, componentDidMount as D, componentDidUpdate as M, componentWillUnmount as g } from "../../utils/MapChildHelper.js";
+import { M as r, H as e } from "../../constants-4d431d90.js";
+const n = class n extends f.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#HeatmapLayer
+   */
+  constructor(t, a) {
+    super(t, a), h(
+      google.maps.visualization,
+      'Did you include "libraries=visualization" in the URL?'
+    );
+    const i = new google.maps.visualization.HeatmapLayer();
+    y(n.propTypes, u, this.props, i), i.setMap(this.context[r]), this.state = {
+      [e]: i
+    };
+  }
+  componentDidMount() {
+    D(this, this.state[e], m);
+  }
+  componentDidUpdate(t) {
+    M(
+      this,
+      this.state[e],
+      m,
+      u,
+      t
+    );
+  }
+  componentWillUnmount() {
+    g(this);
+    const t = this.state[e];
+    t && t.setMap(null);
+  }
+  render() {
+    return !1;
+  }
+  /**
+   * Returns the data points currently displayed by this heatmap.
+   * @type MVCArray<LatLng|WeightedLocation>
+   * @public
+   */
+  getData() {
+    return this.state[e].getData();
+  }
+};
+p(n, "propTypes", {
+  /**
+   * @type MVCArray<LatLng|WeightedLocation>|Array<LatLng|WeightedLocation>
+   */
+  defaultData: s.any,
+  /**
+   * @type HeatmapLayerOptions
+   */
+  defaultOptions: s.any,
+  /**
+   * @type MVCArray<LatLng|WeightedLocation>|Array<LatLng|WeightedLocation>
+   */
+  data: s.any,
+  /**
+   * @type HeatmapLayerOptions
+   */
+  options: s.any
+}), p(n, "contextTypes", {
+  [r]: s.object
+});
+let c = n;
+const m = {}, u = {
+  data(o, t) {
+    o.setData(t);
+  },
+  options(o, t) {
+    o.setOptions(t);
+  }
+};
+export {
+  c as HeatmapLayer,
+  c as default
+};

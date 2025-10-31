@@ -1,1 +1,61 @@
-"use strict";var d=Object.defineProperty;var m=(e,t,o)=>t in e?d(e,t,{enumerable:!0,configurable:!0,writable:!0,value:o}):e[t]=o;var c=(e,t,o)=>(m(e,typeof t!="symbol"?t+"":t,o),o);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const M=require("react"),a=require("../index-5d68b4f3.cjs"),p=require("../utils/MapChildHelper.js"),s=require("../constants-c61a5d3d.cjs"),n=class n extends M.PureComponent{constructor(t,o){super(t,o);const r=new google.maps.TrafficLayer;p.construct(n.propTypes,l,this.props,r),r.setMap(this.context[s.MAP]),this.state={[s.TRAFFIC_LAYER]:r}}componentDidMount(){p.componentDidMount(this,this.state[s.TRAFFIC_LAYER],u)}componentDidUpdate(t){p.componentDidUpdate(this,this.state[s.TRAFFIC_LAYER],u,l,t)}componentWillUnmount(){p.componentWillUnmount(this);const t=this.state[s.TRAFFIC_LAYER];t&&t.setMap(null)}render(){return!1}};c(n,"propTypes",{defaultOptions:a.PropTypes.any,options:a.PropTypes.any}),c(n,"contextTypes",{[s.MAP]:a.PropTypes.object});let i=n;const u={},l={options(e,t){e.setOptions(t)}};exports.TrafficLayer=i;exports.default=i;
+var d = Object.defineProperty;
+var l = (o, t, s) => t in o ? d(o, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : o[t] = s;
+var i = (o, t, s) => (l(o, typeof t != "symbol" ? t + "" : t, s), s);
+import h from "react";
+import { P as a } from "../index-e8d4cd90.js";
+import { construct as f, componentDidMount as M, componentDidUpdate as y, componentWillUnmount as x } from "../utils/MapChildHelper.js";
+import { M as r, T as n } from "../constants-4d431d90.js";
+const e = class e extends h.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#TrafficLayer
+   */
+  constructor(t, s) {
+    super(t, s);
+    const p = new google.maps.TrafficLayer();
+    f(e.propTypes, u, this.props, p), p.setMap(this.context[r]), this.state = {
+      [n]: p
+    };
+  }
+  componentDidMount() {
+    M(this, this.state[n], m);
+  }
+  componentDidUpdate(t) {
+    y(
+      this,
+      this.state[n],
+      m,
+      u,
+      t
+    );
+  }
+  componentWillUnmount() {
+    x(this);
+    const t = this.state[n];
+    t && t.setMap(null);
+  }
+  render() {
+    return !1;
+  }
+};
+i(e, "propTypes", {
+  /**
+   * @type TrafficLayerOptions
+   */
+  defaultOptions: a.any,
+  /**
+   * @type TrafficLayerOptions
+   */
+  options: a.any
+}), i(e, "contextTypes", {
+  [r]: a.object
+});
+let c = e;
+const m = {}, u = {
+  options(o, t) {
+    o.setOptions(t);
+  }
+};
+export {
+  c as TrafficLayer,
+  c as default
+};

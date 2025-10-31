@@ -1,1 +1,14 @@
-"use strict";describe("addons/HeatmapLayer module",()=>{const{__esModule:e,default:t,HeatmapLayer:d}=require("../HeatmapLayer");it("should be an ES module",()=>{expect(e).toBe(!0)}),it("should be default exported",()=>{expect(t).toBeDefined()}),it("should be named exported",()=>{expect(d).toBeDefined()})});
+describe("addons/HeatmapLayer module", () => {
+  const {
+    __esModule: e,
+    default: t,
+    HeatmapLayer: d
+  } = require("../HeatmapLayer");
+  it("should be an ES module", () => {
+    expect(e).toBe(!0);
+  }), it("should be default exported", () => {
+    expect(t).toBeDefined();
+  }), it("should be named exported", () => {
+    expect(d).toBeDefined();
+  });
+});

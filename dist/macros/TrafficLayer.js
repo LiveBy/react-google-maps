@@ -1,5 +1,55 @@
-"use strict";var u=Object.defineProperty;var d=(o,t,e)=>t in o?u(o,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):o[t]=e;var p=(o,t,e)=>(d(o,typeof t!="symbol"?t+"":t,e),e);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const h=require("react"),_=require("../index-5d68b4f3.cjs"),c=require("../utils/MapChildHelper.js"),s=require("../constants-c61a5d3d.cjs"),m=`{
+var l = Object.defineProperty;
+var d = (o, t, e) => t in o ? l(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e;
+var r = (o, t, e) => (d(o, typeof t != "symbol" ? t + "" : t, e), e);
+import h from "react";
+import { P as u } from "../index-e8d4cd90.js";
+import { construct as f, componentDidMount as M, componentDidUpdate as _, componentWillUnmount as P } from "../utils/MapChildHelper.js";
+import { M as a, T as n } from "../constants-4d431d90.js";
+const y = `{
   "eventMapOverrides": {
   },
   "getInstanceFromComponent": "this.state[TRAFFIC_LAYER]"
-}`,n=class n extends h.PureComponent{constructor(t,e){super(t,e);const i=new google.maps.TrafficLayer;c.construct(n.propTypes,l,this.props,i),i.setMap(this.context[s.MAP]),this.state={[s.TRAFFIC_LAYER]:i}}componentDidMount(){c.componentDidMount(this,this.state[s.TRAFFIC_LAYER],a)}componentDidUpdate(t){c.componentDidUpdate(this,this.state[s.TRAFFIC_LAYER],a,l,t)}componentWillUnmount(){c.componentWillUnmount(this);const t=this.state[s.TRAFFIC_LAYER];t&&t.setMap(null)}render(){return!1}};p(n,"propTypes",{__jscodeshiftPlaceholder__:null}),p(n,"contextTypes",{[s.MAP]:_.PropTypes.object});let r=n;const a={},l={};exports.TrafficLayer=r;exports.__jscodeshiftPlaceholder__=m;exports.default=r;
+}`, s = class s extends h.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#TrafficLayer
+   */
+  constructor(t, e) {
+    super(t, e);
+    const p = new google.maps.TrafficLayer();
+    f(s.propTypes, m, this.props, p), p.setMap(this.context[a]), this.state = {
+      [n]: p
+    };
+  }
+  componentDidMount() {
+    M(this, this.state[n], i);
+  }
+  componentDidUpdate(t) {
+    _(
+      this,
+      this.state[n],
+      i,
+      m,
+      t
+    );
+  }
+  componentWillUnmount() {
+    P(this);
+    const t = this.state[n];
+    t && t.setMap(null);
+  }
+  render() {
+    return !1;
+  }
+};
+r(s, "propTypes", {
+  __jscodeshiftPlaceholder__: null
+}), r(s, "contextTypes", {
+  [a]: u.object
+});
+let c = s;
+const i = {}, m = {};
+export {
+  c as TrafficLayer,
+  y as __jscodeshiftPlaceholder__,
+  c as default
+};

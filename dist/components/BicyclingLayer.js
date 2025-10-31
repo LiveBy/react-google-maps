@@ -1,1 +1,48 @@
-"use strict";var l=Object.defineProperty;var d=(n,t,e)=>t in n?l(n,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):n[t]=e;var r=(n,t,e)=>(d(n,typeof t!="symbol"?t+"":t,e),e);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const m=require("react"),M=require("../index-5d68b4f3.cjs"),i=require("../utils/MapChildHelper.js"),s=require("../constants-c61a5d3d.cjs"),o=class o extends m.PureComponent{constructor(t,e){super(t,e);const p=new google.maps.BicyclingLayer;i.construct(o.propTypes,u,this.props,p),p.setMap(this.context[s.MAP]),this.state={[s.BICYCLING_LAYER]:p}}componentDidMount(){i.componentDidMount(this,this.state[s.BICYCLING_LAYER],a)}componentDidUpdate(t){i.componentDidUpdate(this,this.state[s.BICYCLING_LAYER],a,u,t)}componentWillUnmount(){i.componentWillUnmount(this);const t=this.state[s.BICYCLING_LAYER];t&&t.setMap(null)}render(){return!1}};r(o,"propTypes",{}),r(o,"contextTypes",{[s.MAP]:M.PropTypes.object});let c=o;const a={},u={};exports.BicyclingLayer=c;exports.default=c;
+var u = Object.defineProperty;
+var d = (e, t, o) => t in e ? u(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : e[t] = o;
+var r = (e, t, o) => (d(e, typeof t != "symbol" ? t + "" : t, o), o);
+import l from "react";
+import { P as h } from "../index-e8d4cd90.js";
+import { construct as M, componentDidMount as f, componentDidUpdate as x, componentWillUnmount as y } from "../utils/MapChildHelper.js";
+import { M as a, B as n } from "../constants-4d431d90.js";
+const s = class s extends l.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#BicyclingLayer
+   */
+  constructor(t, o) {
+    super(t, o);
+    const p = new google.maps.BicyclingLayer();
+    M(s.propTypes, m, this.props, p), p.setMap(this.context[a]), this.state = {
+      [n]: p
+    };
+  }
+  componentDidMount() {
+    f(this, this.state[n], c);
+  }
+  componentDidUpdate(t) {
+    x(
+      this,
+      this.state[n],
+      c,
+      m,
+      t
+    );
+  }
+  componentWillUnmount() {
+    y(this);
+    const t = this.state[n];
+    t && t.setMap(null);
+  }
+  render() {
+    return !1;
+  }
+};
+r(s, "propTypes", {}), r(s, "contextTypes", {
+  [a]: h.object
+});
+let i = s;
+const c = {}, m = {};
+export {
+  i as BicyclingLayer,
+  i as default
+};

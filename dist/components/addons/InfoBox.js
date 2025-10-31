@@ -1,1 +1,169 @@
-"use strict";var h=Object.defineProperty;var y=(e,t,s)=>t in e?h(e,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):e[t]=s;var p=(e,t,s)=>(y(e,typeof t!="symbol"?t+"":t,s),s);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const O=require("../../index-c9c79dc5.cjs"),P=require("../../browser-99223509.cjs"),d=require("react"),g=require("../../index-d7652fce.cjs"),n=require("../../index-5d68b4f3.cjs"),r=require("../../utils/MapChildHelper.js"),o=require("../../constants-c61a5d3d.cjs"),i=class i extends d.PureComponent{constructor(){super(...arguments);p(this,"state",{[o.INFO_BOX]:null})}componentWillMount(){if(!O.canUseDOM||this.state[o.INFO_BOX])return;const{InfoBox:s}=require("google-maps-infobox"),c=new s;r.construct(i.propTypes,u,this.props,c),c.setMap(this.context[o.MAP]),this.setState({[o.INFO_BOX]:c})}componentDidMount(){r.componentDidMount(this,this.state[o.INFO_BOX],l),this.content=document.createElement("div"),this.forceUpdate(),this.state[o.INFO_BOX].setContent(this.content),m(this.state[o.INFO_BOX],this.context[o.ANCHOR])}componentDidUpdate(s){r.componentDidUpdate(this,this.state[o.INFO_BOX],l,u,s)}componentWillUnmount(){r.componentWillUnmount(this);const s=this.state[o.INFO_BOX];s&&s.setMap(null)}render(){return!!this.content&&g.ReactDOM.ceatePortal(d.Children.only(this.props.children),this.content)}getPosition(){return this.state[o.INFO_BOX].getPosition()}getVisible(){return this.state[o.INFO_BOX].getVisible()}getZIndex(){return this.state[o.INFO_BOX].getZIndex()}};p(i,"propTypes",{defaultOptions:n.PropTypes.any,defaultPosition:n.PropTypes.any,defaultVisible:n.PropTypes.bool,defaultZIndex:n.PropTypes.number,options:n.PropTypes.any,position:n.PropTypes.any,visible:n.PropTypes.bool,zIndex:n.PropTypes.number,onCloseClick:n.PropTypes.func,onDomReady:n.PropTypes.func,onContentChanged:n.PropTypes.func,onPositionChanged:n.PropTypes.func,onZindexChanged:n.PropTypes.func}),p(i,"contextTypes",{[o.MAP]:n.PropTypes.object,[o.ANCHOR]:n.PropTypes.object});let a=i;const m=(e,t)=>{t?e.open(e.getMap(),t):e.getPosition()?e.open(e.getMap()):P.invariant(!1,"You must provide either an anchor (typically render it inside a <Marker>) or a position props for <InfoBox>.")},l={onCloseClick:"closeclick",onDomReady:"domready",onContentChanged:"content_changed",onPositionChanged:"position_changed",onZindexChanged:"zindex_changed"},u={options(e,t){e.setOptions(t)},position(e,t){e.setPosition(t)},visible(e,t){e.setVisible(t)},zIndex(e,t){e.setZIndex(t)}};exports.InfoBox=a;exports.default=a;
+var u = Object.defineProperty;
+var f = (t, e, o) => e in t ? u(t, e, { enumerable: !0, configurable: !0, writable: !0, value: o }) : t[e] = o;
+var a = (t, e, o) => (f(t, typeof e != "symbol" ? e + "" : e, o), o);
+import { c as g } from "../../index-22f0280c.js";
+import { i as C } from "../../browser-fe3e0b83.js";
+import r from "react";
+import { R as M } from "../../index-87ad0b90.js";
+import { P as n } from "../../index-e8d4cd90.js";
+import { construct as y, componentDidMount as b, componentDidUpdate as x, componentWillUnmount as P } from "../../utils/MapChildHelper.js";
+import { M as c, A as d, g as s } from "../../constants-4d431d90.js";
+const i = class i extends r.PureComponent {
+  constructor() {
+    super(...arguments);
+    a(this, "state", {
+      [s]: null
+    });
+  }
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#InfoBox
+   */
+  componentWillMount() {
+    if (!g || this.state[s])
+      return;
+    const {
+      InfoBox: o
+    } = require(
+      /* "google-maps-infobox" uses "google" as a global variable. Since we don't
+      * have "google" on the server, we can not use it in server-side rendering.
+      * As a result, we import "google-maps-infobox" here to prevent an error on
+      * a isomorphic server.
+      */
+      "google-maps-infobox"
+    ), p = new o();
+    y(i.propTypes, m, this.props, p), p.setMap(this.context[c]), this.setState({
+      [s]: p
+    });
+  }
+  componentDidMount() {
+    b(this, this.state[s], h), this.content = document.createElement("div"), this.forceUpdate(), this.state[s].setContent(this.content), D(this.state[s], this.context[d]);
+  }
+  componentDidUpdate(o) {
+    x(
+      this,
+      this.state[s],
+      h,
+      m,
+      o
+    );
+  }
+  componentWillUnmount() {
+    P(this);
+    const o = this.state[s];
+    o && o.setMap(null);
+  }
+  render() {
+    return !!this.content && M.ceatePortal(
+      r.Children.only(this.props.children),
+      this.content
+    );
+  }
+  /**
+   *
+   * @type LatLng
+   */
+  getPosition() {
+    return this.state[s].getPosition();
+  }
+  /**
+   *
+   * @type boolean
+   */
+  getVisible() {
+    return this.state[s].getVisible();
+  }
+  /**
+   *
+   * @type number
+   */
+  getZIndex() {
+    return this.state[s].getZIndex();
+  }
+};
+a(i, "propTypes", {
+  /**
+   * @type InfoBoxOptions
+   */
+  defaultOptions: n.any,
+  /**
+   * @type LatLng|LatLngLiteral
+   */
+  defaultPosition: n.any,
+  /**
+   * @type boolean
+   */
+  defaultVisible: n.bool,
+  /**
+   * @type number
+   */
+  defaultZIndex: n.number,
+  /**
+   * @type InfoBoxOptions
+   */
+  options: n.any,
+  /**
+   * @type LatLng|LatLngLiteral
+   */
+  position: n.any,
+  /**
+   * @type boolean
+   */
+  visible: n.bool,
+  /**
+   * @type number
+   */
+  zIndex: n.number,
+  /**
+   * function
+   */
+  onCloseClick: n.func,
+  /**
+   * function
+   */
+  onDomReady: n.func,
+  /**
+   * function
+   */
+  onContentChanged: n.func,
+  /**
+   * function
+   */
+  onPositionChanged: n.func,
+  /**
+   * function
+   */
+  onZindexChanged: n.func
+}), a(i, "contextTypes", {
+  [c]: n.object,
+  [d]: n.object
+});
+let l = i;
+const D = (t, e) => {
+  e ? t.open(t.getMap(), e) : t.getPosition() ? t.open(t.getMap()) : C(
+    !1,
+    "You must provide either an anchor (typically render it inside a <Marker>) or a position props for <InfoBox>."
+  );
+}, h = {
+  onCloseClick: "closeclick",
+  onDomReady: "domready",
+  onContentChanged: "content_changed",
+  onPositionChanged: "position_changed",
+  onZindexChanged: "zindex_changed"
+}, m = {
+  options(t, e) {
+    t.setOptions(e);
+  },
+  position(t, e) {
+    t.setPosition(e);
+  },
+  visible(t, e) {
+    t.setVisible(e);
+  },
+  zIndex(t, e) {
+    t.setZIndex(e);
+  }
+};
+export {
+  l as InfoBox,
+  l as default
+};

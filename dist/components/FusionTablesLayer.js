@@ -1,1 +1,72 @@
-"use strict";var d=Object.defineProperty;var T=(e,t,o)=>t in e?d(e,t,{enumerable:!0,configurable:!0,writable:!0,value:o}):e[t]=o;var a=(e,t,o)=>(T(e,typeof t!="symbol"?t+"":t,o),o);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const m=require("react"),p=require("../index-5d68b4f3.cjs"),i=require("../utils/MapChildHelper.js"),s=require("../constants-c61a5d3d.cjs"),n=class n extends m.PureComponent{constructor(t,o){super(t,o);const r=new google.maps.FusionTablesLayer;i.construct(n.propTypes,l,this.props,r),r.setMap(this.context[s.MAP]),this.state={[s.FUSION_TABLES_LAYER]:r}}componentDidMount(){i.componentDidMount(this,this.state[s.FUSION_TABLES_LAYER],u)}componentDidUpdate(t){i.componentDidUpdate(this,this.state[s.FUSION_TABLES_LAYER],u,l,t)}componentWillUnmount(){i.componentWillUnmount(this);const t=this.state[s.FUSION_TABLES_LAYER];t&&t.setMap(null)}render(){return!1}};a(n,"propTypes",{defaultOptions:p.PropTypes.any,options:p.PropTypes.any,onClick:p.PropTypes.func}),a(n,"contextTypes",{[s.MAP]:p.PropTypes.object});let c=n;const u={onClick:"click"},l={options(e,t){e.setOptions(t)}};exports.FusionTablesLayer=c;exports.default=c;
+var u = Object.defineProperty;
+var d = (o, t, n) => t in o ? u(o, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : o[t] = n;
+var c = (o, t, n) => (d(o, typeof t != "symbol" ? t + "" : t, n), n);
+import f from "react";
+import { P as e } from "../index-e8d4cd90.js";
+import { construct as h, componentDidMount as M, componentDidUpdate as y, componentWillUnmount as T } from "../utils/MapChildHelper.js";
+import { M as a, F as p } from "../constants-4d431d90.js";
+const s = class s extends f.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#FusionTablesLayer
+   */
+  constructor(t, n) {
+    super(t, n);
+    const i = new google.maps.FusionTablesLayer();
+    h(
+      s.propTypes,
+      l,
+      this.props,
+      i
+    ), i.setMap(this.context[a]), this.state = {
+      [p]: i
+    };
+  }
+  componentDidMount() {
+    M(this, this.state[p], m);
+  }
+  componentDidUpdate(t) {
+    y(
+      this,
+      this.state[p],
+      m,
+      l,
+      t
+    );
+  }
+  componentWillUnmount() {
+    T(this);
+    const t = this.state[p];
+    t && t.setMap(null);
+  }
+  render() {
+    return !1;
+  }
+};
+c(s, "propTypes", {
+  /**
+   * @type FusionTablesLayerOptions
+   */
+  defaultOptions: e.any,
+  /**
+   * @type FusionTablesLayerOptions
+   */
+  options: e.any,
+  /**
+   * function
+   */
+  onClick: e.func
+}), c(s, "contextTypes", {
+  [a]: e.object
+});
+let r = s;
+const m = {
+  onClick: "click"
+}, l = {
+  options(o, t) {
+    o.setOptions(t);
+  }
+};
+export {
+  r as FusionTablesLayer,
+  r as default
+};

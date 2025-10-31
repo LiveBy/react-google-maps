@@ -1,1 +1,491 @@
-"use strict";var h=Object.defineProperty;var y=(n,t,s)=>t in n?h(n,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):n[t]=s;var i=(n,t,s)=>(y(n,typeof t!="symbol"?t+"":t,s),s);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const b=require("../../markerwithlabel-5ada69ed.cjs"),e=require("../../index-5d68b4f3.cjs"),u=require("react"),P=require("../../index-d7652fce.cjs"),p=require("../../utils/MapChildHelper.js"),o=require("../../constants-c61a5d3d.cjs"),a=class a extends u.PureComponent{constructor(t,s){super(t,s);const T=b.makeMarkerWithLabel(google.maps),r=new T;p.construct(a.propTypes,d,this.props,r);const c=this.context[o.MARKER_CLUSTERER];c?c.addMarker(r,!!this.props.noRedraw):r.setMap(this.context[o.MAP]),this.state={[o.MARKER_WITH_LABEL]:r},this.containerElement=document.createElement("div")}componentDidMount(){p.componentDidMount(this,this.state[o.MARKER_WITH_LABEL],g),this.state[o.MARKER_WITH_LABEL].set("labelContent",this.containerElement),this.forceUpdate()}componentDidUpdate(t){p.componentDidUpdate(this,this.state[o.MARKER_WITH_LABEL],g,d,t)}componentWillUnmount(){p.componentWillUnmount(this);const t=this.state[o.MARKER_WITH_LABEL];if(t){const s=this.context[o.MARKER_CLUSTERER];s&&s.removeMarker(t,!!this.props.noRedraw),t.setMap(null)}}render(){return P.ReactDOM.createPortal(u.Children.only(this.props.children),this.containerElement)}getAnimation(){return this.state[o.MARKER_WITH_LABEL].getAnimation()}getClickable(){return this.state[o.MARKER_WITH_LABEL].getClickable()}getCursor(){return this.state[o.MARKER_WITH_LABEL].getCursor()}getDraggable(){return this.state[o.MARKER_WITH_LABEL].getDraggable()}getIcon(){return this.state[o.MARKER_WITH_LABEL].getIcon()}getLabel(){return this.state[o.MARKER_WITH_LABEL].getLabel()}getOpacity(){return this.state[o.MARKER_WITH_LABEL].getOpacity()}getPlace(){return this.state[o.MARKER_WITH_LABEL].getPlace()}getPosition(){return this.state[o.MARKER_WITH_LABEL].getPosition()}getShape(){return this.state[o.MARKER_WITH_LABEL].getShape()}getTitle(){return this.state[o.MARKER_WITH_LABEL].getTitle()}getVisible(){return this.state[o.MARKER_WITH_LABEL].getVisible()}getZIndex(){return this.state[o.MARKER_WITH_LABEL].getZIndex()}};i(a,"propTypes",{children:e.PropTypes.node,labelAnchor:e.PropTypes.object,labelClass:e.PropTypes.string,labelStyle:e.PropTypes.object,labelVisible:e.PropTypes.bool,noRedraw:e.PropTypes.bool,defaultAnimation:e.PropTypes.any,defaultClickable:e.PropTypes.bool,defaultCursor:e.PropTypes.string,defaultDraggable:e.PropTypes.bool,defaultIcon:e.PropTypes.any,defaultLabel:e.PropTypes.any,defaultOpacity:e.PropTypes.number,defaultOptions:e.PropTypes.any,defaultPlace:e.PropTypes.any,defaultPosition:e.PropTypes.any,defaultShape:e.PropTypes.any,defaultTitle:e.PropTypes.string,defaultVisible:e.PropTypes.bool,defaultZIndex:e.PropTypes.number,animation:e.PropTypes.any,clickable:e.PropTypes.bool,cursor:e.PropTypes.string,draggable:e.PropTypes.bool,icon:e.PropTypes.any,label:e.PropTypes.any,opacity:e.PropTypes.number,options:e.PropTypes.any,place:e.PropTypes.any,position:e.PropTypes.any,shape:e.PropTypes.any,title:e.PropTypes.string,visible:e.PropTypes.bool,zIndex:e.PropTypes.number,onDblClick:e.PropTypes.func,onDragEnd:e.PropTypes.func,onDragStart:e.PropTypes.func,onMouseDown:e.PropTypes.func,onMouseOut:e.PropTypes.func,onMouseOver:e.PropTypes.func,onMouseUp:e.PropTypes.func,onRightClick:e.PropTypes.func,onAnimationChanged:e.PropTypes.func,onClick:e.PropTypes.func,onClickableChanged:e.PropTypes.func,onCursorChanged:e.PropTypes.func,onDrag:e.PropTypes.func,onDraggableChanged:e.PropTypes.func,onFlatChanged:e.PropTypes.func,onIconChanged:e.PropTypes.func,onPositionChanged:e.PropTypes.func,onShapeChanged:e.PropTypes.func,onTitleChanged:e.PropTypes.func,onVisibleChanged:e.PropTypes.func,onZindexChanged:e.PropTypes.func}),i(a,"defaultProps",{labelVisible:!0}),i(a,"contextTypes",{[o.MAP]:e.PropTypes.object,[o.MARKER_CLUSTERER]:e.PropTypes.object});let l=a;const g={onDblClick:"dblclick",onDragEnd:"dragend",onDragStart:"dragstart",onMouseDown:"mousedown",onMouseOut:"mouseout",onMouseOver:"mouseover",onMouseUp:"mouseup",onRightClick:"rightclick",onAnimationChanged:"animation_changed",onClick:"click",onClickableChanged:"clickable_changed",onCursorChanged:"cursor_changed",onDrag:"drag",onDraggableChanged:"draggable_changed",onFlatChanged:"flat_changed",onIconChanged:"icon_changed",onPositionChanged:"position_changed",onShapeChanged:"shape_changed",onTitleChanged:"title_changed",onVisibleChanged:"visible_changed",onZindexChanged:"zindex_changed"},d={labelAnchor(n,t){n.set("labelAnchor",t)},labelClass(n,t){n.set("labelClass",t)},labelStyle(n,t){n.set("labelStyle",t)},labelVisible(n,t){n.set("labelVisible",t)},animation(n,t){n.setAnimation(t)},clickable(n,t){n.setClickable(t)},cursor(n,t){n.setCursor(t)},draggable(n,t){n.setDraggable(t)},icon(n,t){n.setIcon(t)},label(n,t){n.setLabel(t)},opacity(n,t){n.setOpacity(t)},options(n,t){n.setOptions(t)},place(n,t){n.setPlace(t)},position(n,t){n.setPosition(t)},shape(n,t){n.setShape(t)},title(n,t){n.setTitle(t)},visible(n,t){n.setVisible(t)},zIndex(n,t){n.setZIndex(t)}};exports.MarkerWithLabel=l;exports.default=l;
+var m = Object.defineProperty;
+var f = (n, t, o) => t in n ? m(n, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : n[t] = o;
+var l = (n, t, o) => (f(n, typeof t != "symbol" ? t + "" : t, o), o);
+import { m as C } from "../../markerwithlabel-72a56a5b.js";
+import { P as e } from "../../index-e8d4cd90.js";
+import g from "react";
+import { R as y } from "../../index-87ad0b90.js";
+import { construct as k, componentDidMount as D, componentDidUpdate as M, componentWillUnmount as P } from "../../utils/MapChildHelper.js";
+import { M as u, b as r, f as a } from "../../constants-4d431d90.js";
+const i = class i extends g.PureComponent {
+  /*
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  constructor(t, o) {
+    super(t, o);
+    const p = C(google.maps), s = new p();
+    k(
+      i.propTypes,
+      b,
+      this.props,
+      s
+    );
+    const c = this.context[r];
+    c ? c.addMarker(s, !!this.props.noRedraw) : s.setMap(this.context[u]), this.state = {
+      [a]: s
+    }, this.containerElement = document.createElement("div");
+  }
+  componentDidMount() {
+    D(this, this.state[a], h), this.state[a].set("labelContent", this.containerElement), this.forceUpdate();
+  }
+  componentDidUpdate(t) {
+    M(
+      this,
+      this.state[a],
+      h,
+      b,
+      t
+    );
+  }
+  componentWillUnmount() {
+    P(this);
+    const t = this.state[a];
+    if (t) {
+      const o = this.context[r];
+      o && o.removeMarker(t, !!this.props.noRedraw), t.setMap(null);
+    }
+  }
+  render() {
+    return y.createPortal(
+      g.Children.only(this.props.children),
+      this.containerElement
+    );
+  }
+  /**
+   *
+   * @type Animation
+   * @public
+   */
+  getAnimation() {
+    return this.state[a].getAnimation();
+  }
+  /**
+   *
+   * @type boolean
+   * @public
+   */
+  getClickable() {
+    return this.state[a].getClickable();
+  }
+  /**
+   *
+   * @type string
+   * @public
+   */
+  getCursor() {
+    return this.state[a].getCursor();
+  }
+  /**
+   *
+   * @type boolean
+   * @public
+   */
+  getDraggable() {
+    return this.state[a].getDraggable();
+  }
+  /**
+   *
+   * @type string|Icon|Symbol
+   * @public
+   */
+  getIcon() {
+    return this.state[a].getIcon();
+  }
+  /**
+   *
+   * @type MarkerLabel
+   * @public
+   */
+  getLabel() {
+    return this.state[a].getLabel();
+  }
+  /**
+   *
+   * @type number
+   * @public
+   */
+  getOpacity() {
+    return this.state[a].getOpacity();
+  }
+  /**
+   *
+   * @type MarkerPlace
+   * @public
+   */
+  getPlace() {
+    return this.state[a].getPlace();
+  }
+  /**
+   *
+   * @type LatLng
+   * @public
+   */
+  getPosition() {
+    return this.state[a].getPosition();
+  }
+  /**
+   *
+   * @type MarkerShape
+   * @public
+   */
+  getShape() {
+    return this.state[a].getShape();
+  }
+  /**
+   *
+   * @type string
+   * @public
+   */
+  getTitle() {
+    return this.state[a].getTitle();
+  }
+  /**
+   *
+   * @type boolean
+   * @public
+   */
+  getVisible() {
+    return this.state[a].getVisible();
+  }
+  /**
+   *
+   * @type number
+   * @public
+   */
+  getZIndex() {
+    return this.state[a].getZIndex();
+  }
+};
+l(i, "propTypes", {
+  /**
+   * It will be `MarkerWithLabel#labelContent`.
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  children: e.node,
+  /**
+   * For `MarkerWithLabel`
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  labelAnchor: e.object,
+  /**
+   * For `MarkerWithLabel`
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  labelClass: e.string,
+  /**
+   * For `MarkerWithLabel`. This is for native JS style object, so you may
+   * expect some React shorthands for inline styles not working here.
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  labelStyle: e.object,
+  /**
+   * For `MarkerWithLabel`
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  labelVisible: e.bool,
+  /**
+   * For the 2nd argument of `MarkerCluster#addMarker`
+   * @see https://github.com/mikesaidani/marker-clusterer-plus
+   */
+  noRedraw: e.bool,
+  /**
+   * @type Animation
+   */
+  defaultAnimation: e.any,
+  /**
+   * @type boolean
+   */
+  defaultClickable: e.bool,
+  /**
+   * @type string
+   */
+  defaultCursor: e.string,
+  /**
+   * @type boolean
+   */
+  defaultDraggable: e.bool,
+  /**
+   * @type string|Icon|Symbol
+   */
+  defaultIcon: e.any,
+  /**
+   * @type string|MarkerLabel
+   */
+  defaultLabel: e.any,
+  /**
+   * @type number
+   */
+  defaultOpacity: e.number,
+  /**
+   * @type MarkerOptions
+   */
+  defaultOptions: e.any,
+  /**
+   * @type MarkerPlace
+   */
+  defaultPlace: e.any,
+  /**
+   * @type LatLng|LatLngLiteral
+   */
+  defaultPosition: e.any,
+  /**
+   * @type MarkerShape
+   */
+  defaultShape: e.any,
+  /**
+   * @type string
+   */
+  defaultTitle: e.string,
+  /**
+   * @type boolean
+   */
+  defaultVisible: e.bool,
+  /**
+   * @type number
+   */
+  defaultZIndex: e.number,
+  /**
+   * @type Animation
+   */
+  animation: e.any,
+  /**
+   * @type boolean
+   */
+  clickable: e.bool,
+  /**
+   * @type string
+   */
+  cursor: e.string,
+  /**
+   * @type boolean
+   */
+  draggable: e.bool,
+  /**
+   * @type string|Icon|Symbol
+   */
+  icon: e.any,
+  /**
+   * @type string|MarkerLabel
+   */
+  label: e.any,
+  /**
+   * @type number
+   */
+  opacity: e.number,
+  /**
+   * @type MarkerOptions
+   */
+  options: e.any,
+  /**
+   * @type MarkerPlace
+   */
+  place: e.any,
+  /**
+   * @type LatLng|LatLngLiteral
+   */
+  position: e.any,
+  /**
+   * @type MarkerShape
+   */
+  shape: e.any,
+  /**
+   * @type string
+   */
+  title: e.string,
+  /**
+   * @type boolean
+   */
+  visible: e.bool,
+  /**
+   * @type number
+   */
+  zIndex: e.number,
+  /**
+   * function
+   */
+  onDblClick: e.func,
+  /**
+   * function
+   */
+  onDragEnd: e.func,
+  /**
+   * function
+   */
+  onDragStart: e.func,
+  /**
+   * function
+   */
+  onMouseDown: e.func,
+  /**
+   * function
+   */
+  onMouseOut: e.func,
+  /**
+   * function
+   */
+  onMouseOver: e.func,
+  /**
+   * function
+   */
+  onMouseUp: e.func,
+  /**
+   * function
+   */
+  onRightClick: e.func,
+  /**
+   * function
+   */
+  onAnimationChanged: e.func,
+  /**
+   * function
+   */
+  onClick: e.func,
+  /**
+   * function
+   */
+  onClickableChanged: e.func,
+  /**
+   * function
+   */
+  onCursorChanged: e.func,
+  /**
+   * function
+   */
+  onDrag: e.func,
+  /**
+   * function
+   */
+  onDraggableChanged: e.func,
+  /**
+   * function
+   */
+  onFlatChanged: e.func,
+  /**
+   * function
+   */
+  onIconChanged: e.func,
+  /**
+   * function
+   */
+  onPositionChanged: e.func,
+  /**
+   * function
+   */
+  onShapeChanged: e.func,
+  /**
+   * function
+   */
+  onTitleChanged: e.func,
+  /**
+   * function
+   */
+  onVisibleChanged: e.func,
+  /**
+   * function
+   */
+  onZindexChanged: e.func
+}), l(i, "defaultProps", {
+  labelVisible: !0
+}), l(i, "contextTypes", {
+  [u]: e.object,
+  [r]: e.object
+});
+let d = i;
+const h = {
+  onDblClick: "dblclick",
+  onDragEnd: "dragend",
+  onDragStart: "dragstart",
+  onMouseDown: "mousedown",
+  onMouseOut: "mouseout",
+  onMouseOver: "mouseover",
+  onMouseUp: "mouseup",
+  onRightClick: "rightclick",
+  onAnimationChanged: "animation_changed",
+  onClick: "click",
+  onClickableChanged: "clickable_changed",
+  onCursorChanged: "cursor_changed",
+  onDrag: "drag",
+  onDraggableChanged: "draggable_changed",
+  onFlatChanged: "flat_changed",
+  onIconChanged: "icon_changed",
+  onPositionChanged: "position_changed",
+  onShapeChanged: "shape_changed",
+  onTitleChanged: "title_changed",
+  onVisibleChanged: "visible_changed",
+  onZindexChanged: "zindex_changed"
+}, b = {
+  /**
+   * For `MarkerWithLabel`
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  labelAnchor(n, t) {
+    n.set("labelAnchor", t);
+  },
+  /**
+   * For `MarkerWithLabel`
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  labelClass(n, t) {
+    n.set("labelClass", t);
+  },
+  /**
+   * For `MarkerWithLabel`
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  labelStyle(n, t) {
+    n.set("labelStyle", t);
+  },
+  /**
+   * For `MarkerWithLabel`
+   * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
+   */
+  labelVisible(n, t) {
+    n.set("labelVisible", t);
+  },
+  animation(n, t) {
+    n.setAnimation(t);
+  },
+  clickable(n, t) {
+    n.setClickable(t);
+  },
+  cursor(n, t) {
+    n.setCursor(t);
+  },
+  draggable(n, t) {
+    n.setDraggable(t);
+  },
+  icon(n, t) {
+    n.setIcon(t);
+  },
+  label(n, t) {
+    n.setLabel(t);
+  },
+  opacity(n, t) {
+    n.setOpacity(t);
+  },
+  options(n, t) {
+    n.setOptions(t);
+  },
+  place(n, t) {
+    n.setPlace(t);
+  },
+  position(n, t) {
+    n.setPosition(t);
+  },
+  shape(n, t) {
+    n.setShape(t);
+  },
+  title(n, t) {
+    n.setTitle(t);
+  },
+  visible(n, t) {
+    n.setVisible(t);
+  },
+  zIndex(n, t) {
+    n.setZIndex(t);
+  }
+};
+export {
+  d as MarkerWithLabel,
+  d as default
+};

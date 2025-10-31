@@ -1,1 +1,344 @@
-"use strict";var d=Object.defineProperty;var l=(o,e,r)=>e in o?d(o,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):o[e]=r;var s=(o,e,r)=>(l(o,typeof e!="symbol"?e+"":e,r),r);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const y=require("react/jsx-runtime"),g=require("../browser-99223509.cjs"),T=require("react"),t=require("../index-5d68b4f3.cjs"),a=require("../utils/MapChildHelper.js"),n=require("../constants-c61a5d3d.cjs");class p extends T.PureComponent{fitBounds(...e){return this.context[n.MAP].fitBounds(...e)}panBy(...e){return this.context[n.MAP].panBy(...e)}panTo(...e){return this.context[n.MAP].panTo(...e)}panToBounds(...e){return this.context[n.MAP].panToBounds(...e)}constructor(e,r){super(e,r),g.invariant(!!this.context[n.MAP],"Did you wrap <GoogleMap> component with withGoogleMap() HOC?"),a.construct(u.propTypes,c,this.props,this.context[n.MAP])}componentDidMount(){a.componentDidMount(this,this.context[n.MAP],i)}componentDidUpdate(e){a.componentDidUpdate(this,this.context[n.MAP],i,c,e)}componentWillUnmount(){a.componentWillUnmount(this)}render(){const{children:e}=this.props;return y.jsx("div",{children:e})}getBounds(){return this.context[n.MAP].getBounds()}getCenter(){return this.context[n.MAP].getCenter()}getClickableIcons(){return this.context[n.MAP].getClickableIcons()}getDiv(){return this.context[n.MAP].getDiv()}getHeading(){return this.context[n.MAP].getHeading()}getMapTypeId(){return this.context[n.MAP].getMapTypeId()}getProjection(){return this.context[n.MAP].getProjection()}getStreetView(){return this.context[n.MAP].getStreetView()}getTilt(){return this.context[n.MAP].getTilt()}getZoom(){return this.context[n.MAP].getZoom()}}s(p,"displayName","GoogleMap"),s(p,"propTypes",{defaultExtraMapTypes:t.PropTypes.arrayOf(t.PropTypes.arrayOf(t.PropTypes.any)),defaultCenter:t.PropTypes.any,defaultClickableIcons:t.PropTypes.bool,defaultHeading:t.PropTypes.number,defaultMapTypeId:t.PropTypes.any,defaultOptions:t.PropTypes.any,defaultStreetView:t.PropTypes.any,defaultTilt:t.PropTypes.number,defaultZoom:t.PropTypes.number,center:t.PropTypes.any,clickableIcons:t.PropTypes.bool,heading:t.PropTypes.number,mapTypeId:t.PropTypes.any,options:t.PropTypes.any,streetView:t.PropTypes.any,tilt:t.PropTypes.number,zoom:t.PropTypes.number,onDblClick:t.PropTypes.func,onDragEnd:t.PropTypes.func,onDragStart:t.PropTypes.func,onMapTypeIdChanged:t.PropTypes.func,onMouseMove:t.PropTypes.func,onMouseOut:t.PropTypes.func,onMouseOver:t.PropTypes.func,onRightClick:t.PropTypes.func,onTilesLoaded:t.PropTypes.func,onBoundsChanged:t.PropTypes.func,onCenterChanged:t.PropTypes.func,onClick:t.PropTypes.func,onDrag:t.PropTypes.func,onHeadingChanged:t.PropTypes.func,onIdle:t.PropTypes.func,onProjectionChanged:t.PropTypes.func,onResize:t.PropTypes.func,onTiltChanged:t.PropTypes.func,onZoomChanged:t.PropTypes.func}),s(p,"contextTypes",{[n.MAP]:t.PropTypes.object});const u=p,i={onDblClick:"dblclick",onDragEnd:"dragend",onDragStart:"dragstart",onMapTypeIdChanged:"maptypeid_changed",onMouseMove:"mousemove",onMouseOut:"mouseout",onMouseOver:"mouseover",onRightClick:"rightclick",onTilesLoaded:"tilesloaded",onBoundsChanged:"bounds_changed",onCenterChanged:"center_changed",onClick:"click",onDrag:"drag",onHeadingChanged:"heading_changed",onIdle:"idle",onProjectionChanged:"projection_changed",onResize:"resize",onTiltChanged:"tilt_changed",onZoomChanged:"zoom_changed"},c={extraMapTypes(o,e){e.forEach(r=>o.mapTypes.set(...r))},center(o,e){o.setCenter(e)},clickableIcons(o,e){o.setClickableIcons(e)},heading(o,e){o.setHeading(e)},mapTypeId(o,e){o.setMapTypeId(e)},options(o,e){o.setOptions(e)},streetView(o,e){o.setStreetView(e)},tilt(o,e){o.setTilt(e)},zoom(o,e){o.setZoom(e)}};exports.GoogleMap=u;exports.Map=p;exports.default=p;
+var d = Object.defineProperty;
+var u = (n, e, a) => e in n ? d(n, e, { enumerable: !0, configurable: !0, writable: !0, value: a }) : n[e] = a;
+var i = (n, e, a) => (u(n, typeof e != "symbol" ? e + "" : e, a), a);
+import { jsx as p } from "react/jsx-runtime";
+import { i as g } from "../browser-fe3e0b83.js";
+import l from "react";
+import { P as t } from "../index-e8d4cd90.js";
+import { construct as h, componentDidMount as m, componentDidUpdate as f, componentWillUnmount as C } from "../utils/MapChildHelper.js";
+import { M as o } from "../constants-4d431d90.js";
+class r extends l.PureComponent {
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   * @public
+   */
+  fitBounds(...e) {
+    return this.context[o].fitBounds(...e);
+  }
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   * @public
+   */
+  panBy(...e) {
+    return this.context[o].panBy(...e);
+  }
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   * @public
+   */
+  panTo(...e) {
+    return this.context[o].panTo(...e);
+  }
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   * @public
+   */
+  panToBounds(...e) {
+    return this.context[o].panToBounds(...e);
+  }
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
+   */
+  constructor(e, a) {
+    super(e, a), g(
+      !!this.context[o],
+      "Did you wrap <GoogleMap> component with withGoogleMap() HOC?"
+    ), h(y.propTypes, s, this.props, this.context[o]);
+  }
+  componentDidMount() {
+    m(this, this.context[o], c);
+  }
+  componentDidUpdate(e) {
+    f(this, this.context[o], c, s, e);
+  }
+  componentWillUnmount() {
+    C(this);
+  }
+  render() {
+    const { children: e } = this.props;
+    return /* @__PURE__ */ p("div", { children: e });
+  }
+  /**
+   * Returns the lat/lng bounds of the current viewport. If more than one copy of the world is visible, the bounds range in longitude from -180 to 180 degrees inclusive. If the map is not yet initialized (i.e. the mapType is still null), or center and zoom have not been set then the result is `null` or `undefined`.
+   * @type LatLngBoundsnullundefined
+   * @public
+   */
+  getBounds() {
+    return this.context[o].getBounds();
+  }
+  /**
+   * Returns the position displayed at the center of the map. Note that this `LatLng` object is _not_ wrapped. See `[LatLng](#LatLng)` for more information.
+   * @type LatLngLatLngLatLng
+   * @public
+   */
+  getCenter() {
+    return this.context[o].getCenter();
+  }
+  /**
+   * Returns the clickability of the map icons. A map icon represents a point of interest, also known as a POI. If the returned value is true, then the icons are clickable on the map.
+   * @type boolean
+   * @public
+   */
+  getClickableIcons() {
+    return this.context[o].getClickableIcons();
+  }
+  /**
+   *
+   * @type Element
+   * @public
+   */
+  getDiv() {
+    return this.context[o].getDiv();
+  }
+  /**
+   * Returns the compass heading of aerial imagery. The heading value is measured in degrees (clockwise) from cardinal direction North.
+   * @type number
+   * @public
+   */
+  getHeading() {
+    return this.context[o].getHeading();
+  }
+  /**
+   *
+   * @type MapTypeId|string
+   * @public
+   */
+  getMapTypeId() {
+    return this.context[o].getMapTypeId();
+  }
+  /**
+   * Returns the current `Projection`. If the map is not yet initialized (i.e. the mapType is still null) then the result is null. Listen to `projection_changed` and check its value to ensure it is not null.
+   * @type ProjectionProjectionprojection_changed
+   * @public
+   */
+  getProjection() {
+    return this.context[o].getProjection();
+  }
+  /**
+   * Returns the default `StreetViewPanorama` bound to the map, which may be a default panorama embedded within the map, or the panorama set using `setStreetView()`. Changes to the map's `streetViewControl` will be reflected in the display of such a bound panorama.
+   * @type StreetViewPanoramaStreetViewPanoramasetStreetView()streetViewControl
+   * @public
+   */
+  getStreetView() {
+    return this.context[o].getStreetView();
+  }
+  /**
+   * Returns the current angle of incidence of the map, in degrees from the viewport plane to the map plane. The result will be `0` for imagery taken directly overhead or `45` for 45° imagery. 45° imagery is only available for `satellite` and `hybrid` map types, within some locations, and at some zoom levels. **Note:** This method does not return the value set by `setTilt`. See `setTilt` for details.
+   * @type number045satellitehybridsetTiltsetTilt
+   * @public
+   */
+  getTilt() {
+    return this.context[o].getTilt();
+  }
+  /**
+   *
+   * @type number
+   * @public
+   */
+  getZoom() {
+    return this.context[o].getZoom();
+  }
+}
+i(r, "displayName", "GoogleMap"), i(r, "propTypes", {
+  /**
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapTypeRegistry
+   * @type Array<[id:string, mapType:MapType|*]>
+   */
+  defaultExtraMapTypes: t.arrayOf(t.arrayOf(t.any)),
+  /**
+   * @type LatLng|LatLngLiteral
+   */
+  defaultCenter: t.any,
+  /**
+   * @type boolean
+   */
+  defaultClickableIcons: t.bool,
+  /**
+   * @type number
+   */
+  defaultHeading: t.number,
+  /**
+   * @type MapTypeId|string
+   */
+  defaultMapTypeId: t.any,
+  /**
+   * @type MapOptions
+   */
+  defaultOptions: t.any,
+  /**
+   * @type StreetViewPanorama
+   */
+  defaultStreetView: t.any,
+  /**
+   * @type number
+   */
+  defaultTilt: t.number,
+  /**
+   * @type number
+   */
+  defaultZoom: t.number,
+  /**
+   * @type LatLng|LatLngLiteral
+   */
+  center: t.any,
+  /**
+   * @type boolean
+   */
+  clickableIcons: t.bool,
+  /**
+   * @type number
+   */
+  heading: t.number,
+  /**
+   * @type MapTypeId|string
+   */
+  mapTypeId: t.any,
+  /**
+   * @type MapOptions
+   */
+  options: t.any,
+  /**
+   * @type StreetViewPanorama
+   */
+  streetView: t.any,
+  /**
+   * @type number
+   */
+  tilt: t.number,
+  /**
+   * @type number
+   */
+  zoom: t.number,
+  /**
+   * function
+   */
+  onDblClick: t.func,
+  /**
+   * function
+   */
+  onDragEnd: t.func,
+  /**
+   * function
+   */
+  onDragStart: t.func,
+  /**
+   * function
+   */
+  onMapTypeIdChanged: t.func,
+  /**
+   * function
+   */
+  onMouseMove: t.func,
+  /**
+   * function
+   */
+  onMouseOut: t.func,
+  /**
+   * function
+   */
+  onMouseOver: t.func,
+  /**
+   * function
+   */
+  onRightClick: t.func,
+  /**
+   * function
+   */
+  onTilesLoaded: t.func,
+  /**
+   * function
+   */
+  onBoundsChanged: t.func,
+  /**
+   * function
+   */
+  onCenterChanged: t.func,
+  /**
+   * function
+   */
+  onClick: t.func,
+  /**
+   * function
+   */
+  onDrag: t.func,
+  /**
+   * function
+   */
+  onHeadingChanged: t.func,
+  /**
+   * function
+   */
+  onIdle: t.func,
+  /**
+   * function
+   */
+  onProjectionChanged: t.func,
+  /**
+   * function
+   */
+  onResize: t.func,
+  /**
+   * function
+   */
+  onTiltChanged: t.func,
+  /**
+   * function
+   */
+  onZoomChanged: t.func
+}), i(r, "contextTypes", {
+  [o]: t.object
+});
+const y = r, c = {
+  onDblClick: "dblclick",
+  onDragEnd: "dragend",
+  onDragStart: "dragstart",
+  onMapTypeIdChanged: "maptypeid_changed",
+  onMouseMove: "mousemove",
+  onMouseOut: "mouseout",
+  onMouseOver: "mouseover",
+  onRightClick: "rightclick",
+  onTilesLoaded: "tilesloaded",
+  onBoundsChanged: "bounds_changed",
+  onCenterChanged: "center_changed",
+  onClick: "click",
+  onDrag: "drag",
+  onHeadingChanged: "heading_changed",
+  onIdle: "idle",
+  onProjectionChanged: "projection_changed",
+  onResize: "resize",
+  onTiltChanged: "tilt_changed",
+  onZoomChanged: "zoom_changed"
+}, s = {
+  extraMapTypes(n, e) {
+    e.forEach((a) => n.mapTypes.set(...a));
+  },
+  center(n, e) {
+    n.setCenter(e);
+  },
+  clickableIcons(n, e) {
+    n.setClickableIcons(e);
+  },
+  heading(n, e) {
+    n.setHeading(e);
+  },
+  mapTypeId(n, e) {
+    n.setMapTypeId(e);
+  },
+  options(n, e) {
+    n.setOptions(e);
+  },
+  streetView(n, e) {
+    n.setStreetView(e);
+  },
+  tilt(n, e) {
+    n.setTilt(e);
+  },
+  zoom(n, e) {
+    n.setZoom(e);
+  }
+};
+export {
+  y as GoogleMap,
+  r as Map,
+  r as default
+};

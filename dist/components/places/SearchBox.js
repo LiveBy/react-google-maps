@@ -1,1 +1,120 @@
-"use strict";var m=Object.defineProperty;var P=(e,n,t)=>n in e?m(e,n,{enumerable:!0,configurable:!0,writable:!0,value:t}):e[n]=t;var l=(e,n,t)=>(P(e,typeof n!="symbol"?n+"":n,t),t);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const C=require("../../lodash-6bb8d3a5.cjs"),f=require("../../browser-99223509.cjs"),A=require("../../index-c9c79dc5.cjs"),i=require("react"),h=require("../../index-d7652fce.cjs"),s=require("../../index-5d68b4f3.cjs"),c=require("../../utils/MapChildHelper.js"),o=require("../../constants-c61a5d3d.cjs"),r=class r extends i.PureComponent{constructor(){super(...arguments);l(this,"state",{[o.SEARCH_BOX]:null})}componentWillMount(){!A.canUseDOM||this.containerElement||(f.invariant(google.maps.places,'Did you include "libraries=places" in the URL?'),this.containerElement=document.createElement("div"))}componentDidMount(){let t=this.state[o.SEARCH_BOX];i.version.match(/^16/)&&(t=this.handleInitializeSearchBox()),c.componentDidMount(this,t,u),this.handleMountAtControlPosition()}componentWillUpdate(t){this.props.controlPosition!==t.controlPosition&&this.handleUnmountAtControlPosition()}componentDidUpdate(t){c.componentDidUpdate(this,this.state[o.SEARCH_BOX],u,d,t),this.props.children!==t.children&&this.handleRenderChildToContainerElement(),this.props.controlPosition!==t.controlPosition&&this.handleMountAtControlPosition()}componentWillUnmount(){c.componentWillUnmount(this),this.handleUnmountAtControlPosition(),!i.version.match(/^16/)&&this.containerElement&&(h.ReactDOM.unmountComponentAtNode(this.containerElement),this.containerElement=null)}handleInitializeSearchBox(){const t=new google.maps.places.SearchBox(this.containerElement.querySelector("input"));return c.construct(r.propTypes,d,this.props,t),this.setState({[o.SEARCH_BOX]:t}),t}handleMountAtControlPosition(){p(this.props.controlPosition)&&(this.mountControlIndex=-1+this.context[o.MAP].controls[this.props.controlPosition].push(this.containerElement.firstChild))}handleUnmountAtControlPosition(){if(p(this.props.controlPosition)){const t=this.context[o.MAP].controls[this.props.controlPosition].removeAt(this.mountControlIndex);t!==void 0&&this.containerElement.appendChild(t)}}render(){return i.version.match(/^16/)?h.ReactDOM.createPortal(i.Children.only(this.props.children),this.containerElement):!1}getBounds(){return this.state[o.SEARCH_BOX].getBounds()}getPlaces(){return this.state[o.SEARCH_BOX].getPlaces()}};l(r,"propTypes",{controlPosition:s.PropTypes.number,defaultBounds:s.PropTypes.any,bounds:s.PropTypes.any,onPlacesChanged:s.PropTypes.func}),l(r,"contextTypes",{[o.MAP]:s.PropTypes.object});let a=r;const p=C._.isNumber,u={onPlacesChanged:"places_changed"},d={bounds(e,n){e.setBounds(n)}};exports.SearchBox=a;exports.default=a;
+var u = Object.defineProperty;
+var f = (n, o, t) => o in n ? u(n, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[o] = t;
+var l = (n, o, t) => (f(n, typeof o != "symbol" ? o + "" : o, t), t);
+import { _ as P } from "../../lodash-9da1000b.js";
+import { i as C } from "../../browser-fe3e0b83.js";
+import { c as E } from "../../index-22f0280c.js";
+import i from "react";
+import { R as c } from "../../index-87ad0b90.js";
+import { P as s } from "../../index-e8d4cd90.js";
+import { componentDidMount as M, componentDidUpdate as g, componentWillUnmount as A, construct as U } from "../../utils/MapChildHelper.js";
+import { M as a, S as e } from "../../constants-4d431d90.js";
+const r = class r extends i.PureComponent {
+  constructor() {
+    super(...arguments);
+    l(this, "state", {
+      [e]: null
+    });
+  }
+  componentWillMount() {
+    !E || this.containerElement || (C(
+      google.maps.places,
+      'Did you include "libraries=places" in the URL?'
+    ), this.containerElement = document.createElement("div"));
+  }
+  componentDidMount() {
+    let t = this.state[e];
+    i.version.match(/^16/) && (t = this.handleInitializeSearchBox()), M(this, t, m), this.handleMountAtControlPosition();
+  }
+  componentWillUpdate(t) {
+    this.props.controlPosition !== t.controlPosition && this.handleUnmountAtControlPosition();
+  }
+  componentDidUpdate(t) {
+    g(
+      this,
+      this.state[e],
+      m,
+      d,
+      t
+    ), this.props.children !== t.children && this.handleRenderChildToContainerElement(), this.props.controlPosition !== t.controlPosition && this.handleMountAtControlPosition();
+  }
+  componentWillUnmount() {
+    A(this), this.handleUnmountAtControlPosition(), !i.version.match(/^16/) && this.containerElement && (c.unmountComponentAtNode(this.containerElement), this.containerElement = null);
+  }
+  handleInitializeSearchBox() {
+    const t = new google.maps.places.SearchBox(
+      this.containerElement.querySelector("input")
+    );
+    return U(r.propTypes, d, this.props, t), this.setState({
+      [e]: t
+    }), t;
+  }
+  handleMountAtControlPosition() {
+    p(this.props.controlPosition) && (this.mountControlIndex = -1 + this.context[a].controls[this.props.controlPosition].push(
+      this.containerElement.firstChild
+    ));
+  }
+  handleUnmountAtControlPosition() {
+    if (p(this.props.controlPosition)) {
+      const t = this.context[a].controls[this.props.controlPosition].removeAt(this.mountControlIndex);
+      t !== void 0 && this.containerElement.appendChild(t);
+    }
+  }
+  render() {
+    return i.version.match(/^16/) ? c.createPortal(
+      i.Children.only(this.props.children),
+      this.containerElement
+    ) : !1;
+  }
+  /**
+   * Returns the bounds to which query predictions are biased.
+   * @type LatLngBounds
+   * @public
+   */
+  getBounds() {
+    return this.state[e].getBounds();
+  }
+  /**
+   * Returns the query selected by the user, or `null` if no places have been found yet, to be used with `places_changed` event.
+   * @type Array<PlaceResult>nullplaces_changed
+   * @public
+   */
+  getPlaces() {
+    return this.state[e].getPlaces();
+  }
+};
+l(r, "propTypes", {
+  /**
+   * Where to put `<SearchBox>` inside a `<GoogleMap>`
+   *
+   * @example google.maps.ControlPosition.TOP_LEFT
+   * @type number
+   */
+  controlPosition: s.number,
+  /**
+   * @type LatLngBounds|LatLngBoundsLiteral
+   */
+  defaultBounds: s.any,
+  /**
+   * @type LatLngBounds|LatLngBoundsLiteral
+   */
+  bounds: s.any,
+  /**
+   * function
+   */
+  onPlacesChanged: s.func
+}), l(r, "contextTypes", {
+  [a]: s.object
+});
+let h = r;
+const p = P.isNumber, m = {
+  onPlacesChanged: "places_changed"
+}, d = {
+  bounds(n, o) {
+    n.setBounds(o);
+  }
+};
+export {
+  h as SearchBox,
+  h as default
+};

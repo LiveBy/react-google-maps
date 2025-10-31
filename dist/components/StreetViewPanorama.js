@@ -1,1 +1,270 @@
-"use strict";var u=Object.defineProperty;var g=(o,e,s)=>e in o?u(o,e,{enumerable:!0,configurable:!0,writable:!0,value:s}):o[e]=s;var r=(o,e,s)=>(g(o,typeof e!="symbol"?e+"":e,s),s);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("react/jsx-runtime"),h=require("../browser-99223509.cjs"),d=require("react"),t=require("../index-5d68b4f3.cjs"),p=require("../utils/MapChildHelper.js"),n=require("../constants-c61a5d3d.cjs"),i=class i extends d.PureComponent{constructor(e,s){super(e,s),h.invariant(!!this.context[n.MAP],"Did you render <StreetViewPanorama> as a child of <GoogleMap> with withGoogleMap() HOC?"),p.construct(i.propTypes,P,this.props,this.context[n.MAP].getStreetView())}getChildContext(){return{[n.MAP]:this.context[n.MAP].getStreetView()}}componentDidMount(){p.componentDidMount(this,this.context[n.MAP].getStreetView(),c)}componentDidUpdate(e){p.componentDidUpdate(this,this.context[n.MAP].getStreetView(),c,P,e)}componentWillUnmount(){p.componentWillUnmount(this);const e=this.context[n.MAP].getStreetView();e&&e.setVisible(!1)}render(){const{children:e}=this.props;return l.jsx("div",{children:e})}getLinks(){return this.context[n.MAP].getLinks()}getLocation(){return this.context[n.MAP].getLocation()}getMotionTracking(){return this.context[n.MAP].getMotionTracking()}getPano(){return this.context[n.MAP].getPano()}getPhotographerPov(){return this.context[n.MAP].getPhotographerPov()}getPosition(){return this.context[n.MAP].getPosition()}getPov(){return this.context[n.MAP].getPov()}getStatus(){return this.context[n.MAP].getStatus()}getVisible(){return this.context[n.MAP].getVisible()}getZoom(){return this.context[n.MAP].getZoom()}};r(i,"propTypes",{defaultLinks:t.PropTypes.any,defaultMotionTracking:t.PropTypes.bool,defaultOptions:t.PropTypes.any,defaultPano:t.PropTypes.string,defaultPosition:t.PropTypes.any,defaultPov:t.PropTypes.any,defaultVisible:t.PropTypes.bool,defaultZoom:t.PropTypes.number,links:t.PropTypes.any,motionTracking:t.PropTypes.bool,options:t.PropTypes.any,pano:t.PropTypes.string,position:t.PropTypes.any,pov:t.PropTypes.any,visible:t.PropTypes.bool,zoom:t.PropTypes.number,onCloseClick:t.PropTypes.func,onPanoChanged:t.PropTypes.func,onPositionChanged:t.PropTypes.func,onPovChanged:t.PropTypes.func,onResize:t.PropTypes.func,onStatusChanged:t.PropTypes.func,onVisibleChanged:t.PropTypes.func,onZoomChanged:t.PropTypes.func}),r(i,"contextTypes",{[n.MAP]:t.PropTypes.object}),r(i,"childContextTypes",{[n.MAP]:t.PropTypes.object});let a=i;const c={onCloseClick:"closeclick",onPanoChanged:"pano_changed",onPositionChanged:"position_changed",onPovChanged:"pov_changed",onResize:"resize",onStatusChanged:"status_changed",onVisibleChanged:"visible_changed",onZoomChanged:"zoom_changed"},P={links(o,e){o.setLinks(e)},motionTracking(o,e){o.setMotionTracking(e)},options(o,e){o.setOptions(e)},pano(o,e){o.setPano(e)},position(o,e){o.setPosition(e)},pov(o,e){o.setPov(e)},visible(o,e){o.setVisible(e)},zoom(o,e){o.setZoom(e)}};exports.StreetViewPanorama=a;exports.default=a;
+var p = Object.defineProperty;
+var h = (e, t, i) => t in e ? p(e, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : e[t] = i;
+var a = (e, t, i) => (h(e, typeof t != "symbol" ? t + "" : t, i), i);
+import { jsx as u } from "react/jsx-runtime";
+import { i as d } from "../browser-fe3e0b83.js";
+import l from "react";
+import { P as o } from "../index-e8d4cd90.js";
+import { construct as m, componentDidMount as f, componentDidUpdate as P, componentWillUnmount as x } from "../utils/MapChildHelper.js";
+import { M as n } from "../constants-4d431d90.js";
+const s = class s extends l.PureComponent {
+  constructor(t, i) {
+    super(t, i), d(
+      !!this.context[n],
+      "Did you render <StreetViewPanorama> as a child of <GoogleMap> with withGoogleMap() HOC?"
+    ), m(
+      s.propTypes,
+      g,
+      this.props,
+      this.context[n].getStreetView()
+    );
+  }
+  getChildContext() {
+    return {
+      [n]: this.context[n].getStreetView()
+    };
+  }
+  componentDidMount() {
+    f(this, this.context[n].getStreetView(), c);
+  }
+  componentDidUpdate(t) {
+    P(
+      this,
+      this.context[n].getStreetView(),
+      c,
+      g,
+      t
+    );
+  }
+  componentWillUnmount() {
+    x(this);
+    const t = this.context[n].getStreetView();
+    t && t.setVisible(!1);
+  }
+  render() {
+    const { children: t } = this.props;
+    return /* @__PURE__ */ u("div", { children: t });
+  }
+  /**
+   * Returns the set of navigation links for the Street View panorama.
+   * @type Array<StreetViewLink>
+   * @public
+   */
+  getLinks() {
+    return this.context[n].getLinks();
+  }
+  /**
+   * Returns the StreetViewLocation of the current panorama.
+   * @type StreetViewLocation
+   * @public
+   */
+  getLocation() {
+    return this.context[n].getLocation();
+  }
+  /**
+   * Returns the state of motion tracker. If true when the user physically moves the device and the browser supports it, the Street View Panorama tracks the physical movements.
+   * @type boolean
+   * @public
+   */
+  getMotionTracking() {
+    return this.context[n].getMotionTracking();
+  }
+  /**
+   * Returns the current panorama ID for the Street View panorama. This id is stable within the browser's current session only.
+   * @type string
+   * @public
+   */
+  getPano() {
+    return this.context[n].getPano();
+  }
+  /**
+   * Returns the heading and pitch of the photographer when this panorama was taken. For Street View panoramas on the road, this also reveals in which direction the car was travelling. This data is available after the `pano_changed` event.
+   * @type StreetViewPovpano_changed
+   * @public
+   */
+  getPhotographerPov() {
+    return this.context[n].getPhotographerPov();
+  }
+  /**
+   * Returns the current `LatLng` position for the Street View panorama.
+   * @type LatLngLatLng
+   * @public
+   */
+  getPosition() {
+    return this.context[n].getPosition();
+  }
+  /**
+   * Returns the current point of view for the Street View panorama.
+   * @type StreetViewPov
+   * @public
+   */
+  getPov() {
+    return this.context[n].getPov();
+  }
+  /**
+   * Returns the status of the panorama on completion of the `setPosition()` or `setPano()` request.
+   * @type StreetViewStatussetPosition()setPano()
+   * @public
+   */
+  getStatus() {
+    return this.context[n].getStatus();
+  }
+  /**
+   * Returns `true` if the panorama is visible. It does not specify whether Street View imagery is available at the specified position.
+   * @type booleantrue
+   * @public
+   */
+  getVisible() {
+    return this.context[n].getVisible();
+  }
+  /**
+   * Returns the zoom level of the panorama. Fully zoomed-out is level 0, where the field of view is 180 degrees. Zooming in increases the zoom level.
+   * @type number
+   * @public
+   */
+  getZoom() {
+    return this.context[n].getZoom();
+  }
+};
+a(s, "propTypes", {
+  /**
+   * @type Array<StreetViewLink>
+   */
+  defaultLinks: o.any,
+  /**
+   * @type boolean
+   */
+  defaultMotionTracking: o.bool,
+  /**
+   * @type StreetViewPanoramaOptions
+   */
+  defaultOptions: o.any,
+  /**
+   * @type string
+   */
+  defaultPano: o.string,
+  /**
+   * @type LatLng|LatLngLiteral
+   */
+  defaultPosition: o.any,
+  /**
+   * @type StreetViewPov
+   */
+  defaultPov: o.any,
+  /**
+   * @type boolean
+   */
+  defaultVisible: o.bool,
+  /**
+   * @type number
+   */
+  defaultZoom: o.number,
+  /**
+   * @type Array<StreetViewLink>
+   */
+  links: o.any,
+  /**
+   * @type boolean
+   */
+  motionTracking: o.bool,
+  /**
+   * @type StreetViewPanoramaOptions
+   */
+  options: o.any,
+  /**
+   * @type string
+   */
+  pano: o.string,
+  /**
+   * @type LatLng|LatLngLiteral
+   */
+  position: o.any,
+  /**
+   * @type StreetViewPov
+   */
+  pov: o.any,
+  /**
+   * @type boolean
+   */
+  visible: o.bool,
+  /**
+   * @type number
+   */
+  zoom: o.number,
+  /**
+   * function
+   */
+  onCloseClick: o.func,
+  /**
+   * function
+   */
+  onPanoChanged: o.func,
+  /**
+   * function
+   */
+  onPositionChanged: o.func,
+  /**
+   * function
+   */
+  onPovChanged: o.func,
+  /**
+   * function
+   */
+  onResize: o.func,
+  /**
+   * function
+   */
+  onStatusChanged: o.func,
+  /**
+   * function
+   */
+  onVisibleChanged: o.func,
+  /**
+   * function
+   */
+  onZoomChanged: o.func
+}), a(s, "contextTypes", {
+  [n]: o.object
+}), a(s, "childContextTypes", {
+  [n]: o.object
+});
+let r = s;
+const c = {
+  onCloseClick: "closeclick",
+  onPanoChanged: "pano_changed",
+  onPositionChanged: "position_changed",
+  onPovChanged: "pov_changed",
+  onResize: "resize",
+  onStatusChanged: "status_changed",
+  onVisibleChanged: "visible_changed",
+  onZoomChanged: "zoom_changed"
+}, g = {
+  links(e, t) {
+    e.setLinks(t);
+  },
+  motionTracking(e, t) {
+    e.setMotionTracking(t);
+  },
+  options(e, t) {
+    e.setOptions(t);
+  },
+  pano(e, t) {
+    e.setPano(t);
+  },
+  position(e, t) {
+    e.setPosition(t);
+  },
+  pov(e, t) {
+    e.setPov(t);
+  },
+  visible(e, t) {
+    e.setVisible(t);
+  },
+  zoom(e, t) {
+    e.setZoom(t);
+  }
+};
+export {
+  r as StreetViewPanorama,
+  r as default
+};

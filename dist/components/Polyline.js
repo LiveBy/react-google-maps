@@ -1,1 +1,193 @@
-"use strict";var P=Object.defineProperty;var d=(o,e,n)=>e in o?P(o,e,{enumerable:!0,configurable:!0,writable:!0,value:n}):o[e]=n;var u=(o,e,n)=>(d(o,typeof e!="symbol"?e+"":e,n),n);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const g=require("react"),t=require("../index-5d68b4f3.cjs"),r=require("../utils/MapChildHelper.js"),s=require("../constants-c61a5d3d.cjs"),p=class p extends g.PureComponent{constructor(e,n){super(e,n);const i=new google.maps.Polyline;r.construct(p.propTypes,c,this.props,i),i.setMap(this.context[s.MAP]),this.state={[s.POLYLINE]:i}}componentDidMount(){r.componentDidMount(this,this.state[s.POLYLINE],l)}componentDidUpdate(e){r.componentDidUpdate(this,this.state[s.POLYLINE],l,c,e)}componentWillUnmount(){r.componentWillUnmount(this);const e=this.state[s.POLYLINE];e&&e.setMap(null)}render(){return!1}getDraggable(){return this.state[s.POLYLINE].getDraggable()}getEditable(){return this.state[s.POLYLINE].getEditable()}getPath(){return this.state[s.POLYLINE].getPath()}getVisible(){return this.state[s.POLYLINE].getVisible()}};u(p,"propTypes",{defaultDraggable:t.PropTypes.bool,defaultEditable:t.PropTypes.bool,defaultOptions:t.PropTypes.any,defaultPath:t.PropTypes.any,defaultVisible:t.PropTypes.bool,draggable:t.PropTypes.bool,editable:t.PropTypes.bool,options:t.PropTypes.any,path:t.PropTypes.any,visible:t.PropTypes.bool,onDblClick:t.PropTypes.func,onDragEnd:t.PropTypes.func,onDragStart:t.PropTypes.func,onMouseDown:t.PropTypes.func,onMouseMove:t.PropTypes.func,onMouseOut:t.PropTypes.func,onMouseOver:t.PropTypes.func,onMouseUp:t.PropTypes.func,onRightClick:t.PropTypes.func,onClick:t.PropTypes.func,onDrag:t.PropTypes.func}),u(p,"contextTypes",{[s.MAP]:t.PropTypes.object});let a=p;const l={onDblClick:"dblclick",onDragEnd:"dragend",onDragStart:"dragstart",onMouseDown:"mousedown",onMouseMove:"mousemove",onMouseOut:"mouseout",onMouseOver:"mouseover",onMouseUp:"mouseup",onRightClick:"rightclick",onClick:"click",onDrag:"drag"},c={draggable(o,e){o.setDraggable(e)},editable(o,e){o.setEditable(e)},options(o,e){o.setOptions(e)},path(o,e){o.setPath(e)},visible(o,e){o.setVisible(e)}};exports.Polyline=a;exports.default=a;
+var g = Object.defineProperty;
+var d = (o, t, s) => t in o ? g(o, t, { enumerable: !0, configurable: !0, writable: !0, value: s }) : o[t] = s;
+var r = (o, t, s) => (d(o, typeof t != "symbol" ? t + "" : t, s), s);
+import b from "react";
+import { P as e } from "../index-e8d4cd90.js";
+import { construct as m, componentDidMount as f, componentDidUpdate as h, componentWillUnmount as M } from "../utils/MapChildHelper.js";
+import { M as l, P as n } from "../constants-4d431d90.js";
+const a = class a extends b.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polyline
+   */
+  constructor(t, s) {
+    super(t, s);
+    const i = new google.maps.Polyline();
+    m(a.propTypes, p, this.props, i), i.setMap(this.context[l]), this.state = {
+      [n]: i
+    };
+  }
+  componentDidMount() {
+    f(this, this.state[n], c);
+  }
+  componentDidUpdate(t) {
+    h(
+      this,
+      this.state[n],
+      c,
+      p,
+      t
+    );
+  }
+  componentWillUnmount() {
+    M(this);
+    const t = this.state[n];
+    t && t.setMap(null);
+  }
+  render() {
+    return !1;
+  }
+  /**
+   * Returns whether this shape can be dragged by the user.
+   * @type boolean
+   * @public
+   */
+  getDraggable() {
+    return this.state[n].getDraggable();
+  }
+  /**
+   * Returns whether this shape can be edited by the user.
+   * @type boolean
+   * @public
+   */
+  getEditable() {
+    return this.state[n].getEditable();
+  }
+  /**
+   * Retrieves the path.
+   * @type MVCArray<LatLng>
+   * @public
+   */
+  getPath() {
+    return this.state[n].getPath();
+  }
+  /**
+   * Returns whether this poly is visible on the map.
+   * @type boolean
+   * @public
+   */
+  getVisible() {
+    return this.state[n].getVisible();
+  }
+};
+r(a, "propTypes", {
+  /**
+   * @type boolean
+   */
+  defaultDraggable: e.bool,
+  /**
+   * @type boolean
+   */
+  defaultEditable: e.bool,
+  /**
+   * @type PolylineOptions
+   */
+  defaultOptions: e.any,
+  /**
+   * @type MVCArray<LatLng>|Array<LatLng|LatLngLiteral>
+   */
+  defaultPath: e.any,
+  /**
+   * @type boolean
+   */
+  defaultVisible: e.bool,
+  /**
+   * @type boolean
+   */
+  draggable: e.bool,
+  /**
+   * @type boolean
+   */
+  editable: e.bool,
+  /**
+   * @type PolylineOptions
+   */
+  options: e.any,
+  /**
+   * @type MVCArray<LatLng>|Array<LatLng|LatLngLiteral>
+   */
+  path: e.any,
+  /**
+   * @type boolean
+   */
+  visible: e.bool,
+  /**
+   * function
+   */
+  onDblClick: e.func,
+  /**
+   * function
+   */
+  onDragEnd: e.func,
+  /**
+   * function
+   */
+  onDragStart: e.func,
+  /**
+   * function
+   */
+  onMouseDown: e.func,
+  /**
+   * function
+   */
+  onMouseMove: e.func,
+  /**
+   * function
+   */
+  onMouseOut: e.func,
+  /**
+   * function
+   */
+  onMouseOver: e.func,
+  /**
+   * function
+   */
+  onMouseUp: e.func,
+  /**
+   * function
+   */
+  onRightClick: e.func,
+  /**
+   * function
+   */
+  onClick: e.func,
+  /**
+   * function
+   */
+  onDrag: e.func
+}), r(a, "contextTypes", {
+  [l]: e.object
+});
+let u = a;
+const c = {
+  onDblClick: "dblclick",
+  onDragEnd: "dragend",
+  onDragStart: "dragstart",
+  onMouseDown: "mousedown",
+  onMouseMove: "mousemove",
+  onMouseOut: "mouseout",
+  onMouseOver: "mouseover",
+  onMouseUp: "mouseup",
+  onRightClick: "rightclick",
+  onClick: "click",
+  onDrag: "drag"
+}, p = {
+  draggable(o, t) {
+    o.setDraggable(t);
+  },
+  editable(o, t) {
+    o.setEditable(t);
+  },
+  options(o, t) {
+    o.setOptions(t);
+  },
+  path(o, t) {
+    o.setPath(t);
+  },
+  visible(o, t) {
+    o.setVisible(t);
+  }
+};
+export {
+  u as Polyline,
+  u as default
+};

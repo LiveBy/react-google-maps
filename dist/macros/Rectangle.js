@@ -1,4 +1,11 @@
-"use strict";var l=Object.defineProperty;var d=(s,e,t)=>e in s?l(s,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):s[e]=t;var u=(s,e,t)=>(d(s,typeof e!="symbol"?e+"":e,t),t);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const h=require("react"),m=require("../index-5d68b4f3.cjs"),r=require("../utils/MapChildHelper.js"),o=require("../constants-c61a5d3d.cjs"),M=`{
+var u = Object.defineProperty;
+var l = (e, t, o) => t in e ? u(e, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : e[t] = o;
+var p = (e, t, o) => (l(e, typeof t != "symbol" ? t + "" : t, o), o);
+import d from "react";
+import { P as h } from "../index-e8d4cd90.js";
+import { construct as M, componentDidMount as f, componentDidUpdate as g, componentWillUnmount as D } from "../utils/MapChildHelper.js";
+import { M as a, R as n } from "../constants-4d431d90.js";
+const U = `{
   "eventMapOverrides": {
     "onDblClick": "dblclick",
     "onDragEnd": "dragend",
@@ -11,4 +18,47 @@
     "onRightClick": "rightclick"
   },
   "getInstanceFromComponent": "this.state[RECTANGLE]"
-}`,n=class n extends h.PureComponent{constructor(e,t){super(e,t);const i=new google.maps.Rectangle;r.construct(n.propTypes,p,this.props,i),i.setMap(this.context[o.MAP]),this.state={[o.RECTANGLE]:i}}componentDidMount(){r.componentDidMount(this,this.state[o.RECTANGLE],a)}componentDidUpdate(e){r.componentDidUpdate(this,this.state[o.RECTANGLE],a,p,e)}componentWillUnmount(){r.componentWillUnmount(this);const e=this.state[o.RECTANGLE];e&&e.setMap(null)}render(){return!1}};u(n,"propTypes",{__jscodeshiftPlaceholder__:null}),u(n,"contextTypes",{[o.MAP]:m.PropTypes.object});let c=n;const a={},p={};exports.Rectangle=c;exports.__jscodeshiftPlaceholder__=M;exports.default=c;
+}`, s = class s extends d.PureComponent {
+  /*
+   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Rectangle
+   */
+  constructor(t, o) {
+    super(t, o);
+    const r = new google.maps.Rectangle();
+    M(s.propTypes, m, this.props, r), r.setMap(this.context[a]), this.state = {
+      [n]: r
+    };
+  }
+  componentDidMount() {
+    f(this, this.state[n], i);
+  }
+  componentDidUpdate(t) {
+    g(
+      this,
+      this.state[n],
+      i,
+      m,
+      t
+    );
+  }
+  componentWillUnmount() {
+    D(this);
+    const t = this.state[n];
+    t && t.setMap(null);
+  }
+  render() {
+    return !1;
+  }
+};
+p(s, "propTypes", {
+  __jscodeshiftPlaceholder__: null
+}), p(s, "contextTypes", {
+  [a]: h.object
+});
+let c = s;
+const i = {}, m = {};
+export {
+  c as Rectangle,
+  U as __jscodeshiftPlaceholder__,
+  c as default
+};

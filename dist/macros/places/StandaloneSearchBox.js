@@ -1,5 +1,57 @@
-"use strict";var h=Object.defineProperty;var m=(n,t,e)=>t in n?h(n,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):n[t]=e;var s=(n,t,e)=>(m(n,typeof t!="symbol"?t+"":t,e),e);Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const _=require("../../browser-99223509.cjs"),l=require("react"),S=require("../../index-d7652fce.cjs"),i=require("../../utils/MapChildHelper.js"),a=require("../../constants-c61a5d3d.cjs"),M=`{
+var m = Object.defineProperty;
+var d = (o, e, t) => e in o ? m(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[e] = t;
+var s = (o, e, t) => (d(o, typeof e != "symbol" ? e + "" : e, t), t);
+import { i as h } from "../../browser-fe3e0b83.js";
+import r from "react";
+import { R as u } from "../../index-87ad0b90.js";
+import { construct as f, componentDidMount as D, componentDidUpdate as M, componentWillUnmount as S } from "../../utils/MapChildHelper.js";
+import { S as i } from "../../constants-4d431d90.js";
+const U = `{
   "eventMapOverrides": {
   },
   "getInstanceFromComponent": "this.state[SEARCH_BOX]"
-}`,o=class o extends l.PureComponent{constructor(){super(...arguments);s(this,"state",{[a.SEARCH_BOX]:null})}componentDidMount(){_.invariant(google.maps.places,'Did you include "libraries=places" in the URL?');const e=S.ReactDOM.findDOMNode(this),r=new google.maps.places.SearchBox(e.querySelector("input")||e);i.construct(o.propTypes,d,this.props,r),i.componentDidMount(this,r,p),this.setState({[a.SEARCH_BOX]:r})}componentDidUpdate(e){i.componentDidUpdate(this,this.state[a.SEARCH_BOX],p,d,e)}componentWillUnmount(){i.componentWillUnmount(this)}render(){return l.Children.only(this.props.children)}};s(o,"displayName","StandaloneSearchBox"),s(o,"propTypes",{__jscodeshiftPlaceholder__:null});let c=o;const u=c,p={},d={};exports.StandaloneSearchBox=u;exports.__jscodeshiftPlaceholder__=M;exports.default=u;
+}`, n = class n extends r.PureComponent {
+  constructor() {
+    super(...arguments);
+    s(this, "state", {
+      [i]: null
+    });
+  }
+  componentDidMount() {
+    h(
+      google.maps.places,
+      'Did you include "libraries=places" in the URL?'
+    );
+    const t = u.findDOMNode(this), a = new google.maps.places.SearchBox(
+      t.querySelector("input") || t
+    );
+    f(n.propTypes, l, this.props, a), D(this, a, c), this.setState({
+      [i]: a
+    });
+  }
+  componentDidUpdate(t) {
+    M(
+      this,
+      this.state[i],
+      c,
+      l,
+      t
+    );
+  }
+  componentWillUnmount() {
+    S(this);
+  }
+  render() {
+    return r.Children.only(this.props.children);
+  }
+};
+s(n, "displayName", "StandaloneSearchBox"), s(n, "propTypes", {
+  __jscodeshiftPlaceholder__: null
+});
+let p = n;
+const v = p, c = {}, l = {};
+export {
+  v as StandaloneSearchBox,
+  U as __jscodeshiftPlaceholder__,
+  v as default
+};
