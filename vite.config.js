@@ -12,7 +12,17 @@ export default defineConfig({
   build: {
     copyPublicDir: false,
     lib: {
-      entry: resolve(__dirname, "lib/main.ts"),
+      entry: {
+        main: resolve(__dirname, "lib/main.ts"),
+        "components/addons/index": resolve(
+          __dirname,
+          "lib/components/addons/index.ts"
+        ),
+        withGoogleMap: resolve(__dirname, "lib/withGoogleMap.jsx"),
+        withScriptjs: resolve(__dirname, "lib/withScriptjs.jsx"),
+        constants: resolve(__dirname, "lib/constants.js"),
+      },
+      fileName: (format, entryName) => `${entryName}.${format}.js`, // Customize output file names
       formats: ["es"],
     },
     rollupOptions: {

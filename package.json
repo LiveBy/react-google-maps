@@ -31,6 +31,10 @@
       "import": "./dist/withGoogleMap.js",
       "require": "./dist/withGoogleMap.js"
     },
+    "./constants": {
+      "import": "./dist/constants.js",
+      "require": "./dist/constants.js"
+    },
     "./withScriptjs": {
       "import": "./dist/withScriptjs.js",
       "require": "./dist/withScriptjs.js"
