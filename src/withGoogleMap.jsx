@@ -1,15 +1,13 @@
 /* global google */
-import _ from "lodash"
-import warning from "warning"
 import invariant from "invariant"
-import { getDisplayName } from "recompose"
+import _ from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
+import { getDisplayName } from "recompose"
+import warning from "warning"
 import { MAP } from "./constants"
 
 export function withGoogleMap(BaseComponent) {
-  const factory = React.createFactory(BaseComponent)
-
   class Container extends React.PureComponent {
     static displayName = `withGoogleMap(${getDisplayName(BaseComponent)})`
 
@@ -72,7 +70,7 @@ export function withGoogleMap(BaseComponent) {
           React.cloneElement(mapElement, {
             ref: this.handleComponentMount,
           }),
-          <div>{factory(restProps)}</div>
+          <div>{<BaseComponent {...restProps} />}</div>
         )
       } else {
         return React.cloneElement(
