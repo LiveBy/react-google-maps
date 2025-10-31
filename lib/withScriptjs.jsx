@@ -4,7 +4,7 @@ const LOADING_STATE_BEGIN = `BEGIN`
 const LOADING_STATE_LOADED = `LOADED`
 
 export const withScript = (BaseComponent) => {
-  return ({ loadingElement = null, googleMapURL, ...restProps }) => {
+  const wrapper = ({ loadingElement = null, googleMapURL, ...restProps }) => {
     const [loadingState, setLoadingState] = React.useState(LOADING_STATE_BEGIN)
     return (
       <>
@@ -21,6 +21,10 @@ export const withScript = (BaseComponent) => {
       </>
     )
   }
+  wrapper.displayName = `withScript(${
+    BaseComponent.displayName || BaseComponent.name
+  })`
+  return wrapper
 }
 
 export default withScript
