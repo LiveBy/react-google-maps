@@ -3,7 +3,7 @@ import React from "react"
 const LOADING_STATE_BEGIN = `BEGIN`
 const LOADING_STATE_LOADED = `LOADED`
 
-export default (withScript = BaseComponent => {
+export const withScript = (BaseComponent) => {
   return ({ loadingElement = null, googleMapURL, ...restProps }) => {
     const [loadingState, setLoadingState] = React.useState(LOADING_STATE_BEGIN)
     return (
@@ -21,4 +21,6 @@ export default (withScript = BaseComponent => {
       </>
     )
   }
-})
+}
+
+export default withScript
