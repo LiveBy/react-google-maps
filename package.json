@@ -23,6 +23,18 @@
       "import": "./dist/main.js",
       "require": "./dist/main.js"
     },
+    "./components/*": {
+      "import": "./dist/components/*.js",
+      "require": "./dist/components/*.js"
+    },
+    "./withGoogleMap": {
+      "import": "./dist/withGoogleMap.js",
+      "require": "./dist/withGoogleMap.js"
+    },
+    "./withScriptjs": {
+      "import": "./dist/withScriptjs.js",
+      "require": "./dist/withScriptjs.js"
+    },
     "./components/addons/*": {
       "import": "./dist/components/addons/*.js",
       "require": "./dist/components/addons/*.js"
