@@ -42,9 +42,9 @@ export {
   I as a,
   F as b,
   c,
-  E as d,
-  W as e,
-  R as f,
-  t as g,
+  W as d,
+  R as e,
+  t as f,
+  E as g,
   n as h
 };

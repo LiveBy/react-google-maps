@@ -1,368 +1,235 @@
-var b = Object.defineProperty;
-var C = (n, t, a) => t in n ? b(n, t, { enumerable: !0, configurable: !0, writable: !0, value: a }) : n[t] = a;
-var r = (n, t, a) => (C(n, typeof t != "symbol" ? t + "" : t, a), a);
-import { jsx as f } from "react/jsx-runtime";
-import m from "react";
-import { P as e } from "../index-e8d4cd90.js";
-import { construct as y, componentDidMount as k, componentDidUpdate as D, componentWillUnmount as x } from "../utils/MapChildHelper.js";
-import { M as u, b as c, A as l, d as o } from "../constants-4d431d90.js";
-const i = class i extends m.PureComponent {
-  /*
-   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
-   */
-  constructor(t, a) {
-    super(t, a);
-    const s = new google.maps.Marker();
-    y(i.propTypes, p, this.props, s);
-    const g = this.context[c];
-    g ? g.addMarker(s, !!this.props.noRedraw) : s.setMap(this.context[u]), this.state = {
-      [o]: s
+import { jsx as u } from "react/jsx-runtime";
+import { P as n } from "../index-e8d4cd90.js";
+import b, { useContext as m, useRef as k, useState as M, useEffect as c } from "react";
+import { construct as y, componentDidUpdate as D, componentDidMount as x } from "../utils/MapChildHelper.js";
+import { M as _, b as v } from "../constants-e344191b.js";
+import { MapContext as R } from "../withGoogleMap.js";
+function f(e) {
+  const { children: a, noRedraw: l, ...I } = e, r = m(R) || {}, s = r[_], i = r[v], h = k(null), [o, C] = M(null);
+  c(() => {
+    const t = new google.maps.Marker();
+    return y(f.propTypes, g, e, t), i ? i.addMarker(t, !!l) : s && t.setMap(s), h.current = t, C(t), () => {
+      i && i.removeMarker(t, !!l), t.setMap(null);
     };
-  }
-  getChildContext() {
-    return {
-      [l]: this.context[l] || this.state[o]
-    };
-  }
-  componentDidMount() {
-    k(this, this.state[o], h);
-  }
-  componentDidUpdate(t) {
-    D(
-      this,
-      this.state[o],
-      h,
-      p,
-      t
+  }, []), c(() => {
+    o && D(
+      { props: e },
+      o,
+      d,
+      g,
+      {}
+      // prevProps not tracked in this migration
     );
-  }
-  componentWillUnmount() {
-    x(this);
-    const t = this.state[o];
-    if (t) {
-      const a = this.context[c];
-      a && a.removeMarker(t, !!this.props.noRedraw), t.setMap(null);
-    }
-  }
-  render() {
-    const { children: t } = this.props;
-    return /* @__PURE__ */ f("div", { children: t });
-  }
-  /**
-   *
-   * @type Animation
-   * @public
-   */
-  getAnimation() {
-    return this.state[o].getAnimation();
-  }
-  /**
-   *
-   * @type boolean
-   * @public
-   */
-  getClickable() {
-    return this.state[o].getClickable();
-  }
-  /**
-   *
-   * @type string
-   * @public
-   */
-  getCursor() {
-    return this.state[o].getCursor();
-  }
-  /**
-   *
-   * @type boolean
-   * @public
-   */
-  getDraggable() {
-    return this.state[o].getDraggable();
-  }
-  /**
-   *
-   * @type string|Icon|Symbol
-   * @public
-   */
-  getIcon() {
-    return this.state[o].getIcon();
-  }
-  /**
-   *
-   * @type MarkerLabel
-   * @public
-   */
-  getLabel() {
-    return this.state[o].getLabel();
-  }
-  /**
-   *
-   * @type number
-   * @public
-   */
-  getOpacity() {
-    return this.state[o].getOpacity();
-  }
-  /**
-   *
-   * @type MarkerPlace
-   * @public
-   */
-  getPlace() {
-    return this.state[o].getPlace();
-  }
-  /**
-   *
-   * @type LatLng
-   * @public
-   */
-  getPosition() {
-    return this.state[o].getPosition();
-  }
-  /**
-   *
-   * @type MarkerShape
-   * @public
-   */
-  getShape() {
-    return this.state[o].getShape();
-  }
-  /**
-   *
-   * @type string
-   * @public
-   */
-  getTitle() {
-    return this.state[o].getTitle();
-  }
-  /**
-   *
-   * @type boolean
-   * @public
-   */
-  getVisible() {
-    return this.state[o].getVisible();
-  }
-  /**
-   *
-   * @type number
-   * @public
-   */
-  getZIndex() {
-    return this.state[o].getZIndex();
-  }
-};
-r(i, "propTypes", {
+  }, [e, o]), c(() => {
+    o && x({ props: e }, o, d);
+  }, [o]);
+  const p = b.createContext(null);
+  return /* @__PURE__ */ u(p.Provider, { value: o, children: /* @__PURE__ */ u("div", { children: a }) });
+}
+f.propTypes = {
   /**
    * For the 2nd argument of `MarkerCluster#addMarker`
    * @see https://github.com/mikesaidani/marker-clusterer-plus
    */
-  noRedraw: e.bool,
+  noRedraw: n.bool,
   /**
    * @type Animation
    */
-  defaultAnimation: e.any,
+  defaultAnimation: n.any,
   /**
    * @type boolean
    */
-  defaultClickable: e.bool,
+  defaultClickable: n.bool,
   /**
    * @type string
    */
-  defaultCursor: e.string,
+  defaultCursor: n.string,
   /**
    * @type boolean
    */
-  defaultDraggable: e.bool,
+  defaultDraggable: n.bool,
   /**
    * @type string|Icon|Symbol
    */
-  defaultIcon: e.any,
+  defaultIcon: n.any,
   /**
    * @type string|MarkerLabel
    */
-  defaultLabel: e.any,
+  defaultLabel: n.any,
   /**
    * @type number
    */
-  defaultOpacity: e.number,
+  defaultOpacity: n.number,
   /**
    * @type MarkerOptions
    */
-  defaultOptions: e.any,
+  defaultOptions: n.any,
   /**
    * @type MarkerPlace
    */
-  defaultPlace: e.any,
+  defaultPlace: n.any,
   /**
    * @type LatLng|LatLngLiteral
    */
-  defaultPosition: e.any,
+  defaultPosition: n.any,
   /**
    * @type MarkerShape
    */
-  defaultShape: e.any,
+  defaultShape: n.any,
   /**
    * @type string
    */
-  defaultTitle: e.string,
+  defaultTitle: n.string,
   /**
    * @type boolean
    */
-  defaultVisible: e.bool,
+  defaultVisible: n.bool,
   /**
    * @type number
    */
-  defaultZIndex: e.number,
+  defaultZIndex: n.number,
   /**
    * @type Animation
    */
-  animation: e.any,
+  animation: n.any,
   /**
    * @type boolean
    */
-  clickable: e.bool,
+  clickable: n.bool,
   /**
    * @type string
    */
-  cursor: e.string,
+  cursor: n.string,
   /**
    * @type boolean
    */
-  draggable: e.bool,
+  draggable: n.bool,
   /**
    * @type string|Icon|Symbol
    */
-  icon: e.any,
+  icon: n.any,
   /**
    * @type string|MarkerLabel
    */
-  label: e.any,
+  label: n.any,
   /**
    * @type number
    */
-  opacity: e.number,
+  opacity: n.number,
   /**
    * @type MarkerOptions
    */
-  options: e.any,
+  options: n.any,
   /**
    * @type MarkerPlace
    */
-  place: e.any,
+  place: n.any,
   /**
    * @type LatLng|LatLngLiteral
    */
-  position: e.any,
+  position: n.any,
   /**
    * @type MarkerShape
    */
-  shape: e.any,
+  shape: n.any,
   /**
    * @type string
    */
-  title: e.string,
+  title: n.string,
   /**
    * @type boolean
    */
-  visible: e.bool,
+  visible: n.bool,
   /**
    * @type number
    */
-  zIndex: e.number,
+  zIndex: n.number,
   /**
    * function
    */
-  onDblClick: e.func,
+  onDblClick: n.func,
   /**
    * function
    */
-  onDragEnd: e.func,
+  onDragEnd: n.func,
   /**
    * function
    */
-  onDragStart: e.func,
+  onDragStart: n.func,
   /**
    * function
    */
-  onMouseDown: e.func,
+  onMouseDown: n.func,
   /**
    * function
    */
-  onMouseOut: e.func,
+  onMouseOut: n.func,
   /**
    * function
    */
-  onMouseOver: e.func,
+  onMouseOver: n.func,
   /**
    * function
    */
-  onMouseUp: e.func,
+  onMouseUp: n.func,
   /**
    * function
    */
-  onRightClick: e.func,
+  onRightClick: n.func,
   /**
    * function
    */
-  onAnimationChanged: e.func,
+  onAnimationChanged: n.func,
   /**
    * function
    */
-  onClick: e.func,
+  onClick: n.func,
   /**
    * function
    */
-  onClickableChanged: e.func,
+  onClickableChanged: n.func,
   /**
    * function
    */
-  onCursorChanged: e.func,
+  onCursorChanged: n.func,
   /**
    * function
    */
-  onDrag: e.func,
+  onDrag: n.func,
   /**
    * function
    */
-  onDraggableChanged: e.func,
+  onDraggableChanged: n.func,
   /**
    * function
    */
-  onFlatChanged: e.func,
+  onFlatChanged: n.func,
   /**
    * function
    */
-  onIconChanged: e.func,
+  onIconChanged: n.func,
   /**
    * function
    */
-  onPositionChanged: e.func,
+  onPositionChanged: n.func,
   /**
    * function
    */
-  onShapeChanged: e.func,
+  onShapeChanged: n.func,
   /**
    * function
    */
-  onTitleChanged: e.func,
+  onTitleChanged: n.func,
   /**
    * function
    */
-  onVisibleChanged: e.func,
+  onVisibleChanged: n.func,
   /**
    * function
    */
-  onZindexChanged: e.func
-}), r(i, "contextTypes", {
-  [u]: e.object,
-  [c]: e.object
-}), r(i, "childContextTypes", {
-  [l]: e.object
-});
-let d = i;
-const h = {
+  onZindexChanged: n.func
+};
+const d = {
   onDblClick: "dblclick",
   onDragEnd: "dragend",
   onDragStart: "dragstart",
@@ -384,51 +251,51 @@ const h = {
   onTitleChanged: "title_changed",
   onVisibleChanged: "visible_changed",
   onZindexChanged: "zindex_changed"
-}, p = {
-  animation(n, t) {
-    n.setAnimation(t);
+}, g = {
+  animation(e, a) {
+    e.setAnimation(a);
   },
-  clickable(n, t) {
-    n.setClickable(t);
+  clickable(e, a) {
+    e.setClickable(a);
   },
-  cursor(n, t) {
-    n.setCursor(t);
+  cursor(e, a) {
+    e.setCursor(a);
   },
-  draggable(n, t) {
-    n.setDraggable(t);
+  draggable(e, a) {
+    e.setDraggable(a);
   },
-  icon(n, t) {
-    n.setIcon(t);
+  icon(e, a) {
+    e.setIcon(a);
   },
-  label(n, t) {
-    n.setLabel(t);
+  label(e, a) {
+    e.setLabel(a);
   },
-  opacity(n, t) {
-    n.setOpacity(t);
+  opacity(e, a) {
+    e.setOpacity(a);
   },
-  options(n, t) {
-    n.setOptions(t);
+  options(e, a) {
+    e.setOptions(a);
   },
-  place(n, t) {
-    n.setPlace(t);
+  place(e, a) {
+    e.setPlace(a);
   },
-  position(n, t) {
-    n.setPosition(t);
+  position(e, a) {
+    e.setPosition(a);
   },
-  shape(n, t) {
-    n.setShape(t);
+  shape(e, a) {
+    e.setShape(a);
   },
-  title(n, t) {
-    n.setTitle(t);
+  title(e, a) {
+    e.setTitle(a);
   },
-  visible(n, t) {
-    n.setVisible(t);
+  visible(e, a) {
+    e.setVisible(a);
   },
-  zIndex(n, t) {
-    n.setZIndex(t);
+  zIndex(e, a) {
+    e.setZIndex(a);
   }
 };
 export {
-  d as Marker,
-  d as default
+  f as Marker,
+  f as default
 };

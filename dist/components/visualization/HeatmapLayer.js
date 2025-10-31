@@ -5,7 +5,7 @@ import { i as h } from "../../browser-fe3e0b83.js";
 import f from "react";
 import { P as s } from "../../index-e8d4cd90.js";
 import { construct as y, componentDidMount as D, componentDidUpdate as M, componentWillUnmount as g } from "../../utils/MapChildHelper.js";
-import { M as r, H as e } from "../../constants-4d431d90.js";
+import { M as r, H as e } from "../../constants-e344191b.js";
 const n = class n extends f.PureComponent {
   /*
    * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#HeatmapLayer

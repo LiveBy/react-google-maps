@@ -1,19 +1,19 @@
 var m = Object.defineProperty;
-var f = (n, t, o) => t in n ? m(n, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : n[t] = o;
-var l = (n, t, o) => (f(n, typeof t != "symbol" ? t + "" : t, o), o);
-import { m as C } from "../../markerwithlabel-72a56a5b.js";
+var C = (n, t, o) => t in n ? m(n, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : n[t] = o;
+var l = (n, t, o) => (C(n, typeof t != "symbol" ? t + "" : t, o), o);
+import { m as f } from "../../markerwithlabel-72a56a5b.js";
 import { P as e } from "../../index-e8d4cd90.js";
 import g from "react";
 import { R as y } from "../../index-87ad0b90.js";
 import { construct as k, componentDidMount as D, componentDidUpdate as M, componentWillUnmount as P } from "../../utils/MapChildHelper.js";
-import { M as u, b as r, f as a } from "../../constants-4d431d90.js";
+import { M as u, b as r, e as a } from "../../constants-e344191b.js";
 const i = class i extends g.PureComponent {
   /*
    * @see https://cdn.rawgit.com/googlemaps/v3-utility-library/master/markerwithlabel/src/markerwithlabel.js
    */
   constructor(t, o) {
     super(t, o);
-    const p = C(google.maps), s = new p();
+    const p = f(google.maps), s = new p();
     k(
       i.propTypes,
       b,

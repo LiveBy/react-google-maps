@@ -1,271 +1,267 @@
-import React from "react"
-import PropTypes from "prop-types"
 import MarkerClustererPlus from "marker-clusterer-plus"
+import PropTypes from "prop-types"
+import React, { useContext, useEffect, useRef, useState } from "react"
 
 import {
-  construct,
   componentDidMount,
   componentDidUpdate,
   componentWillUnmount,
+  construct,
 } from "../../utils/MapChildHelper"
 
-import { MAP, ANCHOR, MARKER_CLUSTERER } from "../../constants"
+import { ANCHOR, MAP, MARKER_CLUSTERER } from "../../constants"
+import { MapContext } from "../../withGoogleMap"
 
 /**
  * A wrapper around `MarkerClusterer`
  *
  * @see https://github.com/mahnunchik/markerclustererplus/blob/master/docs/reference.html
  */
-export class MarkerClusterer extends React.PureComponent {
-  static propTypes = {
-    /**
-     * @type boolean
-     */
-    defaultAverageCenter: PropTypes.bool,
+// Modern React 19+ functional MarkerClusterer component
+export function MarkerClusterer(props) {
+  const { children, ...rest } = props
+  const mapContext = useContext(MapContext) || {}
+  const map = mapContext[MAP]
 
-    /**
-     * @type number
-     */
-    defaultBatchSizeIE: PropTypes.number,
+  const markerClustererRef = useRef(null)
+  const [markerClustererInstance, setMarkerClustererInstance] = useState(null)
 
-    /**
-     * @type number
-     */
-    defaultBatchSize: PropTypes.number,
-
-    /**
-     * @type function
-     */
-    defaultCalculator: PropTypes.func,
-
-    /**
-     * @type string
-     */
-    defaultClusterClass: PropTypes.string,
-
-    /**
-     * @type boolean
-     */
-    defaultEnableRetinaIcons: PropTypes.bool,
-
-    /**
-     * @type number
-     */
-    defaultGridSize: PropTypes.number,
-
-    /**
-     * @type boolean
-     */
-    defaultIgnoreHidden: PropTypes.bool,
-
-    /**
-     * @type string
-     */
-    defaultImageExtension: PropTypes.string,
-
-    /**
-     * @type string
-     */
-    defaultImagePath: PropTypes.string,
-
-    /**
-     * @type Array
-     */
-    defaultImageSizes: PropTypes.array,
-
-    /**
-     * @type number
-     */
-    defaultMaxZoom: PropTypes.number,
-
-    /**
-     * @type number
-     */
-    defaultMinimumClusterSize: PropTypes.number,
-
-    /**
-     * @type Array
-     */
-    defaultStyles: PropTypes.array,
-
-    /**
-     * @type string
-     */
-    defaultTitle: PropTypes.string,
-
-    /**
-     * @type boolean
-     */
-    defaultZoomOnClick: PropTypes.bool,
-
-    /**
-     * @type boolean
-     */
-    averageCenter: PropTypes.bool,
-
-    /**
-     * @type number
-     */
-    batchSizeIE: PropTypes.number,
-
-    /**
-     * @type number
-     */
-    batchSize: PropTypes.number,
-
-    /**
-     * @type function
-     */
-    calculator: PropTypes.func,
-
-    /**
-     * @type string
-     */
-    clusterClass: PropTypes.string,
-
-    /**
-     * @type boolean
-     */
-    enableRetinaIcons: PropTypes.bool,
-
-    /**
-     * @type number
-     */
-    gridSize: PropTypes.number,
-
-    /**
-     * @type boolean
-     */
-    ignoreHidden: PropTypes.bool,
-
-    /**
-     * @type string
-     */
-    imageExtension: PropTypes.string,
-
-    /**
-     * @type string
-     */
-    imagePath: PropTypes.string,
-
-    /**
-     * @type Array
-     */
-    imageSizes: PropTypes.array,
-
-    /**
-     * @type number
-     */
-    maxZoom: PropTypes.number,
-
-    /**
-     * @type number
-     */
-    minimumClusterSize: PropTypes.number,
-
-    /**
-     * @type Array
-     */
-    styles: PropTypes.array,
-
-    /**
-     * @type string
-     */
-    title: PropTypes.string,
-
-    /**
-     * @type boolean
-     */
-    zoomOnClick: PropTypes.bool,
-
-    /**
-     * function
-     */
-    onClick: PropTypes.func,
-
-    /**
-     * function
-     */
-    onClusteringBegin: PropTypes.func,
-
-    /**
-     * function
-     */
-    onClusteringEnd: PropTypes.func,
-
-    /**
-     * function
-     */
-    onMouseOut: PropTypes.func,
-
-    /**
-     * function
-     */
-    onMouseOver: PropTypes.func,
-  }
-
-  static contextTypes = {
-    [MAP]: PropTypes.object,
-  }
-
-  static childContextTypes = {
-    [ANCHOR]: PropTypes.object,
-    [MARKER_CLUSTERER]: PropTypes.object,
-  }
-
-  /*
-   * @see https://github.com/mahnunchik/markerclustererplus/blob/master/docs/reference.html
-   */
-  constructor(props, context) {
-    super(props, context)
+  // Create MarkerClusterer on mount
+  useEffect(() => {
     const markerClusterer = new MarkerClustererPlus()
-    construct(
-      MarkerClusterer.propTypes,
-      updaterMap,
-      this.props,
-      markerClusterer
-    )
-    markerClusterer.setMap(this.context[MAP])
-    this.state = {
-      [MARKER_CLUSTERER]: markerClusterer,
-    }
-  }
-
-  getChildContext() {
-    const markerClusterer = this.state[MARKER_CLUSTERER]
-    return {
-      [ANCHOR]: markerClusterer,
-      [MARKER_CLUSTERER]: markerClusterer,
-    }
-  }
-
-  componentDidMount() {
-    componentDidMount(this, this.state[MARKER_CLUSTERER], eventMap)
-  }
-
-  componentDidUpdate(prevProps) {
-    componentDidUpdate(
-      this,
-      this.state[MARKER_CLUSTERER],
-      eventMap,
-      updaterMap,
-      prevProps
-    )
-    this.state[MARKER_CLUSTERER].repaint()
-  }
-
-  componentWillUnmount() {
-    componentWillUnmount(this)
-    const markerClusterer = this.state[MARKER_CLUSTERER]
-    if (markerClusterer) {
+    construct(MarkerClusterer.propTypes, updaterMap, props, markerClusterer)
+    markerClusterer.setMap(map)
+    markerClustererRef.current = markerClusterer
+    setMarkerClustererInstance(markerClusterer)
+    return () => {
       markerClusterer.setMap(null)
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  render() {
-    const { children } = this.props
-    return <div>{children}</div>
-  }
+  // Update MarkerClusterer on prop changes
+  useEffect(() => {
+    if (markerClustererInstance) {
+      componentDidUpdate(
+        { props },
+        markerClustererInstance,
+        eventMap,
+        updaterMap,
+        {} // prevProps not tracked in this migration
+      )
+      markerClustererInstance.repaint()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props, markerClustererInstance])
+
+  // Mount events
+  useEffect(() => {
+    if (markerClustererInstance) {
+      componentDidMount({ props }, markerClustererInstance, eventMap)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [markerClustererInstance])
+
+  // Provide ANCHOR and MARKER_CLUSTERER context for children
+  const ClustererContext = React.createContext({})
+
+  return (
+    <ClustererContext.Provider
+      value={{
+        [ANCHOR]: markerClustererInstance,
+        [MARKER_CLUSTERER]: markerClustererInstance,
+      }}
+    >
+      <div>{children}</div>
+    </ClustererContext.Provider>
+  )
+}
+
+MarkerClusterer.propTypes = {
+  /**
+   * @type boolean
+   */
+  defaultAverageCenter: PropTypes.bool,
+
+  /**
+   * @type number
+   */
+  defaultBatchSizeIE: PropTypes.number,
+
+  /**
+   * @type number
+   */
+  defaultBatchSize: PropTypes.number,
+
+  /**
+   * @type function
+   */
+  defaultCalculator: PropTypes.func,
+
+  /**
+   * @type string
+   */
+  defaultClusterClass: PropTypes.string,
+
+  /**
+   * @type boolean
+   */
+  defaultEnableRetinaIcons: PropTypes.bool,
+
+  /**
+   * @type number
+   */
+  defaultGridSize: PropTypes.number,
+
+  /**
+   * @type boolean
+   */
+  defaultIgnoreHidden: PropTypes.bool,
+
+  /**
+   * @type string
+   */
+  defaultImageExtension: PropTypes.string,
+
+  /**
+   * @type string
+   */
+  defaultImagePath: PropTypes.string,
+
+  /**
+   * @type Array
+   */
+  defaultImageSizes: PropTypes.array,
+
+  /**
+   * @type number
+   */
+  defaultMaxZoom: PropTypes.number,
+
+  /**
+   * @type number
+   */
+  defaultMinimumClusterSize: PropTypes.number,
+
+  /**
+   * @type Array
+   */
+  defaultStyles: PropTypes.array,
+
+  /**
+   * @type string
+   */
+  defaultTitle: PropTypes.string,
+
+  /**
+   * @type boolean
+   */
+  defaultZoomOnClick: PropTypes.bool,
+
+  /**
+   * @type boolean
+   */
+  averageCenter: PropTypes.bool,
+
+  /**
+   * @type number
+   */
+  batchSizeIE: PropTypes.number,
+
+  /**
+   * @type number
+   */
+  batchSize: PropTypes.number,
+
+  /**
+   * @type function
+   */
+  calculator: PropTypes.func,
+
+  /**
+   * @type string
+   */
+  clusterClass: PropTypes.string,
+
+  /**
+   * @type boolean
+   */
+  enableRetinaIcons: PropTypes.bool,
+
+  /**
+   * @type number
+   */
+  gridSize: PropTypes.number,
+
+  /**
+   * @type boolean
+   */
+  ignoreHidden: PropTypes.bool,
+
+  /**
+   * @type string
+   */
+  imageExtension: PropTypes.string,
+
+  /**
+   * @type string
+   */
+  imagePath: PropTypes.string,
+
+  /**
+   * @type Array
+   */
+  imageSizes: PropTypes.array,
+
+  /**
+   * @type number
+   */
+  maxZoom: PropTypes.number,
+
+  /**
+   * @type number
+   */
+  minimumClusterSize: PropTypes.number,
+
+  /**
+   * @type Array
+   */
+  styles: PropTypes.array,
+
+  /**
+   * @type string
+   */
+  title: PropTypes.string,
+
+  /**
+   * @type boolean
+   */
+  zoomOnClick: PropTypes.bool,
+
+  /**
+   * function
+   */
+  onClick: PropTypes.func,
+
+  /**
+   * function
+   */
+  onClusteringBegin: PropTypes.func,
+
+  /**
+   * function
+   */
+  onClusteringEnd: PropTypes.func,
+
+  /**
+   * function
+   */
+  onMouseOut: PropTypes.func,
+
+  /**
+   * function
+   */
+  onMouseOver: PropTypes.func,
 }
 
 export default MarkerClusterer

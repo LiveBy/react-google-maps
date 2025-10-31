@@ -1,179 +1,49 @@
-import { default as React } from 'react';
 import { default as PropTypes } from 'prop-types';
 /**
  * A wrapper around `MarkerClusterer`
  *
  * @see https://github.com/mahnunchik/markerclustererplus/blob/master/docs/reference.html
  */
-export class MarkerClusterer extends React.PureComponent<any, any, any> {
-    static propTypes: {
-        /**
-         * @type boolean
-         */
-        defaultAverageCenter: boolean;
-        /**
-         * @type number
-         */
-        defaultBatchSizeIE: number;
-        /**
-         * @type number
-         */
-        defaultBatchSize: number;
-        /**
-         * @type function
-         */
-        defaultCalculator: Function;
-        /**
-         * @type string
-         */
-        defaultClusterClass: string;
-        /**
-         * @type boolean
-         */
-        defaultEnableRetinaIcons: boolean;
-        /**
-         * @type number
-         */
-        defaultGridSize: number;
-        /**
-         * @type boolean
-         */
-        defaultIgnoreHidden: boolean;
-        /**
-         * @type string
-         */
-        defaultImageExtension: string;
-        /**
-         * @type string
-         */
-        defaultImagePath: string;
-        /**
-         * @type Array
-         */
-        defaultImageSizes: any[];
-        /**
-         * @type number
-         */
-        defaultMaxZoom: number;
-        /**
-         * @type number
-         */
-        defaultMinimumClusterSize: number;
-        /**
-         * @type Array
-         */
-        defaultStyles: any[];
-        /**
-         * @type string
-         */
-        defaultTitle: string;
-        /**
-         * @type boolean
-         */
-        defaultZoomOnClick: boolean;
-        /**
-         * @type boolean
-         */
-        averageCenter: boolean;
-        /**
-         * @type number
-         */
-        batchSizeIE: number;
-        /**
-         * @type number
-         */
-        batchSize: number;
-        /**
-         * @type function
-         */
-        calculator: Function;
-        /**
-         * @type string
-         */
-        clusterClass: string;
-        /**
-         * @type boolean
-         */
-        enableRetinaIcons: boolean;
-        /**
-         * @type number
-         */
-        gridSize: number;
-        /**
-         * @type boolean
-         */
-        ignoreHidden: boolean;
-        /**
-         * @type string
-         */
-        imageExtension: string;
-        /**
-         * @type string
-         */
-        imagePath: string;
-        /**
-         * @type Array
-         */
-        imageSizes: any[];
-        /**
-         * @type number
-         */
-        maxZoom: number;
-        /**
-         * @type number
-         */
-        minimumClusterSize: number;
-        /**
-         * @type Array
-         */
-        styles: any[];
-        /**
-         * @type string
-         */
-        title: string;
-        /**
-         * @type boolean
-         */
-        zoomOnClick: boolean;
-        /**
-         * function
-         */
-        onClick: PropTypes.Requireable<(...args: any[]) => any>;
-        /**
-         * function
-         */
-        onClusteringBegin: PropTypes.Requireable<(...args: any[]) => any>;
-        /**
-         * function
-         */
-        onClusteringEnd: PropTypes.Requireable<(...args: any[]) => any>;
-        /**
-         * function
-         */
-        onMouseOut: PropTypes.Requireable<(...args: any[]) => any>;
-        /**
-         * function
-         */
-        onMouseOver: PropTypes.Requireable<(...args: any[]) => any>;
-    };
-    static contextTypes: {
-        __SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: PropTypes.Requireable<object>;
-    };
-    static childContextTypes: {
-        __SECRET_ANCHOR_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: PropTypes.Requireable<object>;
-        __SECRET_MARKER_CLUSTERER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: PropTypes.Requireable<object>;
-    };
-    constructor(props: any, context: any);
-    state: {
-        __SECRET_MARKER_CLUSTERER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: any;
-    };
-    getChildContext(): {
-        __SECRET_ANCHOR_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: any;
-        __SECRET_MARKER_CLUSTERER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: any;
-    };
-    componentDidMount(): void;
-    componentDidUpdate(prevProps: any): void;
-    componentWillUnmount(): void;
-    render(): import("react/jsx-runtime").JSX.Element;
+export function MarkerClusterer(props: any): import("react/jsx-runtime").JSX.Element;
+export namespace MarkerClusterer {
+    namespace propTypes {
+        let defaultAverageCenter: boolean;
+        let defaultBatchSizeIE: number;
+        let defaultBatchSize: number;
+        let defaultCalculator: Function;
+        let defaultClusterClass: string;
+        let defaultEnableRetinaIcons: boolean;
+        let defaultGridSize: number;
+        let defaultIgnoreHidden: boolean;
+        let defaultImageExtension: string;
+        let defaultImagePath: string;
+        let defaultImageSizes: any[];
+        let defaultMaxZoom: number;
+        let defaultMinimumClusterSize: number;
+        let defaultStyles: any[];
+        let defaultTitle: string;
+        let defaultZoomOnClick: boolean;
+        let averageCenter: boolean;
+        let batchSizeIE: number;
+        let batchSize: number;
+        let calculator: Function;
+        let clusterClass: string;
+        let enableRetinaIcons: boolean;
+        let gridSize: number;
+        let ignoreHidden: boolean;
+        let imageExtension: string;
+        let imagePath: string;
+        let imageSizes: any[];
+        let maxZoom: number;
+        let minimumClusterSize: number;
+        let styles: any[];
+        let title: string;
+        let zoomOnClick: boolean;
+        let onClick: PropTypes.Requireable<(...args: any[]) => any>;
+        let onClusteringBegin: PropTypes.Requireable<(...args: any[]) => any>;
+        let onClusteringEnd: PropTypes.Requireable<(...args: any[]) => any>;
+        let onMouseOut: PropTypes.Requireable<(...args: any[]) => any>;
+        let onMouseOver: PropTypes.Requireable<(...args: any[]) => any>;
+    }
 }
 export default MarkerClusterer;

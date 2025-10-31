@@ -1,15 +1,17 @@
 /* global google */
-import React from "react"
+
 import PropTypes from "prop-types"
+import React, { useContext, useEffect, useRef, useState } from "react"
 
 import {
-  construct,
   componentDidMount,
   componentDidUpdate,
   componentWillUnmount,
+  construct,
 } from "../utils/MapChildHelper"
 
-import { MAP, MARKER, ANCHOR, MARKER_CLUSTERER } from "../constants"
+import { ANCHOR, MAP, MARKER, MARKER_CLUSTERER } from "../constants"
+import { MapContext } from "../withGoogleMap"
 
 export const __jscodeshiftPlaceholder__ = `{
   "eventMapOverrides": {
@@ -30,79 +32,78 @@ export const __jscodeshiftPlaceholder__ = `{
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
  */
-export class Marker extends React.PureComponent {
-  static propTypes = {
-    __jscodeshiftPlaceholder__: null,
-    /**
-     * For the 2nd argument of `MarkerCluster#addMarker`
-     * @see https://github.com/mikesaidani/marker-clusterer-plus
-     */
-    noRedraw: PropTypes.bool,
-  }
 
-  static contextTypes = {
-    [MAP]: PropTypes.object,
-    [MARKER_CLUSTERER]: PropTypes.object,
-  }
+// Modern React 19+ functional Marker component
+export function Marker(props) {
+  const { children, noRedraw, ...rest } = props
 
-  static childContextTypes = {
-    [ANCHOR]: PropTypes.object,
-  }
+  // Get map and markerClusterer from context
+  const mapContext = useContext(MapContext) || {}
+  const map = mapContext[MAP]
+  const markerClusterer = mapContext[MARKER_CLUSTERER]
 
-  /*
-   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
-   */
-  constructor(props, context) {
-    super(props, context)
+  const markerRef = useRef(null)
+  const [markerInstance, setMarkerInstance] = useState(null)
+
+  // Create marker on mount
+  useEffect(() => {
     const marker = new google.maps.Marker()
-    construct(Marker.propTypes, updaterMap, this.props, marker)
-    const markerClusterer = this.context[MARKER_CLUSTERER]
+    construct(Marker.propTypes, updaterMap, props, marker)
     if (markerClusterer) {
-      markerClusterer.addMarker(marker, !!this.props.noRedraw)
-    } else {
-      marker.setMap(this.context[MAP])
+      markerClusterer.addMarker(marker, !!noRedraw)
+    } else if (map) {
+      marker.setMap(map)
     }
-    this.state = {
-      [MARKER]: marker,
-    }
-  }
-
-  getChildContext() {
-    return {
-      [ANCHOR]: this.context[ANCHOR] || this.state[MARKER],
-    }
-  }
-
-  componentDidMount() {
-    componentDidMount(this, this.state[MARKER], eventMap)
-  }
-
-  componentDidUpdate(prevProps) {
-    componentDidUpdate(
-      this,
-      this.state[MARKER],
-      eventMap,
-      updaterMap,
-      prevProps
-    )
-  }
-
-  componentWillUnmount() {
-    componentWillUnmount(this)
-    const marker = this.state[MARKER]
-    if (marker) {
-      const markerClusterer = this.context[MARKER_CLUSTERER]
+    markerRef.current = marker
+    setMarkerInstance(marker)
+    return () => {
       if (markerClusterer) {
-        markerClusterer.removeMarker(marker, !!this.props.noRedraw)
+        markerClusterer.removeMarker(marker, !!noRedraw)
       }
       marker.setMap(null)
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  render() {
-    const { children } = this.props
-    return <div>{children}</div>
-  }
+  // Update marker on prop changes
+  useEffect(() => {
+    if (markerInstance) {
+      componentDidUpdate(
+        { props },
+        markerInstance,
+        eventMap,
+        updaterMap,
+        {} // prevProps not tracked in this migration
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props, markerInstance])
+
+  // Mount events
+  useEffect(() => {
+    if (markerInstance) {
+      componentDidMount({ props }, markerInstance, eventMap)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [markerInstance])
+
+  // Provide ANCHOR context for children
+  const AnchorContext = React.createContext(null)
+
+  return (
+    <AnchorContext.Provider value={markerInstance}>
+      <div>{children}</div>
+    </AnchorContext.Provider>
+  )
+}
+
+Marker.propTypes = {
+  __jscodeshiftPlaceholder__: null,
+  /**
+   * For the 2nd argument of `MarkerCluster#addMarker`
+   * @see https://github.com/mikesaidani/marker-clusterer-plus
+   */
+  noRedraw: PropTypes.bool,
 }
 
 export default Marker

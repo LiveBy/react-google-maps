@@ -1,12 +1,10 @@
-var M = Object.defineProperty;
-var R = (s, t, o) => t in s ? M(s, t, { enumerable: !0, configurable: !0, writable: !0, value: o }) : s[t] = o;
-var i = (s, t, o) => (R(s, typeof t != "symbol" ? t + "" : t, o), o);
-import { jsx as f } from "react/jsx-runtime";
-import C from "react";
-import { P as c } from "../index-e8d4cd90.js";
-import { construct as g, componentDidMount as x, componentDidUpdate as D, componentWillUnmount as b } from "../utils/MapChildHelper.js";
-import { M as m, b as p, A as a, d as n } from "../constants-4d431d90.js";
-const P = `{
+import { jsx as u } from "react/jsx-runtime";
+import { P as k } from "../index-e8d4cd90.js";
+import R, { useContext as h, useRef as C, useState as g, useEffect as n } from "react";
+import { construct as v, componentDidUpdate as _, componentDidMount as x } from "../utils/MapChildHelper.js";
+import { M as D, b as E } from "../constants-e344191b.js";
+import { MapContext as P } from "../withGoogleMap.js";
+const O = `{
   "eventMapOverrides": {
     "onDblClick": "dblclick",
     "onDragEnd": "dragend",
@@ -18,66 +16,40 @@ const P = `{
     "onRightClick": "rightclick"
   },
   "getInstanceFromComponent": "this.state[MARKER]"
-}`, e = class e extends C.PureComponent {
-  /*
-   * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
-   */
-  constructor(t, o) {
-    super(t, o);
-    const r = new google.maps.Marker();
-    g(e.propTypes, h, this.props, r);
-    const d = this.context[p];
-    d ? d.addMarker(r, !!this.props.noRedraw) : r.setMap(this.context[m]), this.state = {
-      [n]: r
+}`;
+function m(t) {
+  const { children: d, noRedraw: s, ...w } = t, a = h(P) || {}, c = a[D], r = a[E], p = C(null), [e, M] = g(null);
+  n(() => {
+    const o = new google.maps.Marker();
+    return v(m.propTypes, l, t, o), r ? r.addMarker(o, !!s) : c && o.setMap(c), p.current = o, M(o), () => {
+      r && r.removeMarker(o, !!s), o.setMap(null);
     };
-  }
-  getChildContext() {
-    return {
-      [a]: this.context[a] || this.state[n]
-    };
-  }
-  componentDidMount() {
-    x(this, this.state[n], u);
-  }
-  componentDidUpdate(t) {
-    D(
-      this,
-      this.state[n],
-      u,
-      h,
-      t
+  }, []), n(() => {
+    e && _(
+      { props: t },
+      e,
+      i,
+      l,
+      {}
+      // prevProps not tracked in this migration
     );
-  }
-  componentWillUnmount() {
-    b(this);
-    const t = this.state[n];
-    if (t) {
-      const o = this.context[p];
-      o && o.removeMarker(t, !!this.props.noRedraw), t.setMap(null);
-    }
-  }
-  render() {
-    const { children: t } = this.props;
-    return /* @__PURE__ */ f("div", { children: t });
-  }
-};
-i(e, "propTypes", {
+  }, [t, e]), n(() => {
+    e && x({ props: t }, e, i);
+  }, [e]);
+  const f = R.createContext(null);
+  return /* @__PURE__ */ u(f.Provider, { value: e, children: /* @__PURE__ */ u("div", { children: d }) });
+}
+m.propTypes = {
   __jscodeshiftPlaceholder__: null,
   /**
    * For the 2nd argument of `MarkerCluster#addMarker`
    * @see https://github.com/mikesaidani/marker-clusterer-plus
    */
-  noRedraw: c.bool
-}), i(e, "contextTypes", {
-  [m]: c.object,
-  [p]: c.object
-}), i(e, "childContextTypes", {
-  [a]: c.object
-});
-let l = e;
-const u = {}, h = {};
+  noRedraw: k.bool
+};
+const i = {}, l = {};
 export {
-  l as Marker,
-  P as __jscodeshiftPlaceholder__,
-  l as default
+  m as Marker,
+  O as __jscodeshiftPlaceholder__,
+  m as default
 };

@@ -1,15 +1,17 @@
 import invariant from "invariant"
-import React from "react"
+
 import PropTypes from "prop-types"
+import React, { useContext, useEffect } from "react"
 
 import {
-  construct,
   componentDidMount,
   componentDidUpdate,
   componentWillUnmount,
+  construct,
 } from "../utils/MapChildHelper"
 
 import { MAP } from "../constants"
+import { MapContext } from "../withGoogleMap"
 
 export const __jscodeshiftPlaceholder__ = `{
   "eventMapOverrides": {
@@ -23,65 +25,59 @@ export const __jscodeshiftPlaceholder__ = `{
  *
  * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanorama
  */
-export class StreetViewPanorama extends React.PureComponent {
-  static propTypes = {
-    __jscodeshiftPlaceholder__: null,
-  }
 
-  static contextTypes = {
-    [MAP]: PropTypes.object,
-  }
+// Modern React 19+ functional StreetViewPanorama component
+export function StreetViewPanorama(props) {
+  const { children, ...rest } = props
+  const mapContext = useContext(MapContext) || {}
+  const map = mapContext[MAP]
+  const streetViewPanorama = map ? map.getStreetView() : null
 
-  static childContextTypes = {
-    [MAP]: PropTypes.object,
-  }
-
-  constructor(props, context) {
-    super(props, context)
-    invariant(
-      !!this.context[MAP],
-      `Did you render <StreetViewPanorama> as a child of <GoogleMap> with withGoogleMap() HOC?`
-    )
+  // Mount: construct and invariant
+  useEffect(() => {
+    if (!map) {
+      invariant(
+        false,
+        `Did you render <StreetViewPanorama> as a child of <GoogleMap> with withGoogleMap() HOC?`
+      )
+      return
+    }
     construct(
       StreetViewPanorama.propTypes,
       updaterMap,
-      this.props,
-      this.context[MAP].getStreetView()
+      props,
+      streetViewPanorama
     )
-  }
-
-  getChildContext() {
-    return {
-      [MAP]: this.context[MAP].getStreetView(),
+    // Mount events
+    componentDidMount({ props }, streetViewPanorama, eventMap)
+    return () => {
+      componentWillUnmount({})
+      if (streetViewPanorama) {
+        streetViewPanorama.setVisible(false)
+      }
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  componentDidMount() {
-    componentDidMount(this, this.context[MAP].getStreetView(), eventMap)
-  }
-
-  componentDidUpdate(prevProps) {
-    componentDidUpdate(
-      this,
-      this.context[MAP].getStreetView(),
-      eventMap,
-      updaterMap,
-      prevProps
-    )
-  }
-
-  componentWillUnmount() {
-    componentWillUnmount(this)
-    const streetViewPanorama = this.context[MAP].getStreetView()
+  // Update
+  useEffect(() => {
     if (streetViewPanorama) {
-      streetViewPanorama.setVisible(false)
+      componentDidUpdate(
+        { props },
+        streetViewPanorama,
+        eventMap,
+        updaterMap,
+        {} // prevProps not tracked in this migration
+      )
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props, streetViewPanorama])
 
-  render() {
-    const { children } = this.props
-    return <div>{children}</div>
-  }
+  return <div>{children}</div>
+}
+
+StreetViewPanorama.propTypes = {
+  __jscodeshiftPlaceholder__: null,
 }
 
 export default StreetViewPanorama

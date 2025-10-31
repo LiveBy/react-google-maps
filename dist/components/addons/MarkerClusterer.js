@@ -1,12 +1,10 @@
-var C = Object.defineProperty;
-var M = (t, e, i) => e in t ? C(t, e, { enumerable: !0, configurable: !0, writable: !0, value: i }) : t[e] = i;
-var p = (t, e, i) => (M(t, typeof e != "symbol" ? e + "" : e, i), i);
-import { jsx as x } from "react/jsx-runtime";
-import S from "react";
+import { jsx as d } from "react/jsx-runtime";
+import { g as y } from "../../lodash-9da1000b.js";
 import { P as n } from "../../index-e8d4cd90.js";
-import { g as I } from "../../lodash-9da1000b.js";
-import { construct as k, componentDidMount as z, componentDidUpdate as b, componentWillUnmount as L } from "../../utils/MapChildHelper.js";
-import { M as _, A as m, b as g } from "../../constants-4d431d90.js";
+import C, { useContext as M, useRef as x, useState as S, useEffect as _ } from "react";
+import { construct as k, componentDidUpdate as I, componentDidMount as z } from "../../utils/MapChildHelper.js";
+import { M as b, A as L, b as E } from "../../constants-e344191b.js";
+import { MapContext as P } from "../../withGoogleMap.js";
 function u(t, e) {
   t.getMarkerClusterer().extend(u, google.maps.OverlayView), this.cluster_ = t, this.className_ = t.getMarkerClusterer().getClusterClass(), this.styles_ = e, this.center_ = null, this.div_ = null, this.sums_ = null, this.visible_ = !1, this.setMap(t.getMap());
 }
@@ -351,8 +349,8 @@ s.prototype.getExtendedBounds = function(t) {
   o.x += this.gridSize_, o.y -= this.gridSize_;
   var l = e.fromLatLngToDivPixel(r);
   l.x -= this.gridSize_, l.y += this.gridSize_;
-  var a = e.fromDivPixelToLatLng(o), d = e.fromDivPixelToLatLng(l);
-  return t.extend(a), t.extend(d), t;
+  var a = e.fromDivPixelToLatLng(o), g = e.fromDivPixelToLatLng(l);
+  return t.extend(a), t.extend(g), t;
 };
 s.prototype.redraw_ = function() {
   this.createClusters_(0);
@@ -365,8 +363,8 @@ s.prototype.resetViewport_ = function(t) {
     i = this.markers_[e], i.isAdded = !1, t && i.setMap(null);
 };
 s.prototype.distanceBetweenPoints_ = function(t, e) {
-  var i = 6371, r = (e.lat() - t.lat()) * Math.PI / 180, o = (e.lng() - t.lng()) * Math.PI / 180, l = Math.sin(r / 2) * Math.sin(r / 2) + Math.cos(t.lat() * Math.PI / 180) * Math.cos(e.lat() * Math.PI / 180) * Math.sin(o / 2) * Math.sin(o / 2), a = 2 * Math.atan2(Math.sqrt(l), Math.sqrt(1 - l)), d = i * a;
-  return d;
+  var i = 6371, r = (e.lat() - t.lat()) * Math.PI / 180, o = (e.lng() - t.lng()) * Math.PI / 180, l = Math.sin(r / 2) * Math.sin(r / 2) + Math.cos(t.lat() * Math.PI / 180) * Math.cos(e.lat() * Math.PI / 180) * Math.sin(o / 2) * Math.sin(o / 2), a = 2 * Math.atan2(Math.sqrt(l), Math.sqrt(1 - l)), g = i * a;
+  return g;
 };
 s.prototype.isMarkerInBounds_ = function(t, e) {
   return e.contains(t.getPosition());
@@ -414,53 +412,40 @@ s.BATCH_SIZE_IE = 500;
 s.IMAGE_PATH = "https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m";
 s.IMAGE_EXTENSION = "png";
 s.IMAGE_SIZES = [53, 56, 66, 78, 90];
-var E = s;
-const P = /* @__PURE__ */ I(E), c = class c extends S.PureComponent {
-  /*
-   * @see https://github.com/mahnunchik/markerclustererplus/blob/master/docs/reference.html
-   */
-  constructor(e, i) {
-    super(e, i);
-    const r = new P();
-    k(
-      c.propTypes,
-      y,
-      this.props,
-      r
-    ), r.setMap(this.context[_]), this.state = {
-      [g]: r
+var w = s;
+const T = /* @__PURE__ */ y(w);
+function m(t) {
+  const { children: e, ...i } = t, o = (M(P) || {})[b], l = x(null), [a, g] = S(null);
+  _(() => {
+    const c = new T();
+    return k(m.propTypes, f, t, c), c.setMap(o), l.current = c, g(c), () => {
+      c.setMap(null);
     };
-  }
-  getChildContext() {
-    const e = this.state[g];
-    return {
-      [m]: e,
-      [g]: e
-    };
-  }
-  componentDidMount() {
-    z(this, this.state[g], v);
-  }
-  componentDidUpdate(e) {
-    b(
-      this,
-      this.state[g],
-      v,
-      y,
-      e
-    ), this.state[g].repaint();
-  }
-  componentWillUnmount() {
-    L(this);
-    const e = this.state[g];
-    e && e.setMap(null);
-  }
-  render() {
-    const { children: e } = this.props;
-    return /* @__PURE__ */ x("div", { children: e });
-  }
-};
-p(c, "propTypes", {
+  }, []), _(() => {
+    a && (I(
+      { props: t },
+      a,
+      p,
+      f,
+      {}
+      // prevProps not tracked in this migration
+    ), a.repaint());
+  }, [t, a]), _(() => {
+    a && z({ props: t }, a, p);
+  }, [a]);
+  const v = C.createContext({});
+  return /* @__PURE__ */ d(
+    v.Provider,
+    {
+      value: {
+        [L]: a,
+        [E]: a
+      },
+      children: /* @__PURE__ */ d("div", { children: e })
+    }
+  );
+}
+m.propTypes = {
   /**
    * @type boolean
    */
@@ -609,20 +594,14 @@ p(c, "propTypes", {
    * function
    */
   onMouseOver: n.func
-}), p(c, "contextTypes", {
-  [_]: n.object
-}), p(c, "childContextTypes", {
-  [m]: n.object,
-  [g]: n.object
-});
-let f = c;
-const v = {
+};
+const p = {
   onClick: "click",
   onClusteringBegin: "clusteringbegin",
   onClusteringEnd: "clusteringend",
   onMouseOut: "mouseout",
   onMouseOver: "mouseover"
-}, y = {
+}, f = {
   averageCenter(t, e) {
     t.setAverageCenter(e);
   },
@@ -673,6 +652,6 @@ const v = {
   }
 };
 export {
-  f as MarkerClusterer,
-  f as default
+  m as MarkerClusterer,
+  m as default
 };
