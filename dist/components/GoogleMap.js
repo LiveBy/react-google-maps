@@ -3,10 +3,11 @@ var u = (n, e, a) => e in n ? d(n, e, { enumerable: !0, configurable: !0, writab
 var i = (n, e, a) => (u(n, typeof e != "symbol" ? e + "" : e, a), a);
 import { jsx as p } from "react/jsx-runtime";
 import { i as g } from "../browser-fe3e0b83.js";
-import l from "react";
 import { P as t } from "../index-e8d4cd90.js";
+import l from "react";
 import { construct as h, componentDidMount as m, componentDidUpdate as f, componentWillUnmount as C } from "../utils/MapChildHelper.js";
 import { M as o } from "../constants-e344191b.js";
+import { MapContext as y } from "../withGoogleMap.js";
 class r extends l.PureComponent {
   /**
    * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
@@ -40,10 +41,10 @@ class r extends l.PureComponent {
    * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
    */
   constructor(e, a) {
-    super(e, a), g(
+    g(
       !!this.context[o],
       "Did you wrap <GoogleMap> component with withGoogleMap() HOC?"
-    ), h(y.propTypes, s, this.props, this.context[o]);
+    ), h(x.propTypes, s, this.props, this.context[o]);
   }
   componentDidMount() {
     m(this, this.context[o], c);
@@ -285,10 +286,8 @@ i(r, "displayName", "GoogleMap"), i(r, "propTypes", {
    * function
    */
   onZoomChanged: t.func
-}), i(r, "contextTypes", {
-  [o]: t.object
-});
-const y = r, c = {
+}), i(r, "context", y);
+const x = r, c = {
   onDblClick: "dblclick",
   onDragEnd: "dragend",
   onDragStart: "dragstart",
@@ -338,7 +337,7 @@ const y = r, c = {
   }
 };
 export {
-  y as GoogleMap,
+  x as GoogleMap,
   r as Map,
   r as default
 };

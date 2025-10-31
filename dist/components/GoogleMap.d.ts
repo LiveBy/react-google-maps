@@ -154,9 +154,7 @@ export class Map extends React.PureComponent<any, any, any> {
          */
         onZoomChanged: PropTypes.Requireable<(...args: any[]) => any>;
     };
-    static contextTypes: {
-        __SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: PropTypes.Requireable<object>;
-    };
+    static context: React.Context<null>;
     constructor(props: any, context: any);
     /**
      * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map

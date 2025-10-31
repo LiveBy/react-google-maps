@@ -5,17 +5,18 @@
  * -----------------------------------------------------------------------------
  */
 import invariant from "invariant"
-import React from "react"
 import PropTypes from "prop-types"
+import React from "react"
 
 import {
-  construct,
   componentDidMount,
   componentDidUpdate,
   componentWillUnmount,
+  construct,
 } from "../utils/MapChildHelper"
 
 import { MAP } from "../constants"
+import { MapContext } from "../withGoogleMap"
 
 /**
  * A wrapper around `google.maps.Map`
@@ -208,9 +209,7 @@ export class Map extends React.PureComponent {
     onZoomChanged: PropTypes.func,
   }
 
-  static contextTypes = {
-    [MAP]: PropTypes.object,
-  }
+  static context = MapContext
 
   /**
    * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
@@ -248,7 +247,6 @@ export class Map extends React.PureComponent {
    * @see https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
    */
   constructor(props, context) {
-    super(props, context)
     invariant(
       !!this.context[MAP],
       `Did you wrap <GoogleMap> component with withGoogleMap() HOC?`
@@ -392,7 +390,7 @@ const eventMap = {
 
 const updaterMap = {
   extraMapTypes(instance, extra) {
-    extra.forEach(it => instance.mapTypes.set(...it))
+    extra.forEach((it) => instance.mapTypes.set(...it))
   },
 
   center(instance, center) {
