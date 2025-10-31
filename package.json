@@ -18,24 +18,6 @@
   "homepage": "https://tomchentw.github.io/react-google-maps/",
   "type": "module",
   "main": "dist/main.js",
-  "exports": {
-    ".": {
-      "import": "./dist/main.js",
-      "require": "./dist/main.js"
-    },
-    "./*": {
-      "import": "./dist/*.js",
-      "require": "./dist/*.js"
-    },
-    "./components/*": {
-      "import": "./dist/components/*.js",
-      "require": "./dist/components/*.js"
-    },
-    "./components/addons/*": {
-      "import": "./dist/components/addons/*.js",
-      "require": "./dist/components/addons/*.js"
-    }
-  },
   "types": "dist/main.d.ts",
   "files": [
     "dist"
